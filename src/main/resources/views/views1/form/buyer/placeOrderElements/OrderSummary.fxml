@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="1280.0" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" prefHeight="333.0" prefWidth="1280.0" styleClass="std-text">
+         <children>
+            <Text fx:id="textOrderConfirmation" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDERCONFIRMATION" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
