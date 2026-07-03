@@ -43,7 +43,7 @@
     -fx-background-color: #bdd7eeff;
     -fx-pref-width: 120px;
     -fx-pref-height: 25px;
-    -fx-graphic: url(pics/backIcon.png);
+    -fx-graphic: url(../pics/backIcon.png);
 
     -fx-text-fill: #4472c4;
     -fx-font-family: Calibri;
