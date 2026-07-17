@@ -7,11 +7,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="1280.0" stylesheets="@../../../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="vBoxContent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="1280.0" stylesheets="@../../../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="1240.0">
          <children>
-            <VBox fx:id="textProduct" alignment="CENTER_LEFT" maxHeight="0.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #4EA72E;">
+            <VBox alignment="CENTER_LEFT" maxHeight="0.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="0.0" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #4EA72E;">
                <children>
                   <Text fx:id="textProductName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="PRODUCTNAME" VBox.vgrow="ALWAYS">
                      <font>
@@ -70,7 +70,7 @@
             <Insets left="20.0" right="20.0" />
          </VBox.margin>
       </HBox>
-      <ScrollPane hbarPolicy="NEVER" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="153.0" prefWidth="1240.0" VBox.vgrow="ALWAYS">
+      <ScrollPane fx:id="scrollPaneProductTable" hbarPolicy="NEVER" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="153.0" prefWidth="1240.0" VBox.vgrow="ALWAYS">
          <VBox.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" />
          </VBox.margin>
