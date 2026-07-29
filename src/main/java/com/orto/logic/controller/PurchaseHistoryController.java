@@ -1,6 +1,6 @@
 package com.orto.logic.controller;
 
-import com.orto.logic.view_controller.ui.ViewFactory;
+import com.orto.logic.view_controller.controller.ViewFactory;
 
 public class PurchaseHistoryController extends Controller{
     @Override

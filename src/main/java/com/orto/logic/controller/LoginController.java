@@ -10,10 +10,6 @@ import com.orto.logic.view_controller.bean.LoginBean;
 import static com.orto.logic.utils.PersistenceType.FILESYSTEM;
 
 public class LoginController extends Controller {
-    public LoginController() {
-        super(controllerFactory);
-    }
-
     public void logIn(LoginBean loginBean) throws Exception {
         DAOFactory factory;
         UserDAO userDAO;

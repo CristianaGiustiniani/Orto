@@ -3,9 +3,9 @@ package com.orto.logic.controller;
 import com.orto.logic.model.dao.exceptions.ConnectionException;
 import com.orto.logic.model.dao.factory.DAOFactory;
 import com.orto.logic.model.entity.Seller;
-import com.orto.logic.utils.mapper.SellerMapper;
+import com.orto.logic.view_controller.controller.mapper.SellerMapper;
 import com.orto.logic.view_controller.bean.SellerBean;
-import com.orto.logic.view_controller.ui.ViewFactory;
+import com.orto.logic.view_controller.controller.ViewFactory;
 
 import java.util.List;
 

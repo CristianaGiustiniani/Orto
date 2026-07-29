@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -29,12 +30,12 @@
             </Label>
             <VBox alignment="CENTER" maxWidth="-Infinity" prefHeight="308.0" prefWidth="531.0">
                <children>
-                  <Text fx:id="textTitleLogin" fill="#005000" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW_TITLE_LOGIN">
+                  <Text fx:id="textTitleLoginOrSignup" fill="#005000" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW_TITLE_LOGIN_OR_SIGNUP">
                      <font>
                         <Font name="Calibri Bold" size="36.0" />
                      </font>
                   </Text>
-                  <Text fx:id="textSubtitleLogin" fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW_SUBTITLE_LOGIN">
+                  <Text fx:id="textSubtitleLoginOrSignup" fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW_SUBTITLE_LOGIN">
                      <font>
                         <Font name="Calibri Bold" size="32.0" />
                      </font>
@@ -47,14 +48,15 @@
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text fx:id="textUsernameLogin" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="USERNAME">
+                        <Text fx:id="textUsername" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="USERNAME">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="inputUsernameLogin" prefHeight="27.0" prefWidth="310.0" GridPane.columnIndex="1">
+                        <TextField fx:id="inputUsername" prefHeight="27.0" prefWidth="310.0" GridPane.columnIndex="1">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -62,15 +64,28 @@
                               <Font name="Calibri" size="14.0" />
                            </font>
                         </TextField>
-                        <Text fx:id="textPasswordLogin" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="PASSWORD" GridPane.rowIndex="1">
+                        <Text fx:id="textEmail" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="EMAILADDRESS" GridPane.rowIndex="1">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>
                         </Text>
-                        <PasswordField fx:id="inputPasswordLogin" prefHeight="26.0" prefWidth="338.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="inputEmail" prefHeight="27.0" prefWidth="310.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <font>
+                              <Font name="Calibri" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Text fx:id="textPassword" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="PASSWORD" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Calibri" size="18.0" />
+                           </font>
+                        </Text>
+                        <PasswordField fx:id="inputPassword" prefHeight="26.0" prefWidth="338.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
-                  <CheckBox fx:id="checkboxRememberMeLogin" mnemonicParsing="false" styleClass="cb-text" text="REMEMBERME" textFill="#979797">
+                  <CheckBox fx:id="checkboxRememberMe" mnemonicParsing="false" styleClass="cb-text" text="REMEMBERME" textFill="#979797">
                      <font>
                         <Font name="Calibri" size="12.0" />
                      </font>
@@ -78,94 +93,23 @@
                         <Insets bottom="20.0" top="10.0" />
                      </VBox.margin>
                   </CheckBox>
-                  <Button fx:id="buttonLogin" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onClickButtonLogin" prefHeight="37.0" prefWidth="297.0" styleClass="bt-saveChanges" text="LOGIN">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Button>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="buttonLogin" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onClickButtonLogin" prefHeight="37.0" prefWidth="297.0" styleClass="bt-saveChanges" text="LOGIN" />
+                        <Text fx:id="textOr" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OR">
+                           <font>
+                              <Font name="Calibri" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Button fx:id="buttonSignUp" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onClickButtonSignUp" prefHeight="37.0" prefWidth="297.0" styleClass="bt-saveChanges" text="SIGNUP" />
+                     </children>
+                  </HBox>
                </children>
                <VBox.margin>
                   <Insets bottom="30.0" top="10.0" />
-               </VBox.margin>
-            </VBox>
-            <Text fx:id="textOr" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OR">
-               <font>
-                  <Font name="Calibri" size="18.0" />
-               </font>
-            </Text>
-            <VBox alignment="CENTER" maxWidth="-Infinity" prefHeight="308.0" prefWidth="531.0">
-               <children>
-                  <Text fx:id="textTitleSignUp" fill="#005000" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-title" text="VIEW_TITLE_SIGNUP">
-                     <font>
-                        <Font name="Calibri Bold" size="36.0" />
-                     </font>
-                  </Text>
-                  <Text fx:id="textSubitleSignUp" fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="view-subtitle" text="VIEW_SUBTITLE_SIGNUP">
-                     <font>
-                        <Font name="Calibri Bold" size="32.0" />
-                     </font>
-                  </Text>
-                  <GridPane alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <Text fx:id="textUsernameSignUp" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="USERNAME">
-                           <font>
-                              <Font name="Calibri" size="18.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="inputUsernameSignUp" prefHeight="27.0" prefWidth="310.0" GridPane.columnIndex="1">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <font>
-                              <Font name="Calibri" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Text fx:id="textEmailSignUp" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="EMAILADDRESS" GridPane.rowIndex="1">
-                           <font>
-                              <Font name="Calibri" size="18.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="inputEmailSignUp" prefHeight="27.0" prefWidth="310.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <font>
-                              <Font name="Calibri" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Text fx:id="textPasswordSignUp" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="PASSWORD" GridPane.rowIndex="2">
-                           <font>
-                              <Font name="Calibri" size="18.0" />
-                           </font>
-                        </Text>
-                        <PasswordField fx:id="inputPasswordSignUp" prefHeight="26.0" prefWidth="338.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                     </children>
-                  </GridPane>
-                  <CheckBox fx:id="checkboxRememberMeSignUp" mnemonicParsing="false" styleClass="cb-text" text="REMEMBERME" textFill="#979797">
-                     <font>
-                        <Font name="Calibri" size="12.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="20.0" top="10.0" />
-                     </VBox.margin>
-                  </CheckBox>
-                  <Button fx:id="buttonSignUp" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onClickButtonSignUp" prefHeight="37.0" prefWidth="297.0" styleClass="bt-saveChanges" text="SIGNUP">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Button>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="50.0" top="30.0" />
                </VBox.margin>
             </VBox>
          </children>

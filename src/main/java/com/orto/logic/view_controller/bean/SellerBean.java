@@ -4,9 +4,8 @@ import com.orto.logic.utils.ProductType;
 import com.orto.logic.view_controller.bean.exceptions.InvalidStringException;
 
 import java.util.List;
-import java.util.Objects;
 
-public class SellerBean {
+public class SellerBean extends Bean {
     private Integer id;
     private String name;
     private AddressBean address;
@@ -52,7 +51,7 @@ public class SellerBean {
     }
 
     //DATA VALIDATION METHODS
-    private void validate() throws InvalidStringException {
+    public void validate() throws InvalidStringException {
         validateString(this.name);
     }
     private void validateString(String string) throws InvalidStringException {
