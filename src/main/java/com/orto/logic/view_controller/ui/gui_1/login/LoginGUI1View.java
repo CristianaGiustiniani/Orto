@@ -5,10 +5,11 @@ import com.orto.logic.controller.SignUpController;
 import com.orto.logic.utils.I18n;
 import com.orto.logic.view_controller.bean.LoginBean;
 import com.orto.logic.view_controller.bean.exceptions.InvalidStringException;
+
 import com.orto.logic.view_controller.ui.GUIView;
 import com.orto.logic.view_controller.ui.LoginView;
-
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
@@ -52,6 +53,16 @@ public class LoginGUI1View extends GUIView implements LoginView {
         signUp();
     }
 
+    @Override
+    protected Parent create() {
+        return null;
+    }
+
+    @Override
+    protected boolean hasHeader() {
+        return false;
+    }
+
     //SETUP
     protected void setupTexts() {
         buttonLogin.setText(I18n.t("GUI_LOGIN_VIEW_LOGIN"));
@@ -70,14 +81,11 @@ public class LoginGUI1View extends GUIView implements LoginView {
         textUsernameSignUp.setText(I18n.t("GUI_LOGIN_VIEW_USERNAME_SIGNUP"));
     }
 
-    @Override
     protected void showError() {
-
     }
 
     //METHODS
-    @Override
-    public void logIn() {
+    private void logIn() {
         try{
             LoginBean bean = new LoginBean();
             bean.setUsername(inputUsernameLogin.getText());
@@ -92,8 +100,7 @@ public class LoginGUI1View extends GUIView implements LoginView {
         }
     }
 
-    @Override
-    public void signUp() {
+    private void signUp() {
         try{
             LoginBean bean = new LoginBean();
             bean.setUsername(inputUsernameLogin.getText());
@@ -107,15 +114,5 @@ public class LoginGUI1View extends GUIView implements LoginView {
         } catch (Exception e) {
             //todo: show error label
         }
-    }
-
-    @Override
-    public boolean isBackgrounded() {
-        return true;
-    }
-
-    @Override
-    public boolean isLeaf() {
-        return true;
     }
 }

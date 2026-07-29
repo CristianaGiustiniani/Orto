@@ -17,8 +17,6 @@ public class ProductSelectionGUI1View {
     @FXML private Text textAdditionalRequests;
     @FXML private ScrollPane scrollPaneProductTable;
 
-    //BEANS
-
     //CONSTRUCTOR
 
     //JAVAFX ACTIONS-EVENTS

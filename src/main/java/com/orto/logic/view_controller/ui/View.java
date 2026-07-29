@@ -1,8 +1,9 @@
 package com.orto.logic.view_controller.ui;
 
-public interface View {
-    void show();
-    boolean isBackgrounded();
-    boolean isLeaf();
+import com.orto.logic.controller.Controller;
+
+public abstract class View {
+    public Controller controller;
+    public abstract void show();
 
 }

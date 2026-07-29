@@ -1,7 +1,7 @@
 package com.orto.logic.controller;
 
-import com.orto.logic.utils.Navigator;
+import com.orto.logic.view_controller.ui.ViewFactory;
 
 public abstract class Controller {
-    private Navigator navigator;
+    public abstract void start();
 }

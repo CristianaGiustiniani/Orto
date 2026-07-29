@@ -7,9 +7,13 @@ import com.orto.logic.model.dao.factory.DAOFactory;
 import com.orto.logic.model.entity.User;
 import com.orto.logic.view_controller.bean.LoginBean;
 
-import static com.orto.logic.utils.PersistencyType.FILESYSTEM;
+import static com.orto.logic.utils.PersistenceType.FILESYSTEM;
 
 public class LoginController extends Controller {
+    public LoginController() {
+        super(controllerFactory);
+    }
+
     public void logIn(LoginBean loginBean) throws Exception {
         DAOFactory factory;
         UserDAO userDAO;

@@ -1,12 +1,12 @@
 package com.orto.logic.view_controller.ui.gui_1.background;
 
 import com.orto.logic.controller.BackgroundController;
+import com.orto.logic.view_controller.ui.BackgroundView;
 import com.orto.logic.view_controller.ui.GUIView;
-import com.orto.logic.view_controller.ui.backgrounds.PublicBackgroundView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class PublicBackgroundGUI1View extends GUIView implements PublicBackgroundView {
+public class PublicBackgroundGUI1View {
     @FXML Button buttonLoginSignUp;
 
     public PublicBackgroundGUI1View() {

@@ -1,4 +1,4 @@
-package com.orto.logic.model.dao.jdbc;
+package com.orto.logic.model.dao.db;
 
 import com.orto.logic.model.dao.UserDAO;
 import com.orto.logic.model.entity.User;
@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDAOJDBC implements UserDAO {
+public class UserDAODB implements UserDAO {
     @Override
     public User verifyUser(String username, String password) throws Exception {
         //query

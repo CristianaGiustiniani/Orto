@@ -1,6 +1,7 @@
 package com.orto.logic.utils;
 
 import com.orto.logic.utils.exceptions.*;
+import javafx.stage.Stage;
 
 import java.util.Locale;
 
@@ -15,6 +16,7 @@ public class Configuration {
     private final Mode mode;
     private final UIType uiType;
     private Locale locale;
+    private Stage stage;
 
     private Configuration(Mode mode, UIType uiType) {
         this.mode = mode;
@@ -66,5 +68,12 @@ public class Configuration {
 
     public void setLocale(Locale locale) {
         this.locale = locale;
+    }
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }

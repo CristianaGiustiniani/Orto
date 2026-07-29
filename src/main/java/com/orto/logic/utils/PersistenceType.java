@@ -1,6 +1,6 @@
 package com.orto.logic.utils;
 
-public enum PersistencyType {
+public enum PersistenceType {
     INMEMORY,
     FILESYSTEM,
     DATABASE

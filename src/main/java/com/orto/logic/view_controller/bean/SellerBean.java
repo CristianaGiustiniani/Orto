@@ -1,13 +1,16 @@
 package com.orto.logic.view_controller.bean;
 
+import com.orto.logic.utils.ProductType;
 import com.orto.logic.view_controller.bean.exceptions.InvalidStringException;
 
 import java.util.List;
+import java.util.Objects;
 
 public class SellerBean {
     private Integer id;
     private String name;
     private AddressBean address;
+    private List<ProductType> productTypes;
     private List<TimeSlotBean> openingHours;
 
     //GETTERS AND SETTERS
@@ -24,13 +27,8 @@ public class SellerBean {
         return name;
     }
 
-    public void setName(String name) throws InvalidStringException {
-        try {
-            validateString(name);
-            this.name = name;
-        } catch (InvalidStringException e) {
-            throw new InvalidStringException("Name has no characters or digits");
-        }
+    public void setName(String name) {
+        this.name = name;
     }
 
     public AddressBean getAddress() {
@@ -41,6 +39,10 @@ public class SellerBean {
         this.address = address;
     }
 
+    public List<ProductType> getProductTypes() { return productTypes; }
+
+    public void setProductTypes(List<ProductType> productTypes) { this.productTypes = productTypes; }
+
     public List<TimeSlotBean> getOpeningHours() {
         return openingHours;
     }
@@ -50,7 +52,11 @@ public class SellerBean {
     }
 
     //DATA VALIDATION METHODS
+    private void validate() throws InvalidStringException {
+        validateString(this.name);
+    }
     private void validateString(String string) throws InvalidStringException {
+
         boolean ok = string.matches("[a-zA-Z0-9]+");
         if (!ok) {
             throw new InvalidStringException();

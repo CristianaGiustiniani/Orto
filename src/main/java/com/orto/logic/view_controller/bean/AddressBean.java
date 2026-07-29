@@ -4,6 +4,8 @@ import com.orto.logic.view_controller.bean.exceptions.InvalidStringException;
 
 public class AddressBean {
     private String streetName;
+
+
     private String civicNumber;
     private String postalCode;
     private String city;
@@ -16,82 +18,60 @@ public class AddressBean {
         return streetName;
     }
 
-    public void setStreetName(String streetName) throws InvalidStringException {
-
-        try {
-            validateString(streetName);
-            this.streetName = streetName;
-        } catch (InvalidStringException e) {
-            throw new InvalidStringException("Street name has no characters or digits");
-        }
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
     }
 
     public String getCivicNumber() {
         return civicNumber;
     }
 
-    public void setCivicNumber(String civicNumber) throws InvalidStringException {
-        try {
-            validateString(civicNumber);
-            this.civicNumber = civicNumber;
-        } catch (InvalidStringException e) {
-            throw new InvalidStringException("Civic number has no characters or digits");
-        }
+    public void setCivicNumber(String civicNumber) {
+        this.civicNumber = civicNumber;
     }
 
     public String getPostalCode() {
         return postalCode;
     }
 
-    public void setPostalCode(String postalCode) throws InvalidStringException {
-        try {
-            validateString(postalCode);
-            this.postalCode = postalCode;
-        } catch (InvalidStringException e) {
-            throw new InvalidStringException("Postal code has no characters or digits");
-        }
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getCity() {
         return city;
     }
 
-    public void setCity(String city) throws InvalidStringException {
-        try {
-            validateString(city);
-            this.city = city;
-        } catch (InvalidStringException e) {
-            throw new InvalidStringException("City has no characters or digits");
-        }
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getProvince() {
         return province;
     }
 
-    public void setProvince(String province) throws InvalidStringException {
-        try {
-            validateString(province);
-            this.province = province;
-        } catch (InvalidStringException e) {
-            throw new InvalidStringException("Province has no characters or digits");
-        }
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     public String getCountry() {
         return country;
     }
 
-    public void setCountry(String country) throws InvalidStringException {
-        try {
-            validateString(country);
-            this.country = country;
-        } catch (InvalidStringException e) {
-            throw new InvalidStringException("Country has no characters or digits");
-        }
+    public void setCountry(String country) {
+        this.country = country;
     }
 
+
     //DATA VALIDATION METHODS
+    private void validate() throws InvalidStringException {
+        validateString(streetName);
+        validateString(civicNumber);
+        validateString(postalCode);
+        validateString(city);
+        validateString(province);
+        validateString(country);
+    }
     private void validateString(String string) throws InvalidStringException {
         boolean ok = string.matches("[a-zA-Z0-9]+");
         if (!ok) {

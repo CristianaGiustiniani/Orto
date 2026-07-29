@@ -1,5 +1,6 @@
 package com.orto.logic.view_controller.ui.gui_1.place_order;
 
+import com.orto.logic.controller.PlaceOrderController;
 import com.orto.logic.utils.*;
 import com.orto.logic.utils.exceptions.EndOfEnumException;
 import com.orto.logic.utils.exceptions.StartOfEnumException;
@@ -12,6 +13,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 public class PlaceOrderGUI1View extends GUIView implements PlaceOrderView {
+    //CONTROLLER
+    private PlaceOrderController controller;
+
     //ATTRIBUTES
     private SellerBean seller;
     private PlaceOrderStep currentStep;
@@ -27,13 +31,12 @@ public class PlaceOrderGUI1View extends GUIView implements PlaceOrderView {
     @FXML private Text textOrderStep;
     @FXML private Pane paneContent;
 
-    //BEANS
-
     //CONSTRUCTOR
     public PlaceOrderGUI1View(SellerBean seller) {
         super("views/views1/form/buyer/PlaceOrder.fxml");
+        this.controller = new PlaceOrderController();
         this.seller = seller;
-        currentStep = PlaceOrderStep.PRODUCT_SELECTION;
+        this.currentStep = PlaceOrderStep.PRODUCT_SELECTION;
         setupTexts();
     }
 
@@ -45,8 +48,50 @@ public class PlaceOrderGUI1View extends GUIView implements PlaceOrderView {
         goToPreviousStep();
     }
 
+
+
+    //METHODS
+    public void goToNextStep() {
+        try {
+            //getdata
+            //submitdata
+            currentStep = currentStep.next();
+            showStep(currentStep);
+        } catch (EndOfEnumException e) {
+            //goToHome
+        }
+    }
+    public void goToPreviousStep() {
+        try {
+            currentStep = currentStep.previous();
+            showStep(currentStep);
+        } catch (StartOfEnumException e) {
+            //gotoHome
+        }
+    }
+
+    private void showStep(PlaceOrderStep step) {
+        switch (step) {
+            case PRODUCT_SELECTION -> showProductSelection();
+            case SHIPPING_SELECTION -> showShippingSelection();
+            case PAYMENT_SELECTION -> showPaymentSelection();
+            case ORDER_SUMMARY -> showOrderSummary();
+        }
+    }
+    private void showProductSelection() {
+        this.productSelectionView = new ProductSelectionGUI1View();
+    }
+    private void showShippingSelection() {
+        this.shippingSelectionView = new ShippingSelectionGUI1View();
+    }
+    private void showPaymentSelection() {
+        this.paymentSelectionView = new PaymentSelectionGUI1View();
+    }
+    private void showOrderSummary() {
+        this.orderSummaryView = new OrderSummaryGUI1View();
+    }
+
     //SETUP
-    @Override
     protected void setupTexts() {
         buttonBack.setText(I18n.t("BACK"));
         buttonNext.setText(I18n.t("NEXT"));
@@ -54,26 +99,7 @@ public class PlaceOrderGUI1View extends GUIView implements PlaceOrderView {
         textOrderStep.setText(currentStep.getStep());
     }
 
-    @Override
     protected void showError() {
 
-    }
-
-    //METHODS
-    public void goToNextStep() {
-        try {
-            currentStep = currentStep.next();
-            //show next step
-        } catch (EndOfEnumException e) {
-            //
-        }
-    }
-    public void goToPreviousStep() {
-        try {
-            currentStep = currentStep.previous();
-            //show previous step
-        } catch (StartOfEnumException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

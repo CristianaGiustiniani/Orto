@@ -1,32 +1,28 @@
 package com.orto.logic.view_controller.ui;
 
-import com.orto.logic.utils.GUINavigator;
-import com.orto.logic.utils.Session;
-import com.orto.logic.view_controller.ui.backgrounds.AuthenticatedBackgroundView;
-import com.orto.logic.view_controller.ui.backgrounds.BackgroundView;
-import com.orto.logic.view_controller.ui.backgrounds.PublicBackgroundView;
-import com.orto.logic.view_controller.ui.gui_1.background.BackgroundGUI1View;
+import com.orto.logic.utils.Configuration;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public abstract class GUIView implements View {
+public abstract class GUIView extends View {
+    private Parent root;
     protected final String fxmlPath;
-    protected GUIView view;
-
 
     protected GUIView (String fxmlPath) {
         this.fxmlPath = fxmlPath;
     }
 
+    protected abstract Parent create();
     @Override
     public void show() {
-        Stage stage = GUINavigator.getInstance().getStage();
-        stage.setScene(new Scene(this.load()));
+        Parent parent = create();
+        Stage stage = Configuration.getInstance().getStage();
+        stage.setScene(new Scene(parent));
+//        stage.setScene(new Scene(this.load()));
         stage.show();
     }
 
@@ -34,17 +30,26 @@ public abstract class GUIView implements View {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             loader.setController(this);
-
-            if (this.isBackgrounded()) {
-                return wrapWithBackground(load());
-            } else {
-                return loader.load();
-            }
+            return loader.load();
         } catch (IOException e) {
             throw new RuntimeException("Failed to load FXML: " + fxmlPath, e);
         }
     }
 
+    protected Parent load(String fxmlPath) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            loader.setController(this);
+            return loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load FXML: " + fxmlPath, e);
+        }
+    }
+
+
+    protected abstract boolean hasHeader();
+
+   /*
     private Parent wrapWithBackground(Parent content) {
         BackgroundView backgroundView;
 
@@ -60,7 +65,7 @@ public abstract class GUIView implements View {
 
         return background;
     }
-
+*/
     protected abstract void setupTexts();
 
     protected abstract void showError();
