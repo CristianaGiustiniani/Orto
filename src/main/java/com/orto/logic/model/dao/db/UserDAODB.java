@@ -1,6 +1,7 @@
 package com.orto.logic.model.dao.db;
 
 import com.orto.logic.model.dao.UserDAO;
+import com.orto.logic.model.dao.exceptions.ConnectionException;
 import com.orto.logic.model.entity.User;
 import com.orto.logic.utils.DBConnection;
 
@@ -11,12 +12,11 @@ import java.sql.SQLException;
 
 public class UserDAODB implements UserDAO {
     @Override
-    public User verifyUser(String username, String password) throws Exception {
+    public User getUser(String username, String password) throws Exception {
         //query
-        String query = "SELECT (Username, Password) FROM user WHERE Username = ? AND Password = ?";
+        String query = "SELECT (email, password) FROM buyer WHERE email = ? AND password = ?";
         //setup connection
         try (Connection conn = DBConnection.getConnection();
-            //setup prepared statement
             PreparedStatement ps = conn.prepareStatement(query)) {
 
             ps.setString(1, username);
@@ -28,33 +28,12 @@ public class UserDAODB implements UserDAO {
             if (rs.next()) {
                 return new User(
                         rs.getString("username"),
-                        rs.getString("password"),
-                        rs.getString("email")
-                );
+                        rs.getString("name"),
+                        rs.getString("surname"));
             }
         } catch (SQLException e) {
-            throw new Exception("Error verifying user: " + e.getMessage());
+            throw new ConnectionException();
         }
         return null;
-    }
-
-    @Override
-    public void saveUser(User user) throws Exception {
-        //query
-        String query = "INSERT INTO user (Username, Email, Password) VALUES (?, ?, ?)";
-        //setup connection
-        try (Connection conn = DBConnection.getConnection();
-             //setup prepared statement
-             PreparedStatement ps = conn.prepareStatement(query)) {
-
-            ps.setString(1, user.getUsername());
-            ps.setString(2, user.getEmail());
-            ps.setString(2, user.getPassword());
-
-            //execute query
-            ps.executeQuery();
-        } catch (SQLException e) {
-            throw new Exception("Error saving user: " + e.getMessage());
-        }
     }
 }

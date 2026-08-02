@@ -5,19 +5,16 @@ import com.orto.logic.controller.exceptions.FailedLoginException;
 import com.orto.logic.model.dao.UserDAO;
 import com.orto.logic.model.dao.factory.DAOFactory;
 import com.orto.logic.model.entity.User;
-import com.orto.logic.view_controller.bean.LoginBean;
-
-import static com.orto.logic.utils.PersistenceType.FILESYSTEM;
 
 public class LoginController extends Controller {
-    public void logIn(LoginBean loginBean) throws Exception {
+    public void login(String email, String password) throws Exception {
         DAOFactory factory;
         UserDAO userDAO;
         User user;
 
-        factory = DAOFactory.getDAOFactory(FILESYSTEM);
+        factory = DAOFactory.getDAOFactory();
         userDAO = factory.getUserDAO();
-        user = userDAO.verifyUser(loginBean.getUsername(), loginBean.getPassword());
+        user = userDAO.getUser(email, password);
 
         if (user == null) {
             throw new FailedLoginException();

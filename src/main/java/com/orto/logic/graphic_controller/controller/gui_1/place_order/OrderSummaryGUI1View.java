@@ -1,0 +1,22 @@
+package com.orto.logic.graphic_controller.controller.gui_1.place_order;
+
+import com.orto.logic.graphic_controller.controller.GUIView;
+import javafx.fxml.FXML;
+import javafx.scene.text.Text;
+
+public class OrderSummaryGUI1View extends GUIView {
+    //FXML ATTRIBUTES
+    @FXML private Text textOrderConfirmation;
+
+    //CONSTRUCTOR
+    protected OrderSummaryGUI1View() {
+        super("views/views1/form/buyer/placeOrderElements/OrderSummary.fxml");
+    }
+
+    //OUTPUT METHODS
+    @Override
+    protected void setupTexts() {
+        //todo: create text
+        textOrderConfirmation.setText("blablabla");
+    }
+}

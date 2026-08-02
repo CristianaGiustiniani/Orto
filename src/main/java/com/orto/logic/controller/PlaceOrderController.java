@@ -4,9 +4,8 @@ import com.orto.logic.model.entity.Order;
 import com.orto.logic.model.entity.PaymentInfo;
 import com.orto.logic.model.entity.Product;
 import com.orto.logic.model.entity.Seller;
-import com.orto.logic.view_controller.bean.DeliveryBean;
-import com.orto.logic.view_controller.bean.OrderLineBean;
-import com.orto.logic.view_controller.bean.ProductBean;
+import com.orto.logic.graphic_controller.bean.DeliveryBean;
+import com.orto.logic.graphic_controller.bean.OrderLineBean;
 
 import java.util.List;
 

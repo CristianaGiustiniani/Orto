@@ -20,12 +20,12 @@ class UserDAOTest {
             userDAO.saveUser(newUser);
 
             // 5. Test Verification (Success case)
-            User retrievedUser = userDAO.verifyUser("testUser", "12345");
+            User retrievedUser = userDAO.getUser("testUser", "12345");
             assertNotNull(retrievedUser, "User should be found.");
             assertEquals("testUser", retrievedUser.getUsername());
 
             // 6. Test Verification (Failure case - wrong password)
-            User wrongPass = userDAO.verifyUser("testUser", "wrong");
+            User wrongPass = userDAO.getUser("testUser", "wrong");
             assertNull(wrongPass, "User should not be returned with wrong password.");
 
         } catch (Exception e) {

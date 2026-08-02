@@ -1,8 +1,8 @@
 package com.orto.logic;
 
-import com.orto.logic.controller.HomeController;
 import com.orto.logic.utils.Configuration;
 import com.orto.logic.utils.exceptions.ConfigurationException;
+import com.orto.logic.graphic_controller.controller.ViewFactory;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -20,6 +20,6 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Configuration.getInstance().setStage(stage);
-        (new HomeController()).start();
+        ViewFactory.getInstance().createHome();
     }
 }

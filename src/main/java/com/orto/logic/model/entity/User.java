@@ -1,13 +1,26 @@
 package com.orto.logic.model.entity;
 
 public class User {
-    private String username;
+    private final String username;
+    private final String name;
+    private final String surname;
 
-    public User(String username) {
+    public User(String username, String name, String surname) {
         this.username = username;
+        this.name = name;
+        this.surname = surname;
     }
 
     public String getUsername() {
         return username;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
 }
