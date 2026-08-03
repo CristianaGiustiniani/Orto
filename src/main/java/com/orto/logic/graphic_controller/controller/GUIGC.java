@@ -4,20 +4,21 @@ import com.orto.logic.utils.Configuration;
 import com.orto.logic.utils.Session;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 import java.io.IOException;
 
-public abstract class GUIView {
+public abstract class GUIGC {
     /*I controller grafici fanno quattro cose:
         - metodi per gestire azioni dell'utente
         - metodi per leggere input
-        - metodi per mostrare output ----> showError, composizione della view o delego a ViewFactory
+        - metodi per mostrare output ----> showError, composizione della view o delego a GCFactory
         - metodi per convertire bean in model e viceversa ---> lo delego a Mapper
      */
     protected Parent root;
     protected final String fxmlPath;
 
-    protected GUIView (String fxmlPath) {
+    protected GUIGC(String fxmlPath) {
         this.fxmlPath = fxmlPath;
     }
 
@@ -37,9 +38,9 @@ public abstract class GUIView {
 
     protected Parent loadBackground() {
         if (Session.getInstance().isLogged()) {
-            return ((GUIView)(ViewFactory.getInstance().createAuthenticatedBackground())).getRoot();
+            return ((GUIGC)(GCFactory.getInstance().createAuthenticatedBackground())).getRoot();
         } else {
-            return ((GUIView)(ViewFactory.getInstance().createPublicBackground())).getRoot();
+            return ((GUIGC)(GCFactory.getInstance().createPublicBackground())).getRoot();
         }
     }
 

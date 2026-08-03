@@ -2,7 +2,7 @@ package com.orto.logic.graphic_controller.controller;
 
 import com.orto.logic.utils.PlaceOrderStep;
 
-public interface PlaceOrderView {
+public interface PlaceOrderGC {
     default void goToNextStep() { }
     default void goToPreviousStep() { }
     private void showStep(PlaceOrderStep step) {

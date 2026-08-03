@@ -1,18 +1,21 @@
 package com.orto.logic.graphic_controller.controller.gui_1.login;
 
+import com.orto.logic.utils.Configuration;
 import com.orto.logic.utils.I18n;
 import com.orto.logic.graphic_controller.bean.LoginBean;
 import com.orto.logic.graphic_controller.bean.exceptions.InvalidStringException;
-import org.springframework.security.crypto.bcrypt.BCrypt;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 
-import com.orto.logic.graphic_controller.controller.GUIView;
-import com.orto.logic.graphic_controller.controller.LoginView;
+import com.orto.logic.graphic_controller.controller.GUIGC;
+import com.orto.logic.graphic_controller.controller.LoginGC;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
-public class LoginGUI1View extends GUIView implements LoginView {
-    //JAVAFX GRAPHIC ELEMENTS
+public class LoginGUI1GC extends GUIGC implements LoginGC {
+    //FXML ELEMENTS
     @FXML private Button buttonLogin;
     @FXML private Button buttonSignUp;
     @FXML private CheckBox checkboxRememberMe;
@@ -26,8 +29,18 @@ public class LoginGUI1View extends GUIView implements LoginView {
     @FXML private Text textTitle;
 
     //CONSTRUCTOR
-    public LoginGUI1View() {
+    public LoginGUI1GC() {
         super("views/views1/Login.fxml");
+
+        Parent background = loadBackground();
+        Parent login = this.load();
+
+        ((BorderPane) background).setCenter(login);
+
+        root = background;
+        setupTexts();
+
+        Configuration.getInstance().getStage().setScene(new Scene(root));
     }
 
     //INPUT METHODS
@@ -40,7 +53,7 @@ public class LoginGUI1View extends GUIView implements LoginView {
             showError(e.getMessage());
         }
 
-        login(inputBean.getEmail(), BCrypt.hashpw(inputBean.getPassword(), BCrypt.gensalt()));
+        login(inputBean.getEmail(), inputBean.getPassword());
     }
 
     @FXML private void onClickButtonSignUp() {
@@ -48,15 +61,11 @@ public class LoginGUI1View extends GUIView implements LoginView {
     }
 
     protected LoginBean getInput() {
-        try{
-            LoginBean bean = new LoginBean();
-            bean.setPassword(inputPassword.getText());
-            bean.setRememberUser(checkboxRememberMe.isSelected());
-            return bean;
-        } catch (InvalidStringException e) {
-            //todo: show error label
-        }
-        return null;
+        LoginBean bean = new LoginBean();
+        bean.setEmail(inputEmail.getText());
+        bean.setPassword(inputPassword.getText());
+        bean.setRememberUser(checkboxRememberMe.isSelected());
+        return bean;
     }
 
     //OUTPUT METHODS

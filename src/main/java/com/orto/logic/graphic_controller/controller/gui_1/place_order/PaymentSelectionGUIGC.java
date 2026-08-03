@@ -1,12 +1,12 @@
 package com.orto.logic.graphic_controller.controller.gui_1.place_order;
 
 import com.orto.logic.controller.PaymentSelectionController;
-import com.orto.logic.graphic_controller.controller.GUIView;
+import com.orto.logic.graphic_controller.controller.GUIGC;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
-public class PaymentSelectionGUI1View extends GUIView {
+public class PaymentSelectionGUIGC extends GUIGC {
     //CONTROLLER
     PaymentSelectionController controller = new PaymentSelectionController();
 
@@ -16,7 +16,7 @@ public class PaymentSelectionGUI1View extends GUIView {
     @FXML private Button buttonPayByCash;
 
     //CONSTRUCTOR
-    protected PaymentSelectionGUI1View() {
+    protected PaymentSelectionGUIGC() {
         super("views/views1/form/buyer/placeOrderElements/PaymentSelection.fxml");
         setupTexts();
     }

@@ -2,9 +2,9 @@ package com.orto.logic.graphic_controller.controller.gui_1.find_farmers;
 
 
 import com.orto.logic.graphic_controller.bean.SellerBean;
-import com.orto.logic.graphic_controller.controller.FindFarmersView;
-import com.orto.logic.graphic_controller.controller.GUIView;
-import com.orto.logic.graphic_controller.controller.ViewFactory;
+import com.orto.logic.graphic_controller.controller.FindFarmersGC;
+import com.orto.logic.graphic_controller.controller.GCFactory;
+import com.orto.logic.graphic_controller.controller.GUIGC;
 import com.orto.logic.graphic_controller.controller.mapper.SellerMapper;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -15,12 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class FindFarmersGUI1View extends GUIView implements FindFarmersView {
+public class FindFarmersGUIGC extends GUIGC implements FindFarmersGC {
     //FXML ATTRIBUTES
-    @FXML VBox vBoxFarmerTable;
+    @FXML private VBox vBoxFarmerTable;
 
     //CONSTRUCTOR
-    public FindFarmersGUI1View() {
+    public FindFarmersGUIGC() {
         super("views/views1/form/FindFarmers.fxml");
         root = this.load();
         createChildren();
@@ -33,7 +33,7 @@ public class FindFarmersGUI1View extends GUIView implements FindFarmersView {
         //retrieve sellers
         List<SellerBean> sellers = (new SellerMapper()).toBeans(retrieveFarmers());
 
-        //for each seller, create hbox row
+        //for each seller, create row
         List <FarmerListItemGUI1View> rows = new ArrayList<>();
 
         for (SellerBean seller : sellers) {
@@ -54,7 +54,7 @@ public class FindFarmersGUI1View extends GUIView implements FindFarmersView {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            ViewFactory.getInstance().createHome();
+            GCFactory.getInstance().createHome();
         }
     }
 }

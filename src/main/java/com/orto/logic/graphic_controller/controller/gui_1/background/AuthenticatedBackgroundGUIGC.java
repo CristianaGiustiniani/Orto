@@ -2,19 +2,19 @@ package com.orto.logic.graphic_controller.controller.gui_1.background;
 
 import com.orto.logic.utils.I18n;
 import com.orto.logic.utils.Session;
-import com.orto.logic.graphic_controller.controller.AuthenticatedBackgroundView;
-import com.orto.logic.graphic_controller.controller.GUIView;
+import com.orto.logic.graphic_controller.controller.AuthenticatedBackgroundGC;
+import com.orto.logic.graphic_controller.controller.GUIGC;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
-public class AuthenticatedBackgroundGUI1View extends GUIView implements AuthenticatedBackgroundView {
+public class AuthenticatedBackgroundGUIGC extends GUIGC implements AuthenticatedBackgroundGC {
     //FXML ATTRIBUTES
     @FXML Button buttonLogout;
     @FXML Text textUsername;
 
     //CONSTRUCTOR
-    public AuthenticatedBackgroundGUI1View() {
+    public AuthenticatedBackgroundGUIGC() {
         super("views/views1/loggeduser/Background.fxml");
         root = this.load();
         setupTexts();

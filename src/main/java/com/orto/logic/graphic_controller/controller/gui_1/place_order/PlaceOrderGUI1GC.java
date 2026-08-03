@@ -5,13 +5,13 @@ import com.orto.logic.model.entity.Seller;
 import com.orto.logic.utils.*;
 import com.orto.logic.utils.exceptions.EndOfEnumException;
 import com.orto.logic.utils.exceptions.StartOfEnumException;
-import com.orto.logic.graphic_controller.controller.PlaceOrderView;
+import com.orto.logic.graphic_controller.controller.PlaceOrderGC;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
-public class PlaceOrderGUI1View implements PlaceOrderView {
+public class PlaceOrderGUI1GC implements PlaceOrderGC {
     //CONTROLLER
     private PlaceOrderController controller;
 
@@ -20,8 +20,8 @@ public class PlaceOrderGUI1View implements PlaceOrderView {
     private PlaceOrderStep currentStep;
     private ProductSelectionGUI1View productSelectionView;
     private ShippingSelectionGUI1View shippingSelectionView;
-    private PaymentSelectionGUI1View paymentSelectionView;
-    private OrderSummaryGUI1View orderSummaryView;
+    private PaymentSelectionGUIGC paymentSelectionView;
+    private OrderSummaryGUIGC orderSummaryView;
 
     //FXML ATTRIBUTES
     private final String fxmlPath = "views/views1/form/buyer/PlaceOrder.fxml";
@@ -32,7 +32,7 @@ public class PlaceOrderGUI1View implements PlaceOrderView {
     @FXML private Pane paneContent;
 
     //CONSTRUCTOR
-    public PlaceOrderGUI1View(Seller seller) {
+    public PlaceOrderGUI1GC(Seller seller) {
         this.controller = new PlaceOrderController();
         this.seller = seller;
         this.currentStep = PlaceOrderStep.PRODUCT_SELECTION;
@@ -83,10 +83,10 @@ public class PlaceOrderGUI1View implements PlaceOrderView {
         this.shippingSelectionView = new ShippingSelectionGUI1View();
     }
     private void showPaymentSelection() {
-        this.paymentSelectionView = new PaymentSelectionGUI1View();
+        this.paymentSelectionView = new PaymentSelectionGUIGC();
     }
     private void showOrderSummary() {
-        this.orderSummaryView = new OrderSummaryGUI1View();
+        this.orderSummaryView = new OrderSummaryGUIGC();
     }
 
     //SETUP

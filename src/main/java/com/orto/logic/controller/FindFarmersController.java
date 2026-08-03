@@ -6,7 +6,7 @@ import com.orto.logic.model.entity.Seller;
 
 import java.util.List;
 
-public class FindFarmersController extends Controller {
+public class FindFarmersController {
     //METHODS
     public List<Seller> getFarmers() throws ConnectionException {
         DAOFactory factory = DAOFactory.getDAOFactory();

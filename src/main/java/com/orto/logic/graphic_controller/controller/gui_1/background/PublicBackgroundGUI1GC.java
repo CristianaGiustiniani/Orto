@@ -1,17 +1,17 @@
 package com.orto.logic.graphic_controller.controller.gui_1.background;
 
 import com.orto.logic.utils.I18n;
-import com.orto.logic.graphic_controller.controller.GUIView;
-import com.orto.logic.graphic_controller.controller.PublicBackgroundView;
+import com.orto.logic.graphic_controller.controller.GUIGC;
+import com.orto.logic.graphic_controller.controller.PublicBackgroundGC;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class PublicBackgroundGUI1View extends GUIView implements PublicBackgroundView {
+public class PublicBackgroundGUI1GC extends GUIGC implements PublicBackgroundGC {
     //FXML ATTRIBUTES
     @FXML Button buttonLoginSignUp;
 
     //CONSTRUCTOR
-    public PublicBackgroundGUI1View() {
+    public PublicBackgroundGUI1GC() {
         super("views/views1/Background.fxml");
         root = this.load();
         setupTexts();

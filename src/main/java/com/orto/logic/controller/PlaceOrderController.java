@@ -9,7 +9,7 @@ import com.orto.logic.graphic_controller.bean.OrderLineBean;
 
 import java.util.List;
 
-public class PlaceOrderController extends Controller {
+public class PlaceOrderController {
     private Order order;
     //todo: implement these
 

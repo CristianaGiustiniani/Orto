@@ -6,7 +6,7 @@ import com.orto.logic.model.entity.Seller;
 
 import java.util.List;
 
-public interface FindFarmersView {
+public interface FindFarmersGC {
     default List<Seller> retrieveFarmers() {
         try {
             return (new FindFarmersController()).getFarmers();
@@ -18,7 +18,7 @@ public interface FindFarmersView {
     }
 
     default void placeOrder(Seller seller) {
-        ViewFactory.getInstance().createPlaceOrder(seller);
+        GCFactory.getInstance().createPlaceOrder(seller);
     }
 
     void showError(String message);

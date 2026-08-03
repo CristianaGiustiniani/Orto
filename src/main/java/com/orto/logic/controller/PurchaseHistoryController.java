@@ -1,9 +1,9 @@
 package com.orto.logic.controller;
 
-import com.orto.logic.graphic_controller.controller.ViewFactory;
+import com.orto.logic.graphic_controller.controller.GCFactory;
 
-public class PurchaseHistoryController extends Controller{
+public class PurchaseHistoryController {
     public void start() {
-        ViewFactory.getInstance().createPurchaseHistory();
+        GCFactory.getInstance().createPurchaseHistory();
     }
 }

@@ -1,27 +1,34 @@
 package com.orto.test;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import com.orto.logic.model.dao.UserDAO;
+import com.orto.logic.model.dao.factory.DAOFactory;
+import com.orto.logic.model.entity.User;
+import org.junit.Test;
+
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
+
 class UserDAOTest {
-/*
     @Test
     void testSaveAndRetrieveUserInMemory() throws Exception {
-        // 1. Get the InMemory Factory
+       /* // 1. Get the InMemory Factory
         DAOFactory factory = DAOFactory.getDAOFactory();
 
         // 2. Get the DAO
         UserDAO userDAO = factory.getUserDAO();
 
         // 3. Create a dummy user
-        User newUser = new User("testUser", "12345", "test@example.com");
+        String email;
+        String password;
 
         try {
             // 4. Test Saving
-            userDAO.saveUser(newUser);
+            userDAO.save(email, password);
 
             // 5. Test Verification (Success case)
             User retrievedUser = userDAO.getUser("testUser", "12345");
-            assertNotNull(retrievedUser, "User should be found.");
+            assertNotNull("User should be found.", retrievedUser);
             assertEquals("testUser", retrievedUser.getUsername());
 
             // 6. Test Verification (Failure case - wrong password)
@@ -30,8 +37,7 @@ class UserDAOTest {
 
         } catch (Exception e) {
             fail("Exception thrown during test: " + e.getMessage());
-        }
+        }*/
     }
-    */
 
 }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/src/main/java/com/orto/logic/model/dao/db/UserDAODB.java" value="bd376583-e710-4e84-8a44-2a42c4b1ab7a" />
+  </component>
+</project>

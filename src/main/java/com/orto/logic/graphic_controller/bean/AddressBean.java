@@ -4,8 +4,6 @@ import com.orto.logic.graphic_controller.bean.exceptions.InvalidStringException;
 
 public class AddressBean {
     private String streetName;
-
-
     private String civicNumber;
     private String postalCode;
     private String city;
