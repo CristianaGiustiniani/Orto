@@ -10,7 +10,7 @@ public class UserDAOFS implements UserDAO {
     }
 
     @Override
-    public void saveUser(User user, String email, String password) {
+    public void createUser(User user, String email, String password) {
         //todo: implement this
     }
 }

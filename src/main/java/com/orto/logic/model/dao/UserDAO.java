@@ -10,5 +10,5 @@ import com.orto.logic.model.entity.exceptions.WrongPasswordException;
 public interface UserDAO {
     User getUser(String username, String password) throws ConnectionException, WrongPasswordException, WrongEmailException;
 
-    void saveUser(User user, String email, String password) throws ConnectionException, UsernameAlreadyExistsException, EmailAlreadyExistsException;
+    void createUser(User user, String email, String password) throws ConnectionException, UsernameAlreadyExistsException, EmailAlreadyExistsException;
 }

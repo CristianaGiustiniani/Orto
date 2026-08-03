@@ -1,11 +1,16 @@
 package com.orto.logic.model.dao.inmemory;
 
 import com.orto.logic.model.dao.UserDAO;
+import com.orto.logic.model.dao.exceptions.EmailAlreadyExistsException;
+import com.orto.logic.model.dao.exceptions.UsernameAlreadyExistsException;
+import com.orto.logic.model.dao.exceptions.WrongEmailException;
 import com.orto.logic.model.entity.User;
 import com.orto.logic.model.entity.exceptions.WrongPasswordException;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class UserDAOMEM implements UserDAO {
     private static final Map <String, User> users = new HashMap<>();
@@ -16,7 +21,6 @@ public class UserDAOMEM implements UserDAO {
         users.put(
                 "crisgius@gmail.com",
                 new User(
-                        1,
                         "cristiana",
                         "cristiana",
                         "giustiniani",
@@ -26,7 +30,6 @@ public class UserDAOMEM implements UserDAO {
         users.put(
                 "dajeromadaje@gmail.com",
                 new User(
-                        2,
                         "robiforzaroma",
                         "roberta",
                         "lupi",
@@ -36,7 +39,6 @@ public class UserDAOMEM implements UserDAO {
         users.put(
                 "maria6116@libero.it",
                 new User(
-                        3,
                         "maria61",
                         "marianna",
                         "sabatini",
@@ -44,16 +46,34 @@ public class UserDAOMEM implements UserDAO {
     }
 
     @Override
-    public User getUser(String email, String password) throws WrongPasswordException {
+    public User getUser(String email, String password) throws WrongPasswordException, WrongEmailException {
         User user = users.get(email);
         if (user != null) {
             user.checkPassword(password);
             return user;
         }
+        else {
+            throw new WrongEmailException();
+        }
     }
 
     @Override
-    public void saveUser(User user, String email, String password) {
+    public void createUser(User user, String email, String password) throws EmailAlreadyExistsException, UsernameAlreadyExistsException {
+        if (users.get(email) != null) {
+            throw new EmailAlreadyExistsException();
+        }
+        for (User u: users.values()) {
+            if (Objects.equals(u.getUsername(), user.getUsername())) {
+                throw new UsernameAlreadyExistsException();
+            }
+        }
+        users.put(
+                email,
+                new User(
+                        user.getUsername(),
+                        user.getName(),
+                        user.getSurname(),
+                        BCrypt.hashpw(password, BCrypt.gensalt())));
 
     }
 }

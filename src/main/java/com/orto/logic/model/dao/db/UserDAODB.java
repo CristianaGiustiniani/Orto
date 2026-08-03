@@ -44,7 +44,7 @@ public class UserDAODB implements UserDAO {
     }
 
     @Override
-    public void saveUser(User user, String email, String password) throws ConnectionException, UsernameAlreadyExistsException, EmailAlreadyExistsException {
+    public void createUser(User user, String email, String password) throws ConnectionException, UsernameAlreadyExistsException, EmailAlreadyExistsException {
         String query = "INSERT INTO buyer (username, name, surname, email, password) VALUES (?, ?, ?, ?, ?)";
 
         try (   Connection conn = DBConnection.getConnection();
