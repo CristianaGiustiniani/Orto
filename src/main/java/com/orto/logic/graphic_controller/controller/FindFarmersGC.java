@@ -3,6 +3,7 @@ package com.orto.logic.graphic_controller.controller;
 import com.orto.logic.controller.FindFarmersController;
 import com.orto.logic.model.dao.exceptions.ConnectionException;
 import com.orto.logic.model.entity.Seller;
+import com.orto.logic.utils.I18n;
 
 import java.util.List;
 
@@ -11,8 +12,8 @@ public interface FindFarmersGC {
         try {
             return (new FindFarmersController()).getFarmers();
         } catch (ConnectionException e) {
-            //todo: i18 the error message
-            showError("Our database is currently not working. Try later.");
+            showError(I18n.t("ERROR_CONNECTION"));
+            GCFactory.getInstance().createHome();
         }
         return null;
     }

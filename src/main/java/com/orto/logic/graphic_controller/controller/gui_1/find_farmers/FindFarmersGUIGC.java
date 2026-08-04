@@ -17,11 +17,11 @@ import java.util.Optional;
 
 public class FindFarmersGUIGC extends GUIGC implements FindFarmersGC {
     //FXML ATTRIBUTES
-    @FXML private VBox vBoxFarmerTable;
+    @FXML private VBox vboxFarmers;
 
     //CONSTRUCTOR
     public FindFarmersGUIGC() {
-        super("views/views1/form/FindFarmers.fxml");
+        super("/views/views1/form/FindFarmers.fxml");
         root = this.load();
         createChildren();
     }
@@ -39,7 +39,7 @@ public class FindFarmersGUIGC extends GUIGC implements FindFarmersGC {
         for (SellerBean seller : sellers) {
             rows.add(new FarmerListItemGUI1View(seller));
             rows.getLast().setPlaceOrder(this::placeOrder);
-            vBoxFarmerTable.getChildren().add(rows.getLast().getRoot());
+            vboxFarmers.getChildren().add(rows.getLast().getRoot());
         }
     }
 
@@ -51,11 +51,7 @@ public class FindFarmersGUIGC extends GUIGC implements FindFarmersGC {
     public void showError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setContentText(message);
-
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            GCFactory.getInstance().createHome();
-        }
+        alert.showAndWait();
     }
 }
 

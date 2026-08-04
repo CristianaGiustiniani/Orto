@@ -32,7 +32,7 @@
                         <Font name="Calibri Bold" size="36.0" />
                      </font>
                   </Text>
-                  <Text fx:id="textSubtitleFindFarmers" fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW_SUBTITLE_HOME">
+                  <Text fx:id="textSubtitleHome" fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW_SUBTITLE_HOME">
                      <font>
                         <Font name="Calibri Bold" size="32.0" />
                      </font>

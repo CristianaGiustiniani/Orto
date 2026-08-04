@@ -7,7 +7,7 @@ public class PurchaseHistoryGUI1GC extends GUIGC implements PurchaseHistoryGC {
     //not implementing this UC
 
     public PurchaseHistoryGUI1GC() {
-        super("views/views1/form/buyer/PurchaseHistory.fxml");
+        super("/views/views1/form/buyer/PurchaseHistory.fxml");
     }
 
     @Override

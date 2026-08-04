@@ -10,6 +10,12 @@ public class User {
     private final String surname;
     private String hashedPassword;
 
+    public User(String username, String name, String surname) {
+        this.username = username;
+        this.name = name;
+        this.surname = surname;
+    }
+
     public User(Integer id, String username, String name, String surname) {
         this.id = id;
         this.username = username;

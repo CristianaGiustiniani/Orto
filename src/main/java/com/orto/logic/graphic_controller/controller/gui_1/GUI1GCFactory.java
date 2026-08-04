@@ -19,10 +19,7 @@ public class GUI1GCFactory extends GCFactory {
     public AuthenticatedBackgroundGC createAuthenticatedBackground() { return new AuthenticatedBackgroundGUIGC(); }
 
     @Override
-    public HomeGC createHome() {
-
-        return new HomeGUI1GC();
-    }
+    public HomeGC createHome() { return new HomeGUI1GC(); }
 
     @Override
     public LoginGC createLogin() {

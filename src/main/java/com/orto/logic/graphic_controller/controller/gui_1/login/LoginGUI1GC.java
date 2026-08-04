@@ -1,5 +1,10 @@
 package com.orto.logic.graphic_controller.controller.gui_1.login;
 
+import com.orto.logic.graphic_controller.bean.exceptions.EmptyEmailException;
+import com.orto.logic.graphic_controller.bean.exceptions.EmptyPasswordException;
+import com.orto.logic.model.dao.exceptions.ConnectionException;
+import com.orto.logic.model.dao.exceptions.WrongEmailException;
+import com.orto.logic.model.entity.exceptions.WrongPasswordException;
 import com.orto.logic.utils.Configuration;
 import com.orto.logic.utils.I18n;
 import com.orto.logic.graphic_controller.bean.LoginBean;
@@ -30,7 +35,7 @@ public class LoginGUI1GC extends GUIGC implements LoginGC {
 
     //CONSTRUCTOR
     public LoginGUI1GC() {
-        super("views/views1/Login.fxml");
+        super("/views/views1/form/Login.fxml");
 
         Parent background = loadBackground();
         Parent login = this.load();
@@ -45,22 +50,14 @@ public class LoginGUI1GC extends GUIGC implements LoginGC {
 
     //INPUT METHODS
     @FXML private void onClickButtonLogin() {
-        LoginBean inputBean = getInput();
-
-        try {
-            inputBean.validate();
-        } catch (InvalidStringException e) {
-            showError(e.getMessage());
-        }
-
-        login(inputBean.getEmail(), inputBean.getPassword());
+        login();
     }
 
     @FXML private void onClickButtonSignUp() {
         signup();
     }
 
-    protected LoginBean getInput() {
+    public LoginBean getInput() {
         LoginBean bean = new LoginBean();
         bean.setEmail(inputEmail.getText());
         bean.setPassword(inputPassword.getText());
@@ -80,7 +77,15 @@ public class LoginGUI1GC extends GUIGC implements LoginGC {
         textTitle.setText(I18n.t("GUI_LOGIN_VIEW_TITLE_LOGIN"));
     }
 
-    public void showError(String message) {
-        labelError.setText(message);
+    public void showError(String message, Exception e) {
+        if (e instanceof ConnectionException) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(message);
+            alert.showAndWait();
+        } else if (e instanceof WrongPasswordException || e instanceof WrongEmailException || e instanceof EmptyEmailException || e instanceof EmptyPasswordException) {
+            labelError.setText(message);
+        } else {
+            labelError.setText(message);
+        }
     }
 }

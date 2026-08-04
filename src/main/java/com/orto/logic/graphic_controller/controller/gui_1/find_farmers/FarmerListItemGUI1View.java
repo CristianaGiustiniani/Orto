@@ -23,7 +23,7 @@ public class FarmerListItemGUI1View extends HBox {
     private final SellerBean seller;
 
     //FXML ATTRIBUTES
-    public final String fxmlPath = "views/views1/form/findFarmersElements/FarmerListItem.fxml";
+    public final String fxmlPath = "/views/views1/form/findFarmersElements/FarmerListItem.fxml";
     @FXML Button buttonPlaceOrder;
     @FXML Text textFarmerLocation;
     @FXML Text textFarmerName;

@@ -46,7 +46,7 @@ public class SellerDAODB implements SellerDAO {
                 "FROM Seller " +
                 "INNER JOIN SellerProductType ON Seller.id = SellerProductType.seller " +
                 "INNER JOIN OpeningHours ON Seller.id = OpeningHours.sellerId " +
-                "ORDER BY Seller.id ASC;";
+                "ORDER BY Seller.id;";
 
         List<Seller> sellers;
 

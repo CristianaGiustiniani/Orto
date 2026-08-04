@@ -14,16 +14,14 @@ public interface DAOFactory {
                 return new DBDAOFactory();
         }
     }
-    public static DAOFactory getDAOFactory(PersistenceType type) throws Exception {
+    public static DAOFactory getDAOFactory(PersistenceType type) {
         switch (type) {
             case INMEMORY:
                 return new MEMDAOFactory();
             case FILESYSTEM:
                 return new FSDAOFactory();
-            case DATABASE:
+            case DATABASE: default:
                 return new DBDAOFactory();
-            default:
-                throw new Exception("Unknown persistence");
         }
     }
 

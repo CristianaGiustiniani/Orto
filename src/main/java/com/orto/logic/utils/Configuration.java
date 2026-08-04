@@ -10,10 +10,8 @@ import static com.orto.logic.utils.Mode.*;
 import static com.orto.logic.utils.UIType.*;
 
 public class Configuration {
-    /*
-    * Singleton
-    * */
     private static Configuration instance = null;
+
     private final Mode mode;
     private final UIType uiType;
     private Locale locale;
@@ -29,7 +27,7 @@ public class Configuration {
         return instance;
     }
 
-    public static void init(String[] args) throws AlreadyInstantiatedException, NullModeException, InvalidModeException, NullUITypeException, InvalidUITypeException {
+    public static void init(String[] args) throws AlreadyInstantiatedException {
         if (instance != null) {
             throw new AlreadyInstantiatedException();
         }
@@ -40,15 +38,13 @@ public class Configuration {
         mode = switch (args[0]) {
             case "DEMO" -> DEMO;
             case "FULL" -> FULL;
-            case null -> throw new NullModeException();
-            default -> throw new InvalidModeException();
+            default -> FULL;
         };
 
         uiType = switch (args[1]) {
             case "GUI1" -> GUI_1;
             case "GUI2" -> GUI_2;
-            case null -> throw new NullUITypeException();
-            default -> throw new InvalidUITypeException();
+            default -> GUI_1;
         };
 
         instance = new Configuration(mode, uiType);
@@ -69,6 +65,7 @@ public class Configuration {
 
     public void setLocale(Locale locale) {
         this.locale = locale;
+        I18n.init(locale);
     }
     public Stage getStage() {
         return stage;

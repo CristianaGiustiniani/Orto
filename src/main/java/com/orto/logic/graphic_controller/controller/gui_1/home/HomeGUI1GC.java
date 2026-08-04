@@ -24,7 +24,7 @@ public class HomeGUI1GC extends GUIGC implements HomeGC {
 
     //CONSTRUCTOR
     public HomeGUI1GC() {
-        super("views/views1/form/Home.fxml");
+        super("/views/views1/form/Home.fxml");
 
         Parent background = loadBackground();
         Parent home = this.load();

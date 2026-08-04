@@ -10,7 +10,7 @@ public class OrderSummaryGUIGC extends GUIGC {
 
     //CONSTRUCTOR
     protected OrderSummaryGUIGC() {
-        super("views/views1/form/buyer/placeOrderElements/OrderSummary.fxml");
+        super("/views/views1/form/buyer/placeOrderElements/OrderSummary.fxml");
     }
 
     //OUTPUT METHODS

@@ -1,5 +1,7 @@
 package com.orto.logic.graphic_controller.bean;
 
+import com.orto.logic.graphic_controller.bean.exceptions.EmptyEmailException;
+import com.orto.logic.graphic_controller.bean.exceptions.EmptyPasswordException;
 import com.orto.logic.graphic_controller.bean.exceptions.InvalidStringException;
 
 public class LoginBean {
@@ -40,17 +42,17 @@ public class LoginBean {
         }
     }
 
-    public void validate() throws InvalidStringException {
+    public void validate() throws EmptyEmailException, EmptyPasswordException {
         try {
             validateString(email);
         } catch (InvalidStringException e) {
-            throw new InvalidStringException("Email has no characters or digits");
+            throw new EmptyEmailException();
         }
 
         try {
             validateString(password);
         } catch (InvalidStringException e) {
-            throw new InvalidStringException("Password has no characters or digits");
+            throw new EmptyPasswordException();
         }
     }
 }

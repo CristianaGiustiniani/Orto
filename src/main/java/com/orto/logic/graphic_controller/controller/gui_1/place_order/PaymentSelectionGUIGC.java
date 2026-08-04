@@ -17,7 +17,7 @@ public class PaymentSelectionGUIGC extends GUIGC {
 
     //CONSTRUCTOR
     protected PaymentSelectionGUIGC() {
-        super("views/views1/form/buyer/placeOrderElements/PaymentSelection.fxml");
+        super("/views/views1/form/buyer/placeOrderElements/PaymentSelection.fxml");
         setupTexts();
     }
 
