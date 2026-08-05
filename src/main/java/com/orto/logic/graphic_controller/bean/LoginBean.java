@@ -36,7 +36,7 @@ public class LoginBean {
 
     //DATA VALIDATION METHODS
     private void validateString(String string) throws InvalidStringException {
-        boolean ok = string.matches("[a-zA-Z0-9]+");
+        boolean ok = string.matches(".*\\S.*");
         if (!ok) {
             throw new InvalidStringException();
         }

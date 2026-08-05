@@ -59,7 +59,7 @@ public class SellerDAOMEM implements SellerDAO {
     }
 
     @Override
-    public List<Seller> getAll() {
+    public List<Seller> getAllSellers() {
         return sellers;
     }
 }

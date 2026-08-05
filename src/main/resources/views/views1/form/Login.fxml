@@ -18,7 +18,7 @@
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="labelError" styleClass="error-label" text="Error" textFill="RED">
+            <Label fx:id="labelError" styleClass="error-label" text="Error" textFill="RED" visible="false">
                <VBox.margin>
                   <Insets top="50.0" />
                </VBox.margin>
@@ -28,12 +28,12 @@
             </Label>
             <VBox alignment="CENTER" maxWidth="-Infinity" prefHeight="411.0" prefWidth="531.0">
                <children>
-                  <Text fx:id="textTitleLogin" fill="#005000" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW_TITLE_LOGIN">
+                  <Text fx:id="textTitle" fill="#005000" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW_TITLE_LOGIN">
                      <font>
                         <Font name="Calibri Bold" size="36.0" />
                      </font>
                   </Text>
-                  <Text fx:id="textSubtitleLogin" fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW_SUBTITLE_LOGIN">
+                  <Text fx:id="textSubtitle" fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" text="VIEW_SUBTITLE_LOGIN">
                      <font>
                         <Font name="Calibri Bold" size="32.0" />
                      </font>
@@ -87,7 +87,7 @@
                         <Insets bottom="10.0" top="50.0" />
                      </VBox.margin>
                   </Text>
-                  <Button fx:id="buttonSignUp" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onClickButtonSignUp" prefHeight="37.0" prefWidth="297.0" styleClass="bt-saveChanges" text="SIGNUP" />
+                  <Button fx:id="buttonSignup" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onClickButtonSignUp" prefHeight="37.0" prefWidth="297.0" styleClass="bt-saveChanges" text="SIGNUP" />
                </children>
                <VBox.margin>
                   <Insets bottom="30.0" top="10.0" />

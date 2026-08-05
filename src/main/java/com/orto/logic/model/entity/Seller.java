@@ -13,9 +13,6 @@ public class Seller {
     private List<ProductType> productTypes;
     private Map<DayOfWeek, TimeSlot> openingTimes;
 
-
-
-    //CONSTRUCTOR
     public Seller(Integer id, String name, Address address, List<ProductType> productTypes, Map<DayOfWeek, TimeSlot> openingTimes) {
         this.id = id;
         this.name = name;
@@ -24,7 +21,6 @@ public class Seller {
         this.openingTimes = openingTimes;
     }
 
-    //GETTERS
     public Integer getId() {
         return id;
     }
@@ -32,6 +28,7 @@ public class Seller {
     public String getName() {
         return name;
     }
+
     public Address getAddress() { return address; }
 
     public List<ProductType> getProductTypes() {

@@ -1,5 +1,7 @@
 package com.orto.logic.model.dao.factory;
 
+import com.orto.logic.model.dao.OrderDAO;
+import com.orto.logic.model.dao.ProductDAO;
 import com.orto.logic.model.dao.SellerDAO;
 import com.orto.logic.model.dao.UserDAO;
 import com.orto.logic.utils.Configuration;
@@ -28,6 +30,8 @@ public interface DAOFactory {
 
     public abstract UserDAO getUserDAO();
     public abstract SellerDAO getSellerDAO();
+    public abstract OrderDAO getOrderDAO();
+    public abstract ProductDAO getProductDAO();
 
 
 }

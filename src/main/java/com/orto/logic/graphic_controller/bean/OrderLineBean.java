@@ -1,5 +1,6 @@
 package com.orto.logic.graphic_controller.bean;
 
+import com.orto.logic.graphic_controller.bean.exceptions.AnnotationTooLongException;
 import com.orto.logic.utils.QuantityUnit;
 import com.orto.logic.graphic_controller.bean.exceptions.InvalidStringException;
 
@@ -12,7 +13,6 @@ public class OrderLineBean {
     private Double subtotal;
 
     //GETTERS AND SETTERS
-    //todo: syntactic data validation
     public Integer getProductId() {
         return productId;
     }
@@ -62,10 +62,14 @@ public class OrderLineBean {
     }
 
     //DATA VALIDATION METHODS
-    private void validateString(String string) throws InvalidStringException {
-        boolean ok = string.matches("[a-zA-Z0-9]+");
-        if (!ok) {
-            throw new InvalidStringException();
+    private void validate() throws AnnotationTooLongException {
+        validateAnnotation(this.annotation);
+    }
+
+    private void validateAnnotation(String annotation) throws AnnotationTooLongException {
+        int length = annotation.length();
+        if (length > 200) {
+            throw new AnnotationTooLongException();
         }
     }
 }

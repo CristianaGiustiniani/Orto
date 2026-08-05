@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class UserDAODB implements UserDAO {
     @Override
     public User getUser(String email, String password) throws ConnectionException, WrongPasswordException, WrongEmailException {
-        String query = "SELECT username, name, surname, password FROM buyer WHERE email = ?";
+        String query = "SELECT id, username, name, surname, password FROM buyer WHERE email = ?";
 
         User user;
 
@@ -29,6 +29,7 @@ public class UserDAODB implements UserDAO {
 
             if (rs.next()) {
                 user = new User(
+                        rs.getInt("id"),
                         rs.getString("username"),
                         rs.getString("name"),
                         rs.getString("surname"),

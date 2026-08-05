@@ -4,7 +4,7 @@ import com.orto.logic.utils.Configuration;
 import com.orto.logic.utils.I18n;
 import com.orto.logic.graphic_controller.controller.GUIGC;
 import com.orto.logic.graphic_controller.controller.HomeGC;
-import com.orto.logic.graphic_controller.controller.gui_1.find_farmers.FindFarmersGUIGC;
+import com.orto.logic.graphic_controller.controller.gui_1.find_farmers.FindFarmersGUI1GC;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,7 +15,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 
 public class HomeGUI1GC extends GUIGC implements HomeGC {
-    //FXML ELEMENTS
+    //FXML ATTRIBUTES
     @FXML private AnchorPane anchorPaneFindFarmers;
     @FXML private Button buttonViewPurchases;
     @FXML private ScrollPane scrollPaneFarmersTable;
@@ -28,7 +28,7 @@ public class HomeGUI1GC extends GUIGC implements HomeGC {
 
         Parent background = loadBackground();
         Parent home = this.load();
-        Parent findFarmers = (new FindFarmersGUIGC()).getRoot();
+        Parent findFarmers = (new FindFarmersGUI1GC()).getRoot();
 
         ((BorderPane) background).setCenter(home);
         anchorPaneFindFarmers.getChildren().add(findFarmers);

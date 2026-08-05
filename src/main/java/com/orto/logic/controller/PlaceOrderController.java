@@ -1,32 +1,36 @@
 package com.orto.logic.controller;
 
+import com.orto.logic.model.dao.ProductDAO;
+import com.orto.logic.model.dao.exceptions.ConnectionException;
+import com.orto.logic.model.dao.factory.DAOFactory;
 import com.orto.logic.model.entity.Order;
 import com.orto.logic.model.entity.PaymentInfo;
 import com.orto.logic.model.entity.Product;
 import com.orto.logic.model.entity.Seller;
-import com.orto.logic.graphic_controller.bean.DeliveryBean;
-import com.orto.logic.graphic_controller.bean.OrderLineBean;
 
 import java.util.List;
 
 public class PlaceOrderController {
     private Order order;
-    //todo: implement these
+    private Seller seller;
 
-    public void startOrder(Seller seller) {}
-    public void confirmProductSelection() {}
-    public void confirmDeliverySelection() {}
-    public void confirmPaymentSelection() {}
-    //todo: in verità la validazione sintattica vorrei fosse fatta dalla boundary
-    private void validateProductSelection(List<OrderLineBean> orderLines) {}
-    private void validateDeliverySelection(DeliveryBean delivery) {}
+    public void startOrder(Seller seller) {
+        this.seller = seller;
+        this.order = new Order();
+        this.order.addSeller(seller);
+    }
+
+    public void saveOrder() throws ConnectionException {
+        if (order != null) {
+            DAOFactory.getDAOFactory().getOrderDAO().createOrder(order);
+        }
+    }
+
     private List<Product> retrieveProducts(Seller seller) {
-        return null;
+        ProductDAO productDAO = DAOFactory.getDAOFactory().getProductDAO();
+        return productDAO.getAllProducts();
     }
-    //todo: capire se prende come param payment o paymentBean
-    private boolean processPayment(PaymentInfo payment) {
-        return false;
-    }
+    private void processPayment(PaymentInfo payment) {}
     private void notifySeller(Seller seller) {}
 
 }

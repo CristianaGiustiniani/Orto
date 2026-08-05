@@ -15,7 +15,9 @@ public interface LoginGC {
 
         try {
             inputBean.validate();
-            (new LoginController()).login(inputBean.getEmail(), inputBean.getPassword());
+            (new LoginController()).login(inputBean.getEmail(), inputBean.getPassword(), inputBean.isRememberUser());
+            GCFactory.getInstance().createHome();
+
         } catch (EmptyEmailException e) {
             showError(I18n.t("ERROR_LOGIN_EMPTYEMAIL"), e);
         } catch (EmptyPasswordException e) {

@@ -11,7 +11,7 @@ public class FindFarmersController {
     public List<Seller> getFarmers() throws ConnectionException {
         DAOFactory factory = DAOFactory.getDAOFactory();
         List <Seller> sellers;
-        sellers = factory.getSellerDAO().getAll();
+        sellers = factory.getSellerDAO().getAllSellers();
         return sellers;
     }
 }

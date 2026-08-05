@@ -18,7 +18,7 @@ import java.util.*;
 
 public class SellerDAODB implements SellerDAO {
     @Override
-    public List<Seller> getAll() throws ConnectionException {
+    public List<Seller> getAllSellers() throws ConnectionException {
         String query = "SELECT " +
                 "Seller.id, " +
                 "Seller.name, " +

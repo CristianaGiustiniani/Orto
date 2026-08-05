@@ -5,7 +5,7 @@ import com.orto.logic.model.entity.Seller;
 import com.orto.logic.graphic_controller.controller.*;
 import com.orto.logic.graphic_controller.controller.gui_1.background.AuthenticatedBackgroundGUIGC;
 import com.orto.logic.graphic_controller.controller.gui_1.background.PublicBackgroundGUI1GC;
-import com.orto.logic.graphic_controller.controller.gui_1.find_farmers.FindFarmersGUIGC;
+import com.orto.logic.graphic_controller.controller.gui_1.find_farmers.FindFarmersGUI1GC;
 import com.orto.logic.graphic_controller.controller.gui_1.home.HomeGUI1GC;
 import com.orto.logic.graphic_controller.controller.gui_1.login.LoginGUI1GC;
 import com.orto.logic.graphic_controller.controller.gui_1.place_order.PlaceOrderGUI1GC;
@@ -28,7 +28,7 @@ public class GUI1GCFactory extends GCFactory {
 
     @Override
     public FindFarmersGC createFindFarmers() {
-        return new FindFarmersGUIGC();
+        return new FindFarmersGUI1GC();
     }
 
     @Override

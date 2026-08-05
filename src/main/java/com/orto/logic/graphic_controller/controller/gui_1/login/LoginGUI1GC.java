@@ -22,7 +22,7 @@ import javafx.scene.text.Text;
 public class LoginGUI1GC extends GUIGC implements LoginGC {
     //FXML ELEMENTS
     @FXML private Button buttonLogin;
-    @FXML private Button buttonSignUp;
+    @FXML private Button buttonSignup;
     @FXML private CheckBox checkboxRememberMe;
     @FXML private Label labelError;
     @FXML private PasswordField inputPassword;
@@ -50,6 +50,7 @@ public class LoginGUI1GC extends GUIGC implements LoginGC {
 
     //INPUT METHODS
     @FXML private void onClickButtonLogin() {
+        labelError.setVisible(false);
         login();
     }
 
@@ -68,7 +69,7 @@ public class LoginGUI1GC extends GUIGC implements LoginGC {
     //OUTPUT METHODS
     protected void setupTexts() {
         buttonLogin.setText(I18n.t("GUI_LOGIN_VIEW_LOGIN"));
-        buttonSignUp.setText(I18n.t("GUI_LOGIN_VIEW_SIGNUP"));
+        buttonSignup.setText(I18n.t("GUI_LOGIN_VIEW_SIGNUP"));
         checkboxRememberMe.setText(I18n.t("GUI_LOGIN_VIEW_REMEMBERME"));
         textEmail.setText(I18n.t("GUI_LOGIN_VIEW_EMAIL"));
         textOr.setText(I18n.t("GUI_LOGIN_VIEW_OR"));
@@ -83,8 +84,10 @@ public class LoginGUI1GC extends GUIGC implements LoginGC {
             alert.setContentText(message);
             alert.showAndWait();
         } else if (e instanceof WrongPasswordException || e instanceof WrongEmailException || e instanceof EmptyEmailException || e instanceof EmptyPasswordException) {
+            labelError.setVisible(true);
             labelError.setText(message);
         } else {
+            labelError.setVisible(true);
             labelError.setText(message);
         }
     }

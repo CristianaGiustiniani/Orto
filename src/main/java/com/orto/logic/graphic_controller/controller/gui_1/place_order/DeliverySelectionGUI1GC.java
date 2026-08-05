@@ -1,5 +1,6 @@
 package com.orto.logic.graphic_controller.controller.gui_1.place_order;
 
+import com.orto.logic.graphic_controller.controller.GUIGC;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -7,7 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-public class ShippingSelectionGUI1View {
+public class DeliverySelectionGUI1GC extends GUIGC {
 
     //JAVAFX GRAPHIC ELEMENTS
     @FXML private VBox vBoxContent;
@@ -65,6 +66,14 @@ public class ShippingSelectionGUI1View {
     //BEANS
 
     //CONSTRUCTOR
+    public DeliverySelectionGUI1GC() {
+        super("/views/views1/form/buyer/placeOrderElements/ShippingSelection.fxml");
+        root = load();
+        setupTexts();
+    }
+
+    @Override
+    protected void setupTexts() {}
 
     //JAVAFX ACTIONS-EVENTS
 }

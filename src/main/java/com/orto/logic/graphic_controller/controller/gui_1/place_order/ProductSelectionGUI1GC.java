@@ -1,13 +1,14 @@
 package com.orto.logic.graphic_controller.controller.gui_1.place_order;
 
+import com.orto.logic.graphic_controller.controller.GUIGC;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-public class ProductSelectionGUI1View {
+public class ProductSelectionGUI1GC extends GUIGC {
 
-    //JAVAFX GRAPHIC ELEMENTS
+    //FXML ATTRIBUTES
     @FXML
     private VBox vBoxContent;
     @FXML private Text textProductName;
@@ -19,5 +20,16 @@ public class ProductSelectionGUI1View {
 
     //CONSTRUCTOR
 
-    //JAVAFX ACTIONS-EVENTS
+    public ProductSelectionGUI1GC() {
+        super("/views/views1/form/buyer/placeOrderElements/ProductSelection.fxml");
+        root = load();
+        setupTexts();
+    }
+
+    //INPUT METHODS
+
+    //OUTPUT METHODS
+    @Override
+    protected void setupTexts() {}
+
 }

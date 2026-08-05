@@ -5,17 +5,16 @@ import com.orto.logic.graphic_controller.bean.exceptions.InvalidStringException;
 
 import java.util.List;
 
-public class OrderRequestBean {
+public class OrderBean {
     private Integer id;
     private SellerBean seller;
     private List<OrderLineBean> orderLines;
     private DeliveryBean delivery;
-    private  PaymentBean payment;
+    private PaymentBean payment;
     private Double totalPrice;
     private OrderStatus status;
 
     //GETTERS AND SETTERS
-    //todo: syntactic data validation
     public Integer getId() {
         return id;
     }
@@ -39,6 +38,13 @@ public class OrderRequestBean {
     public void setOrderLines(List<OrderLineBean> orderLines) {
         this.orderLines = orderLines;
     }
+
+    public void setOrderLine(OrderLineBean orderLine) {
+        if (!(orderLine.getQuantity() == null || orderLine.getQuantity() <= 0)) {
+            orderLines.add(orderLine);
+        }
+    }
+
 
     public DeliveryBean getDelivery() {
         return delivery;

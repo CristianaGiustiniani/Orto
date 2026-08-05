@@ -6,5 +6,5 @@ import com.orto.logic.model.entity.Seller;
 import java.util.List;
 
 public interface SellerDAO {
-    List<Seller> getAll() throws ConnectionException;
+    List<Seller> getAllSellers() throws ConnectionException;
 }

@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class FarmerListItemGUI1View extends HBox {
+public class FarmerListItemGUI1GC extends HBox {
     private final Parent root;
     private Consumer<Seller> placeOrder;
     private final SellerBean seller;
@@ -30,7 +30,7 @@ public class FarmerListItemGUI1View extends HBox {
     @FXML Text textProductTypes;
 
     //CONSTRUCTOR
-    public FarmerListItemGUI1View(SellerBean seller) {
+    public FarmerListItemGUI1GC(SellerBean seller) {
         this.seller = seller;
         root = load();
         setupTexts();

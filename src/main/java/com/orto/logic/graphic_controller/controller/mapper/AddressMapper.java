@@ -20,6 +20,13 @@ public class AddressMapper implements Mapper <Address, AddressBean>{
 
     @Override
     public Address toEntity(AddressBean bean) {
-        return null;
+        return new Address(
+                bean.getStreetName(),
+                bean.getCivicNumber(),
+                bean.getPostalCode(),
+                bean.getCity(),
+                bean.getProvince(),
+                bean.getCountry()
+        );
     }
 }
