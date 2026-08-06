@@ -62,7 +62,7 @@ public class AddressBean {
 
 
     //DATA VALIDATION METHODS
-    private void validate() throws InvalidStringException {
+    public void validate() throws InvalidStringException {
         validateString(streetName);
         validateString(civicNumber);
         validateString(postalCode);
@@ -71,7 +71,7 @@ public class AddressBean {
         validateString(country);
     }
     private void validateString(String string) throws InvalidStringException {
-        boolean ok = string.matches("[a-zA-Z0-9]+");
+        boolean ok = string.matches(".*\\S.*");
         if (!ok) {
             throw new InvalidStringException();
         }

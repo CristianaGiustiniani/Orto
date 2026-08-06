@@ -18,11 +18,12 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class FarmerListItemGUI1GC extends HBox {
-    private final Parent root;
+    //ATTRIBUTES
     private Consumer<Seller> placeOrder;
-    private final SellerBean seller;
+    private final Seller seller;
 
     //FXML ATTRIBUTES
+    private final Parent root;
     public final String fxmlPath = "/views/views1/form/findFarmersElements/FarmerListItem.fxml";
     @FXML Button buttonPlaceOrder;
     @FXML Text textFarmerLocation;
@@ -30,7 +31,7 @@ public class FarmerListItemGUI1GC extends HBox {
     @FXML Text textProductTypes;
 
     //CONSTRUCTOR
-    public FarmerListItemGUI1GC(SellerBean seller) {
+    public FarmerListItemGUI1GC(Seller seller) {
         this.seller = seller;
         root = load();
         setupTexts();
@@ -41,8 +42,8 @@ public class FarmerListItemGUI1GC extends HBox {
         placeOrder(this.seller);
     }
 
-    private void placeOrder(SellerBean seller) {
-        placeOrder.accept((new SellerMapper()).toEntity(seller));
+    private void placeOrder(Seller seller) {
+        placeOrder.accept(seller);
     }
 
     public void setPlaceOrder(Consumer<Seller> callback) {
@@ -60,11 +61,13 @@ public class FarmerListItemGUI1GC extends HBox {
             throw new RuntimeException("Failed to load FXML: " + fxmlPath, e);
         }
     }
+
     protected void setupTexts() {
+        SellerBean sellerBean = (new SellerMapper()).toBean(seller);
         buttonPlaceOrder.setText(I18n.t("GUI_FINDFARMERS_VIEW_PLACEORDER"));
-        textFarmerName.setText(seller.getName());
-        textFarmerLocation.setText(toString(seller.getAddress(), "half"));
-        textProductTypes.setText(toString(seller.getProductTypes()));
+        textFarmerName.setText(sellerBean.getName());
+        textFarmerLocation.setText(toString(sellerBean.getAddress(), "half"));
+        textProductTypes.setText(toString(sellerBean.getProductTypes()));
     }
 
     private String toString(List<ProductType> types) {

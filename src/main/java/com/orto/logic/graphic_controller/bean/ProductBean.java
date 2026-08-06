@@ -7,11 +7,10 @@ public class ProductBean {
     private Integer id;
     private String name;
     private String description;
-    private Double price;
+    private String price;
     private QuantityUnit quantityUnit;
 
     //GETTERS AND SETTERS
-    //todo: syntactic data validation
     public Integer getId() {
         return id;
     }
@@ -24,13 +23,8 @@ public class ProductBean {
         return name;
     }
 
-    public void setName(String name) throws InvalidStringException {
-        try {
-            validateString(name);
-            this.name = name;
-        } catch (InvalidStringException e) {
-            throw new InvalidStringException("Name has no characters or digits");
-        }
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -41,11 +35,11 @@ public class ProductBean {
         this.description = description;
     }
 
-    public Double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -58,6 +52,10 @@ public class ProductBean {
     }
 
     //DATA VALIDATION METHODS
+    public void validate() throws InvalidStringException {
+        validateString(this.name);
+        //todo: validate other fields
+    }
     private void validateString(String string) throws InvalidStringException {
         boolean ok = string.matches("[a-zA-Z0-9]+");
         if (!ok) {

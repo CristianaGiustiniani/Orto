@@ -5,6 +5,7 @@ import com.orto.logic.graphic_controller.bean.SellerBean;
 import com.orto.logic.graphic_controller.controller.FindFarmersGC;
 import com.orto.logic.graphic_controller.controller.GUIGC;
 import com.orto.logic.graphic_controller.controller.mapper.SellerMapper;
+import com.orto.logic.model.entity.Seller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.VBox;
@@ -21,6 +22,7 @@ public class FindFarmersGUI1GC extends GUIGC implements FindFarmersGC {
         super("/views/views1/form/FindFarmers.fxml");
         root = this.load();
         createChildren();
+        setupTexts();
     }
 
     //INPUT METHODS
@@ -28,12 +30,12 @@ public class FindFarmersGUI1GC extends GUIGC implements FindFarmersGC {
     //OUTPUT METHODS
     private void createChildren() {
         //retrieve sellers
-        List<SellerBean> sellers = (new SellerMapper()).toBeans(retrieveFarmers());
+        List<Seller> sellers = retrieveFarmers();
 
         //for each seller, create row
         List <FarmerListItemGUI1GC> rows = new ArrayList<>();
 
-        for (SellerBean seller : sellers) {
+        for (Seller seller : sellers) {
             rows.add(new FarmerListItemGUI1GC(seller));
             rows.getLast().setPlaceOrder(this::placeOrder);
             vboxFarmers.getChildren().add(rows.getLast().getRoot());

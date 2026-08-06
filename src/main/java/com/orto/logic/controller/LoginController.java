@@ -43,8 +43,6 @@ public class LoginController {
     public static void logout() throws ForgetUserException {
         Session.getInstance().logout();
         UserDAOFS.forgetUser();
-
-
     }
 
 }

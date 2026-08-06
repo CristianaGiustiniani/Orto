@@ -40,7 +40,7 @@ public class OrderBean {
     }
 
     public void setOrderLine(OrderLineBean orderLine) {
-        if (!(orderLine.getQuantity() == null || orderLine.getQuantity() <= 0)) {
+        if (!(orderLine.getQuantity() == null || Double.parseDouble(orderLine.getQuantity()) <= 0)) {
             orderLines.add(orderLine);
         }
     }

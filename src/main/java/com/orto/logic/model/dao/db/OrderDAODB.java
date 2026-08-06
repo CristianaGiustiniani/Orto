@@ -42,8 +42,8 @@ public class OrderDAODB implements OrderDAO {
             //Insert delivery information
             ps2.setInt(1, order.getId());
             ps2.setString(2, order.getDeliveryInfo().getDeliveryType().toString().toLowerCase());
-            ps2.setString(3, Session.getInstance().getLoggedUser().getName());
-            ps2.setString(4, Session.getInstance().getLoggedUser().getSurname());
+            ps2.setString(3, order.getDeliveryInfo().getRecipientName());
+            ps2.setString(4, order.getDeliveryInfo().getRecipientSurname());
             ps2.setString(5, order.getDeliveryInfo().getAddress().getStreet());
             ps2.setString(6, order.getDeliveryInfo().getAddress().getNumber());
             ps2.setString(7, order.getDeliveryInfo().getAddress().getPostalCode());

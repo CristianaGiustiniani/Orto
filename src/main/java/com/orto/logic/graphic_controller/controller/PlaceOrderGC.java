@@ -1,37 +1,37 @@
 package com.orto.logic.graphic_controller.controller;
 
 import com.orto.logic.controller.PlaceOrderController;
+import com.orto.logic.graphic_controller.bean.exceptions.AnnotationTooLongException;
+import com.orto.logic.graphic_controller.bean.exceptions.NotPositiveQuantityException;
+import com.orto.logic.graphic_controller.bean.exceptions.WrongFormatQuantityException;
+import com.orto.logic.graphic_controller.controller.exceptions.DeliveryException;
+import com.orto.logic.graphic_controller.controller.exceptions.InvalidDeliveryInfoException;
+import com.orto.logic.graphic_controller.controller.exceptions.ProductException;
+import com.orto.logic.model.entity.Product;
+import com.orto.logic.model.entity.Seller;
+import com.orto.logic.model.entity.exceptions.NoProductSelectedException;
+import com.orto.logic.utils.PaymentType;
 import com.orto.logic.utils.PlaceOrderStep;
 import com.orto.logic.utils.exceptions.EndOfEnumException;
 import com.orto.logic.utils.exceptions.StartOfEnumException;
 import com.orto.logic.model.dao.exceptions.ConnectionException;
-import com.orto.logic.utils.I18n;
+
+import java.util.EnumSet;
+import java.util.List;
 
 public interface PlaceOrderGC {
     default void goToNextStep() {
         try {
-            // 1. Gather data / validate current step via bean
-            collectAndValidateCurrentStepData();
-
-            // 2. Advance step and update view
+            collectData();
             PlaceOrderStep nextStep = getCurrentStep().next();
             setCurrentStep(nextStep);
             goToStep(nextStep);
         } catch (EndOfEnumException e) {
-            // Final step: trigger controller to save order and return home
-            try {
-                getController().saveOrder();
-                GCFactory.getInstance().createHome();
-            } catch (ConnectionException ex) {
-                showError(I18n.t("ERROR_CONNECTION"), ex);
-                GCFactory.getInstance().createHome();
-            }
-        } catch (Exception e) {
-            showError(e.getMessage(), e);
+            GCFactory.getInstance().createHome();
+        } catch (ProductException | DeliveryException e) {
+            showError(e);
         }
     }
-
-
 
     default void goToPreviousStep() {
         try {
@@ -45,21 +45,43 @@ public interface PlaceOrderGC {
 
     default void goToStep(PlaceOrderStep step) {
         switch (step) {
-            case PRODUCT_SELECTION -> goToProductSelection();
-            case DELIVERY_SELECTION -> goToDeliverySelection();
-            case PAYMENT_SELECTION -> goToPaymentSelection();
-            case ORDER_SUMMARY -> goToOrderSummary();
+            case PRODUCT_SELECTION:
+                getController().startOrder(getSeller());
+                List<Product> products = getController().retrieveProducts();
+                goToProductSelection(products);
+                break;
+            case DELIVERY_SELECTION:
+                goToDeliverySelection();
+                break;
+            case PAYMENT_SELECTION:
+                EnumSet<PaymentType> activePaymentTypes;
+                if (getController().isOrderShipped()) {
+                    activePaymentTypes = EnumSet.of(PaymentType.ONLINE);
+                } else {
+                    activePaymentTypes = EnumSet.allOf(PaymentType.class);
+                }
+                goToPaymentSelection(activePaymentTypes);
+                break;
+            case ORDER_SUMMARY:
+                try {
+                    getController().saveOrder();
+                } catch (ConnectionException e) {
+                    showError(e);
+                }
+                getController().notifySeller();
+                goToOrderSummary();
         }
     }
 
+    Seller getSeller();
     PlaceOrderController getController();
     PlaceOrderStep getCurrentStep();
     void setCurrentStep(PlaceOrderStep step);
-    void goToProductSelection();
+    void goToProductSelection(List<Product> products);
     void goToDeliverySelection();
-    void goToPaymentSelection();
+    void goToPaymentSelection(EnumSet<PaymentType> activePaymentTypes);
     void goToOrderSummary();
-    void showError(String message, Exception e);
-    void collectAndValidateCurrentStepData();
+    void showError(Exception e);
+    void collectData() throws NotPositiveQuantityException, AnnotationTooLongException, WrongFormatQuantityException, InvalidDeliveryInfoException, NoProductSelectedException;
 
 }

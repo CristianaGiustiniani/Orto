@@ -39,10 +39,9 @@ public class LoginGUI1GC extends GUIGC implements LoginGC {
 
         Parent background = loadBackground();
         Parent login = this.load();
-
         ((BorderPane) background).setCenter(login);
-
         root = background;
+
         setupTexts();
 
         Configuration.getInstance().getStage().setScene(new Scene(root));
@@ -55,6 +54,7 @@ public class LoginGUI1GC extends GUIGC implements LoginGC {
     }
 
     @FXML private void onClickButtonSignUp() {
+        labelError.setVisible(false);
         signup();
     }
 

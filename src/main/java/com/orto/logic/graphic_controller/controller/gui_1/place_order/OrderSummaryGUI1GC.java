@@ -1,6 +1,7 @@
 package com.orto.logic.graphic_controller.controller.gui_1.place_order;
 
 import com.orto.logic.graphic_controller.controller.GUIGC;
+import com.orto.logic.utils.I18n;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
@@ -18,7 +19,6 @@ public class OrderSummaryGUI1GC extends GUIGC {
     //OUTPUT METHODS
     @Override
     protected void setupTexts() {
-        //todo: create text
-        textOrderConfirmation.setText("blablabla");
+        textOrderConfirmation.setText(I18n.t("GUI_PLACEORDER_ORDERSUMMARY_VIEW_ORDERCONFIRMATION"));
     }
 }

@@ -7,14 +7,12 @@ public class AddressMapper implements Mapper <Address, AddressBean>{
     @Override
     public AddressBean toBean(Address address) {
         AddressBean addressBean = new AddressBean();
-
         addressBean.setStreetName(address.getStreet());
         addressBean.setCivicNumber(address.getNumber());
         addressBean.setPostalCode(address.getPostalCode());
         addressBean.setCity(address.getCity());
         addressBean.setProvince(address.getProvince());
         addressBean.setCountry(address.getCountry());
-
         return addressBean;
     }
 

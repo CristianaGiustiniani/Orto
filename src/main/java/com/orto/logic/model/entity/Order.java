@@ -1,5 +1,7 @@
 package com.orto.logic.model.entity;
 
+import com.orto.logic.model.entity.exceptions.NoProductSelectedException;
+import com.orto.logic.utils.DeliveryType;
 import com.orto.logic.utils.OrderStatus;
 
 import java.math.BigDecimal;
@@ -10,8 +12,8 @@ public class Order {
     private Integer id;
     private Seller seller;
     private List<OrderLine> orderLines;
-    private DeliveryInfo deliveryInfo;
-    private PaymentInfo paymentInfo;
+    private Delivery delivery;
+    private Payment payment;
     private OrderStatus status;
     private BigDecimal totalPrice;
     private Instant orderDate;
@@ -26,11 +28,11 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
-    public Order(Seller seller, List<OrderLine> orderLines, DeliveryInfo deliveryInfo, PaymentInfo paymentInfo, OrderStatus status, BigDecimal totalPrice, Instant orderDate) {
+    public Order(Seller seller, List<OrderLine> orderLines, Delivery delivery, Payment paymentInfo, OrderStatus status, BigDecimal totalPrice, Instant orderDate) {
         this.seller = seller;
         this.orderLines = orderLines;
-        this.deliveryInfo = deliveryInfo;
-        this.paymentInfo = paymentInfo;
+        this.delivery = delivery;
+        this.payment = paymentInfo;
         this.status = status;
         this.totalPrice = totalPrice;
         this.orderDate = orderDate;
@@ -40,16 +42,19 @@ public class Order {
         this.seller = seller;
     }
 
-    public void addLineToOrder(OrderLine orderLine) {
-        this.orderLines.add(orderLine);
+    public void addLines(List<OrderLine> orderLines) throws NoProductSelectedException {
+        if (orderLines == null || orderLines.isEmpty()) {
+            throw new NoProductSelectedException();
+        }
+        this.orderLines = orderLines;
     }
 
-    public void addDeliveryInfo(DeliveryInfo deliveryInfo) {
-        this.deliveryInfo = deliveryInfo;
+    public void addDeliveryInfo(Delivery delivery) {
+        this.delivery = delivery;
     }
 
-    public void addPaymentInfo(PaymentInfo paymentInfo) {
-        this.paymentInfo = paymentInfo;
+    public void addPaymentInfo(Payment paymentInfo) {
+        this.payment = paymentInfo;
     }
 
     public void setOrderStatusCompleted() {
@@ -81,11 +86,11 @@ public class Order {
     public List<OrderLine> getOrderLines() {
         return orderLines;
     }
-    public DeliveryInfo getDeliveryInfo() {
-        return deliveryInfo;
+    public Delivery getDeliveryInfo() {
+        return delivery;
     }
-    public PaymentInfo getPaymentInfo() {
-        return paymentInfo;
+    public Payment getPaymentInfo() {
+        return payment;
     }
     public OrderStatus getStatus() {
         return status;
@@ -98,6 +103,10 @@ public class Order {
     }
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public boolean isDeliveryShipping() {
+        return delivery.deliveryType == DeliveryType.SHIPPING;
     }
 
 

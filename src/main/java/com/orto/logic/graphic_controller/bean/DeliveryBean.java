@@ -11,7 +11,6 @@ public class DeliveryBean {
     private String phoneNumber;
 
     //GETTERS AND SETTERS
-    //todo: syntactic data validation for beans
     public DeliveryType getDeliveryType() {
         return deliveryType;
     }
@@ -24,26 +23,16 @@ public class DeliveryBean {
         return recipientName;
     }
 
-    public void setRecipientName(String recipientName) throws InvalidStringException {
-        try {
-            validateString(recipientName);
-            this.recipientName = recipientName;
-        } catch (InvalidStringException e) {
-            throw new InvalidStringException("Name has no characters or digits");
-        }
+    public void setRecipientName(String recipientName) {
+        this.recipientName = recipientName;
     }
 
     public String getRecipientSurname() {
         return recipientSurname;
     }
 
-    public void setRecipientSurname(String recipientSurname) throws InvalidStringException {
-        try {
-            validateString(recipientSurname);
-            this.recipientSurname = recipientSurname;
-        } catch (InvalidStringException e) {
-            throw new InvalidStringException("Surname has no characters or digits");
-        }
+    public void setRecipientSurname(String recipientSurname) {
+        this.recipientSurname = recipientSurname;
     }
 
     public AddressBean getAddress() {
@@ -58,18 +47,21 @@ public class DeliveryBean {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) throws InvalidStringException {
-        try {
-            validateString(phoneNumber);
-            this.phoneNumber = phoneNumber;
-        } catch (InvalidStringException e) {
-            throw new InvalidStringException("Phone number has no characters or digits");
-        }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     //DATA VALIDATION METHODS
+    public void validate() throws InvalidStringException {
+        if (deliveryType == DeliveryType.SHIPPING) {
+            validateString(recipientName);
+            validateString(recipientSurname);
+            address.validate();
+            validateString(phoneNumber);
+        }
+    }
     private void validateString(String string) throws InvalidStringException {
-        boolean ok = string.matches("[a-zA-Z0-9]+");
+        boolean ok = string.matches(".*\\S.*");
         if (!ok) {
             throw new InvalidStringException();
         }

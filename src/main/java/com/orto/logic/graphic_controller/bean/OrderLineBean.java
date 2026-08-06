@@ -1,13 +1,15 @@
 package com.orto.logic.graphic_controller.bean;
 
 import com.orto.logic.graphic_controller.bean.exceptions.AnnotationTooLongException;
+import com.orto.logic.graphic_controller.bean.exceptions.NotPositiveQuantityException;
+import com.orto.logic.graphic_controller.bean.exceptions.NullQuantityException;
+import com.orto.logic.graphic_controller.bean.exceptions.WrongFormatQuantityException;
 import com.orto.logic.utils.QuantityUnit;
-import com.orto.logic.graphic_controller.bean.exceptions.InvalidStringException;
 
 public class OrderLineBean {
     private Integer productId;
     private String productName;
-    private Double quantity;
+    private String quantity;
     private QuantityUnit quantityUnit;
     private String annotation;
     private Double subtotal;
@@ -29,11 +31,11 @@ public class OrderLineBean {
         this.productName = productName;
     }
 
-    public Double getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Double quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 
@@ -62,7 +64,8 @@ public class OrderLineBean {
     }
 
     //DATA VALIDATION METHODS
-    private void validate() throws AnnotationTooLongException {
+    public void validate() throws AnnotationTooLongException, NullQuantityException, NotPositiveQuantityException, WrongFormatQuantityException {
+        validateQuantity(this.quantity);
         validateAnnotation(this.annotation);
     }
 
@@ -70,6 +73,34 @@ public class OrderLineBean {
         int length = annotation.length();
         if (length > 200) {
             throw new AnnotationTooLongException();
+        }
+    }
+
+    private void validateQuantity(String quantity) throws WrongFormatQuantityException, NullQuantityException, NotPositiveQuantityException {
+        String formattedQuantity;
+        double doubleQuantity;
+        if (quantity != null && !quantity.isBlank()) {
+            try {
+                formattedQuantity =quantity.trim().replace(',', '.');
+                doubleQuantity = Double.parseDouble(formattedQuantity);
+                if (doubleQuantity <= 0) {
+                    throw new NotPositiveQuantityException();
+                }
+                this.quantity = formattedQuantity;
+            } catch (NumberFormatException e) {
+                throw new WrongFormatQuantityException();
+            }
+        } else {
+            throw new NullQuantityException();
+        }
+
+        boolean isDecimal = ((doubleQuantity % 1) != 0);
+        switch (quantityUnit) {
+            case LITER, MILLILITER, KILOGRAM, HECTOGRAM, GRAM:
+                break;
+            case PIECE, PACK:
+                if (isDecimal) throw new WrongFormatQuantityException();
+                break;
         }
     }
 }

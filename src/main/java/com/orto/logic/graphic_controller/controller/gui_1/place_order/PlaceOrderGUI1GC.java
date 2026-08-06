@@ -1,31 +1,39 @@
 package com.orto.logic.graphic_controller.controller.gui_1.place_order;
 
 import com.orto.logic.controller.PlaceOrderController;
-import com.orto.logic.graphic_controller.controller.GCFactory;
+import com.orto.logic.graphic_controller.bean.exceptions.AnnotationTooLongException;
+import com.orto.logic.graphic_controller.bean.exceptions.NotPositiveQuantityException;
+import com.orto.logic.graphic_controller.bean.exceptions.WrongFormatQuantityException;
 import com.orto.logic.graphic_controller.controller.GUIGC;
-import com.orto.logic.model.entity.Seller;
+import com.orto.logic.graphic_controller.controller.exceptions.DeliveryException;
+import com.orto.logic.graphic_controller.controller.exceptions.InvalidDeliveryInfoException;
+import com.orto.logic.graphic_controller.controller.exceptions.PaymentException;
+import com.orto.logic.graphic_controller.controller.exceptions.ProductException;
+import com.orto.logic.model.entity.*;
+import com.orto.logic.model.entity.exceptions.NoProductSelectedException;
 import com.orto.logic.utils.*;
 import com.orto.logic.graphic_controller.controller.PlaceOrderGC;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
+import java.util.EnumSet;
+import java.util.List;
+
 public class PlaceOrderGUI1GC extends GUIGC implements PlaceOrderGC {
     //CONTROLLER
-    private PlaceOrderController controller;
+    private final PlaceOrderController controller;
 
     //ATTRIBUTES
-    private Seller seller;
+    private final Seller seller;
     private PlaceOrderStep currentStep;
-    private ProductSelectionGUI1GC productSelectionView;
-    private DeliverySelectionGUI1GC deliverySelectionView;
-    private PaymentSelectionGUI1GC paymentSelectionView;
-    private OrderSummaryGUI1GC orderSummaryView;
+    private ProductSelectionGUI1GC productSelectionGUI1GC;
+    private DeliverySelectionGUI1GC deliverySelectionGUI1GC;
+    private PaymentSelectionGUI1GC paymentSelectionGUI1GC;
 
     //FXML ATTRIBUTES
     @FXML private Button buttonBack;
@@ -44,19 +52,30 @@ public class PlaceOrderGUI1GC extends GUIGC implements PlaceOrderGC {
 
         Parent background = loadBackground();
         Parent placeOrder = this.load();
-
-        if (background instanceof BorderPane borderPane) {
-            borderPane.setCenter(placeOrder);
-            root = background;
-        } else {
-            root = placeOrder;
-        }
+        ((BorderPane)background).setCenter(placeOrder);
+        root = background;
 
         setupTexts();
         goToStep(currentStep);
 
         Configuration.getInstance().getStage().setScene(new Scene(root));
-        show();
+    }
+
+
+    //METHODS
+    @Override
+    public Seller getSeller() {
+        return this.seller;
+    }
+
+    @Override
+    public PlaceOrderController getController() {
+        return controller;
+    }
+
+    @Override
+    public PlaceOrderStep getCurrentStep() {
+        return currentStep;
     }
 
     //INPUT METHODS
@@ -68,17 +87,26 @@ public class PlaceOrderGUI1GC extends GUIGC implements PlaceOrderGC {
         goToNextStep();
     }
 
+    @Override
+    public void collectData() throws NotPositiveQuantityException, AnnotationTooLongException, WrongFormatQuantityException, InvalidDeliveryInfoException, NoProductSelectedException {
+        switch (currentStep) {
+            case PRODUCT_SELECTION:
+                List<OrderLine> lines = this.productSelectionGUI1GC.getLines();
+                controller.addProductsToOrder(lines);
+                break;
+            case DELIVERY_SELECTION:
+                Delivery delivery = this.deliverySelectionGUI1GC.getDeliveryInfo();
+                controller.defineDelivery(delivery);
+                break;
+            case PAYMENT_SELECTION:
+                Payment payment = this.paymentSelectionGUI1GC.getPaymentInfo();
+                controller.processPayment(payment);
+                break;
+            case ORDER_SUMMARY:
+        }
+    }
+
     //OUTPUT METHODS
-    @Override
-    public PlaceOrderController getController() {
-        return controller;
-    }
-
-    @Override
-    public PlaceOrderStep getCurrentStep() {
-        return currentStep;
-    }
-
     @Override
     public void setCurrentStep(PlaceOrderStep step) {
         this.currentStep = step;
@@ -86,54 +114,51 @@ public class PlaceOrderGUI1GC extends GUIGC implements PlaceOrderGC {
     }
 
     @Override
-    public void goToProductSelection() {
-        this.productSelectionView = new ProductSelectionGUI1GC();
+    public void goToProductSelection(List<Product> products) {
+        buttonNext.setVisible(true);
+        buttonBack.setVisible(true);
+        this.productSelectionGUI1GC = new ProductSelectionGUI1GC(products);
         paneContent.getChildren().clear();
-        if (productSelectionView.getRoot() != null) {
-            paneContent.getChildren().add(productSelectionView.getRoot());
-        }
+        paneContent.getChildren().add(productSelectionGUI1GC.getRoot());
     }
 
     @Override
     public void goToDeliverySelection() {
-        this.deliverySelectionView = new DeliverySelectionGUI1GC();
+        buttonNext.setVisible(true);
+        buttonBack.setVisible(true);
+        this.deliverySelectionGUI1GC = new DeliverySelectionGUI1GC(seller);
         paneContent.getChildren().clear();
-        if (deliverySelectionView.getRoot() != null) {
-            paneContent.getChildren().add(deliverySelectionView.getRoot());
-        }
+        paneContent.getChildren().add(deliverySelectionGUI1GC.getRoot());
     }
 
     @Override
-    public void goToPaymentSelection() {
-        this.paymentSelectionView = new PaymentSelectionGUI1GC();
+    public void goToPaymentSelection(EnumSet<PaymentType> activePaymentTypes) {
+        buttonNext.setVisible(false);
+        buttonBack.setVisible(true);
+        this.paymentSelectionGUI1GC = new PaymentSelectionGUI1GC(this, activePaymentTypes);
         paneContent.getChildren().clear();
-        if (paymentSelectionView.getRoot() != null) {
-            paneContent.getChildren().add(paymentSelectionView.getRoot());
-        }
+        paneContent.getChildren().add(paymentSelectionGUI1GC.getRoot());
     }
 
     @Override
     public void goToOrderSummary() {
-        if (buttonBack != null) {
-            buttonBack.setVisible(true);
-        }
-        this.orderSummaryView = new OrderSummaryGUI1GC();
+        buttonNext.setVisible(true);
+        buttonBack.setVisible(false);
+        OrderSummaryGUI1GC orderSummaryGUI1GC = new OrderSummaryGUI1GC();
         paneContent.getChildren().clear();
-        if (orderSummaryView.getRoot() != null) {
-            paneContent.getChildren().add(orderSummaryView.getRoot());
+        paneContent.getChildren().add(orderSummaryGUI1GC.getRoot());
+    }
+
+    @Override
+    public void showError(Exception e) {
+        if (e instanceof ProductException) {
+            productSelectionGUI1GC.showError(e);
+        } else if (e instanceof DeliveryException) {
+            deliverySelectionGUI1GC.showError(e);
+        } else if (e instanceof PaymentException) {
+            paymentSelectionGUI1GC.showError(e);
         }
-    }
-
-    @Override
-    public void collectAndValidateCurrentStepData() {
-        // Collect and validate current step data
-    }
-
-    @Override
-    public void showError(String message, Exception e) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setContentText(message);
-        alert.showAndWait();
+        //todo: change ShowError in each GUI1GC
     }
 
     @Override

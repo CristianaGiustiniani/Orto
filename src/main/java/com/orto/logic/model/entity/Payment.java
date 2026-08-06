@@ -3,7 +3,7 @@ package com.orto.logic.model.entity;
 import com.orto.logic.utils.PaymentStatus;
 import com.orto.logic.utils.PaymentType;
 
-public class PaymentInfo {
+public class Payment {
     private PaymentType paymentType;
     private PaymentStatus paymentStatus;
 
