@@ -85,7 +85,7 @@ public class ProductSelectionGUI1GC extends GUIGC {
             case NotPositiveQuantityException ignored ->
                     I18n.t("ERROR_PLACEORDER_PRODUCTSELECTION_NOTPOSITIVEQUANTITY");
             case AnnotationTooLongException ignored ->
-                    I18n.t("GUI_PLACEORDER_PRODUCTSELECTION_VIEW_ANNOTATIONTOOLONG");
+                    I18n.t("ERROR_PLACEORDER_PRODUCTSELECTION_ANNOTATIONTOOLONG");
             case WrongFormatQuantityException ignored ->
                     I18n.t("ERROR_PLACEORDER_PRODUCTSELECTION_WRONGFORMATQUANTITY");
             default -> e.getMessage();

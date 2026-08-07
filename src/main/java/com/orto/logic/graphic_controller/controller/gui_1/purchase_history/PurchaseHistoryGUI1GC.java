@@ -12,6 +12,6 @@ public class PurchaseHistoryGUI1GC extends GUIGC implements PurchaseHistoryGC {
 
     @Override
     protected void setupTexts() {
-
+        //not implementing this UC
     }
 }

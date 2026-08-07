@@ -54,10 +54,11 @@ public class ProductBean {
     //DATA VALIDATION METHODS
     public void validate() throws InvalidStringException {
         validateString(this.name);
-        //todo: validate other fields
+        validateString(this.description);
+        validateString(this.price);
     }
     private void validateString(String string) throws InvalidStringException {
-        boolean ok = string.matches("[a-zA-Z0-9]+");
+        boolean ok = string.matches(".*\\S.*");
         if (!ok) {
             throw new InvalidStringException();
         }

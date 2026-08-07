@@ -82,15 +82,7 @@ public class UserDAOFS implements UserDAO {
                 List<String> lines = Files.readAllLines(Paths.get(PATHNAME));
                 for (String line : lines) {
                     if (line.trim().isEmpty()) continue;
-                    String[] parts = line.split(",", 5);
-                    if (parts.length == 5) {
-                        if (parts[0].equals(user.getUsername())) {
-                            throw new UsernameAlreadyExistsException();
-                        }
-                        if (parts[3].equals(email)) {
-                            throw new EmailAlreadyExistsException();
-                        }
-                    }
+                    checkUniqueUsernameAndEmail(line, user.getUsername(), email);
                 }
             }
 
@@ -120,7 +112,18 @@ public class UserDAOFS implements UserDAO {
                     throw new FailedFileCreationException();
                 }
             } catch (IOException | FailedFileCreationException e) {
-                throw new ConnectionException(e);
+                throw new ConnectionException();
+            }
+        }
+    }
+    private synchronized void checkUniqueUsernameAndEmail(String line, String username, String email) throws UsernameAlreadyExistsException, EmailAlreadyExistsException {
+        String[] parts = line.split(",", 5);
+        if (parts.length == 5) {
+            if (parts[0].equals(username)) {
+                throw new UsernameAlreadyExistsException();
+            }
+            if (parts[3].equals(email)) {
+                throw new EmailAlreadyExistsException();
             }
         }
     }

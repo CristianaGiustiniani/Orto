@@ -1,5 +1,6 @@
 package com.orto.logic.graphic_controller.controller.gui_1.find_farmers;
 
+import com.orto.logic.graphic_controller.controller.exceptions.FailedFXMLLoadException;
 import com.orto.logic.model.entity.Seller;
 import com.orto.logic.utils.I18n;
 import com.orto.logic.utils.ProductType;
@@ -24,7 +25,6 @@ public class FarmerListItemGUI1GC extends HBox {
 
     //FXML ATTRIBUTES
     private final Parent root;
-    public final String fxmlPath = "/views/views1/form/findFarmersElements/FarmerListItem.fxml";
     @FXML Button buttonPlaceOrder;
     @FXML Text textFarmerLocation;
     @FXML Text textFarmerName;
@@ -54,11 +54,11 @@ public class FarmerListItemGUI1GC extends HBox {
     //OUTPUT METHODS
     private Parent load() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/views1/form/findFarmersElements/FarmerListItem.fxml"));
             loader.setController(this);
             return loader.load();
         } catch (IOException e) {
-            throw new RuntimeException("Failed to load FXML: " + fxmlPath, e);
+            throw new FailedFXMLLoadException();
         }
     }
 

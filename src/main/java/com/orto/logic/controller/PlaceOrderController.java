@@ -17,7 +17,7 @@ public class PlaceOrderController {
         this.order.addSeller(seller);
     }
 
-    public List<Product> retrieveProducts() {
+    public List<Product> retrieveProducts() throws ConnectionException {
         ProductDAO productDAO = DAOFactory.getDAOFactory().getProductDAO();
         return productDAO.getProducts(order.getSeller());
     }

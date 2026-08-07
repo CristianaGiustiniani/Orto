@@ -1,8 +1,14 @@
 package com.orto.logic.graphic_controller.controller;
 
+import com.orto.logic.utils.Session;
+
 public interface HomeGC {
     default void viewPurchases() {
-       GCFactory.getInstance().createPurchaseHistory();
+        if (Session.getInstance().isLogged()) {
+            GCFactory.getInstance().createPurchaseHistory();
+        } else {
+            GCFactory.getInstance().createLogin();
+        }
     }
 
     default void findFarmers() {

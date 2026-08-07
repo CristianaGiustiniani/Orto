@@ -23,6 +23,7 @@ import javafx.scene.text.Text;
 
 import java.util.EnumSet;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class PlaceOrderGUI1GC extends GUIGC implements PlaceOrderGC {
     //CONTROLLER
@@ -123,7 +124,7 @@ public class PlaceOrderGUI1GC extends GUIGC implements PlaceOrderGC {
     }
 
     @Override
-    public void goToDeliverySelection() {
+    public void goToDeliverySelection(Seller seller) {
         buttonNext.setVisible(true);
         buttonBack.setVisible(true);
         this.deliverySelectionGUI1GC = new DeliverySelectionGUI1GC(seller);
@@ -158,22 +159,13 @@ public class PlaceOrderGUI1GC extends GUIGC implements PlaceOrderGC {
         } else if (e instanceof PaymentException) {
             paymentSelectionGUI1GC.showError(e);
         }
-        //todo: change ShowError in each GUI1GC
     }
 
     @Override
     protected void setupTexts() {
-        if (buttonBack != null) {
-            buttonBack.setText(I18n.t("BACK"));
-        }
-        if (buttonNext != null) {
-            buttonNext.setText(I18n.t("NEXT"));
-        }
-        if (textSellerName != null && seller != null) {
-            textSellerName.setText(seller.getName());
-        }
-        if (textOrderStep != null && currentStep != null) {
-            textOrderStep.setText(currentStep.getStep());
-        }
+        buttonBack.setText(I18n.t("BACK"));
+        buttonNext.setText(I18n.t("NEXT"));
+        textSellerName.setText(seller.getName());
+        textOrderStep.setText(currentStep.getStep());
     }
 }

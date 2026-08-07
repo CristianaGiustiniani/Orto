@@ -33,8 +33,4 @@ public class ProductDAOMEM implements ProductDAO {
         return products;
     }
 
-    @Override
-    public void createProduct(Product product) {
-        products.add(product);
-    }
 }

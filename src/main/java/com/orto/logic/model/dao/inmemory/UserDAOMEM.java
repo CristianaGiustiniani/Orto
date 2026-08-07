@@ -17,6 +17,7 @@ public class UserDAOMEM implements UserDAO {
 
     static {
         //Populating in-memory users
+        final String hashedOrto = "$2a$10$T4E2mmeHfmmTkicnoQcCTebRptWMpX/EsSzZ53yD89uaYkWGDWgn6";
         // User 1
         users.put(
                 "crisgius@gmail.com",
@@ -24,7 +25,7 @@ public class UserDAOMEM implements UserDAO {
                         "cristiana",
                         "cristiana",
                         "giustiniani",
-                        "$2a$10$T4E2mmeHfmmTkicnoQcCTebRptWMpX"));
+                        hashedOrto));
 
         // User 2
         users.put(
@@ -33,7 +34,7 @@ public class UserDAOMEM implements UserDAO {
                         "robiforzaroma",
                         "roberta",
                         "lupi",
-                        "$2a$10$T4E2mmeHfmmTkicnoQcCTebRptWMpX"));
+                        hashedOrto));
 
         // User 3
         users.put(
@@ -42,7 +43,7 @@ public class UserDAOMEM implements UserDAO {
                         "maria61",
                         "marianna",
                         "sabatini",
-                        "$2a$10$T4E2mmeHfmmTkicnoQcCTebRptWMpX"));
+                        hashedOrto));
     }
 
     @Override

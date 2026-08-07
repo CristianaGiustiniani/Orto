@@ -47,11 +47,16 @@ public interface PlaceOrderGC {
         switch (step) {
             case PRODUCT_SELECTION:
                 getController().startOrder(getSeller());
-                List<Product> products = getController().retrieveProducts();
+                List<Product> products = null;
+                try {
+                    products = getController().retrieveProducts();
+                } catch (ConnectionException e) {
+                    showError(e);
+                }
                 goToProductSelection(products);
                 break;
             case DELIVERY_SELECTION:
-                goToDeliverySelection();
+                goToDeliverySelection(getSeller());
                 break;
             case PAYMENT_SELECTION:
                 EnumSet<PaymentType> activePaymentTypes;
@@ -78,7 +83,7 @@ public interface PlaceOrderGC {
     PlaceOrderStep getCurrentStep();
     void setCurrentStep(PlaceOrderStep step);
     void goToProductSelection(List<Product> products);
-    void goToDeliverySelection();
+    void goToDeliverySelection(Seller seller);
     void goToPaymentSelection(EnumSet<PaymentType> activePaymentTypes);
     void goToOrderSummary();
     void showError(Exception e);

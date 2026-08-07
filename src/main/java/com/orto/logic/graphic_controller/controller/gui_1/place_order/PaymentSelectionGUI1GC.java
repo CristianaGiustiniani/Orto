@@ -20,7 +20,7 @@ public class PaymentSelectionGUI1GC extends GUIGC {
     //FXML ELEMENTS
     @FXML private HBox hBoxContent;
     @FXML private Button buttonPayOnline;
-    @FXML private Button buttonPayByCash;
+    @FXML private Button buttonPayViaCash;
 
     //CONSTRUCTOR
     public PaymentSelectionGUI1GC(PlaceOrderGC placeOrderGC, EnumSet<PaymentType> activePaymentTypes) {
@@ -61,7 +61,7 @@ public class PaymentSelectionGUI1GC extends GUIGC {
     @Override
     protected void setupTexts() {
         buttonPayOnline.setText(I18n.t("GUI_PLACEORDER_PAYMENTSELECTION_VIEW_PAYONLINE"));
-        buttonPayByCash.setText(I18n.t("GUI_PLACEORDER_PAYMENTSELECTION_VIEW_PAYBYCASH"));
+        buttonPayViaCash.setText(I18n.t("GUI_PLACEORDER_PAYMENTSELECTION_VIEW_PAYBYCASH"));
 
     }
 
@@ -70,7 +70,7 @@ public class PaymentSelectionGUI1GC extends GUIGC {
             buttonPayOnline.setVisible(true);
         }
         if (activePaymentTypes.contains(PaymentType.CASH)) {
-            buttonPayByCash.setVisible(true);
+            buttonPayViaCash.setVisible(true);
         }
     }
 

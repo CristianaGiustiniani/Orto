@@ -4,6 +4,7 @@ import com.orto.logic.controller.FindFarmersController;
 import com.orto.logic.model.dao.exceptions.ConnectionException;
 import com.orto.logic.model.entity.Seller;
 import com.orto.logic.utils.I18n;
+import com.orto.logic.utils.Session;
 
 import java.util.List;
 
@@ -19,7 +20,11 @@ public interface FindFarmersGC {
     }
 
     default void placeOrder(Seller seller) {
-        GCFactory.getInstance().createPlaceOrder(seller);
+        if (Session.getInstance().isLogged()) {
+            GCFactory.getInstance().createPlaceOrder(seller);
+        } else {
+            GCFactory.getInstance().createLogin();
+        }
     }
 
     void showError(String message);

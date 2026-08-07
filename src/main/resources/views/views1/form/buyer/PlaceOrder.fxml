@@ -40,6 +40,6 @@
             </Button>
          </right>
       </BorderPane>
-      <Pane fx:id="paneContent" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="1280.0" />
+      <Pane fx:id="paneContent" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="1280.0" />
    </children>
 </VBox>

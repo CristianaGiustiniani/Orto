@@ -2,8 +2,6 @@ package com.orto.logic.utils;
 
 import com.orto.logic.utils.exceptions.InvalidProductTypeException;
 
-import java.util.List;
-
 public enum ProductType {
     AGRICULTURAL,
     ANIMAL,

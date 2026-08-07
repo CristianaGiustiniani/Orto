@@ -23,7 +23,6 @@ public class UserDAODB implements UserDAO {
 
         try (Connection conn = DBConnection.getConnection();
             PreparedStatement ps = conn.prepareStatement(query)) {
-
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
 

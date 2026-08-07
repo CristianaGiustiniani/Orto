@@ -9,7 +9,6 @@ public class PaymentBean {
     private Boolean successful;
 
     //GETTERS AND SETTERS
-    //todo: syntactic data validation
     public PaymentType getPaymentType() {
         return paymentType;
     }

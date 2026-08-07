@@ -52,7 +52,6 @@ public class SellerDAODB implements SellerDAO {
 
         try (   Connection conn = DBConnection.getConnection();
                 PreparedStatement ps = conn.prepareStatement(query)) {
-
             ResultSet rs = ps.executeQuery();
             sellers = getAllFromResultSet(rs);
         } catch (SQLException e) {
