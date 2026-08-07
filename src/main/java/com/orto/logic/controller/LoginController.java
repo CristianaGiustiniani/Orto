@@ -1,6 +1,5 @@
 package com.orto.logic.controller;
 
-import com.orto.logic.controller.exceptions.UserNotRememberedException;
 import com.orto.logic.model.dao.UserDAO;
 import com.orto.logic.model.dao.exceptions.*;
 import com.orto.logic.model.dao.factory.DAOFactory;
@@ -10,7 +9,6 @@ import com.orto.logic.model.entity.exceptions.WrongPasswordException;
 import com.orto.logic.utils.PersistenceType;
 import com.orto.logic.utils.Session;
 
-import java.io.File;
 
 public class LoginController {
     public void login(String email, String password, boolean rememberUser) throws ConnectionException, WrongPasswordException, WrongEmailException {

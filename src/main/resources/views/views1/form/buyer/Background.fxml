@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="borderPane" maxHeight="1080.0" maxWidth="1920.0" minHeight="800.0" minWidth="1920.0" prefHeight="1000.0" prefWidth="1920.0" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="borderPane" maxHeight="720.0" maxWidth="1280.0" minHeight="680.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" styleClass="background" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1920.0" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                  <BorderPane prefHeight="200.0" prefWidth="1280.0">
                      <right>
                         <HBox alignment="CENTER" BorderPane.alignment="CENTER_RIGHT">
                            <children>
@@ -35,8 +35,8 @@
                            </children>
                         </HBox>
                      </right>
-                     <left>
-                        <ImageView fx:id="logo" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onLogoClick" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <center>
+                        <ImageView fx:id="logo" fitHeight="70.0" fitWidth="556.0" onMouseClicked="#onLogoClick" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                            <image>
                               <Image url="@../../pics/logo.png" />
                            </image>
@@ -47,7 +47,7 @@
                               <Insets left="18.0" />
                            </BorderPane.margin>
                         </ImageView>
-                     </left>
+                     </center>
                   </BorderPane>
                   <Separator prefWidth="200.0" />
                </children>

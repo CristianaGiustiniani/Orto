@@ -3,7 +3,7 @@ package com.orto.logic.graphic_controller.controller.gui_1;
 
 import com.orto.logic.model.entity.Seller;
 import com.orto.logic.graphic_controller.controller.*;
-import com.orto.logic.graphic_controller.controller.gui_1.background.AuthenticatedBackgroundGUIGC;
+import com.orto.logic.graphic_controller.controller.gui_1.background.AuthenticatedBackgroundGUI1GC;
 import com.orto.logic.graphic_controller.controller.gui_1.background.PublicBackgroundGUI1GC;
 import com.orto.logic.graphic_controller.controller.gui_1.find_farmers.FindFarmersGUI1GC;
 import com.orto.logic.graphic_controller.controller.gui_1.home.HomeGUI1GC;
@@ -16,7 +16,7 @@ public class GUI1GCFactory extends GCFactory {
     public PublicBackgroundGC createPublicBackground() { return new PublicBackgroundGUI1GC(); }
 
     @Override
-    public AuthenticatedBackgroundGC createAuthenticatedBackground() { return new AuthenticatedBackgroundGUIGC(); }
+    public AuthenticatedBackgroundGC createAuthenticatedBackground() { return new AuthenticatedBackgroundGUI1GC(); }
 
     @Override
     public HomeGC createHome() { return new HomeGUI1GC(); }

@@ -1,4 +1,4 @@
-package com.orto.logic.graphic_controller.controller.gui_1.place_order;
+package com.orto.logic.graphic_controller.controller.gui_2.place_order;
 
 import com.orto.logic.graphic_controller.controller.GUIGC;
 import com.orto.logic.graphic_controller.controller.PlaceOrderGC;
@@ -10,13 +10,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 import java.math.BigDecimal;
 import java.util.EnumSet;
 
-public class PaymentSelectionGUI1GC extends GUIGC {
+public class PaymentSelectionGUI2GC extends GUIGC {
     //ATTRIBUTES
     private final PlaceOrderGC placeOrderGC;
     private final Payment payment;
@@ -33,7 +32,7 @@ public class PaymentSelectionGUI1GC extends GUIGC {
     @FXML private Label labelSummary;
 
     //CONSTRUCTOR
-    public PaymentSelectionGUI1GC(PlaceOrderGC placeOrderGC, EnumSet<PaymentType> activePaymentTypes, BigDecimal totalPrice) {
+    public PaymentSelectionGUI2GC(PlaceOrderGC placeOrderGC, EnumSet<PaymentType> activePaymentTypes, BigDecimal totalPrice) {
         super("/views/views1/form/buyer/placeOrderElements/PaymentSelection.fxml");
         this.placeOrderGC = placeOrderGC;
         this.payment = new Payment();

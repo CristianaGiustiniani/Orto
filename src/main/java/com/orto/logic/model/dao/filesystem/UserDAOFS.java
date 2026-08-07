@@ -25,17 +25,18 @@ public class UserDAOFS implements UserDAO {
             for (String line : lines) {
                 if (line.trim().isEmpty()) continue;
 
-                String[] parts = line.split(",", 5);
+                String[] parts = line.split(",", 6);
 
-                if (parts.length == 5) {
-                    String username = parts[0];
-                    String name = parts[1];
-                    String surname = parts[2];
-                    String storedEmail = parts[3];
-                    String hashedPassword = parts[4];
+                if (parts.length == 6) {
+                    String id = parts[0];
+                    String username = parts[1];
+                    String name = parts[2];
+                    String surname = parts[3];
+                    String storedEmail = parts[4];
+                    String hashedPassword = parts[5];
 
                     if (storedEmail.equals(email)) {
-                        User user = new User(username, name, surname, hashedPassword);
+                        User user = new User(Integer.parseInt(id), username, name, surname, hashedPassword);
                         user.checkPassword(password);
                         return user;
                     }
@@ -56,14 +57,15 @@ public class UserDAOFS implements UserDAO {
                 for (String line : lines) {
                     if (line.trim().isEmpty()) continue;
 
-                    String[] parts = line.split(",", 5);
+                    String[] parts = line.split(",", 6);
 
-                    if (parts.length == 5) {
-                        String username = parts[0];
-                        String name = parts[1];
-                        String surname = parts[2];
+                    if (parts.length == 6) {
+                        String id = parts[0];
+                        String username = parts[1];
+                        String name = parts[2];
+                        String surname = parts[3];
                         String hashedPassword = parts[4];
-                        return new User(username, name, surname, hashedPassword);
+                        return new User(Integer.parseInt(id), username, name, surname, hashedPassword);
                     }
                 }
             }
@@ -89,7 +91,7 @@ public class UserDAOFS implements UserDAO {
             String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
             try (FileWriter fw = new FileWriter(PATHNAME, true);
                  PrintWriter pw = new PrintWriter(fw)) {
-                pw.println(user.getUsername() + "," + user.getName() + "," + user.getSurname() + "," + email + "," + hashedPassword);
+                pw.println(user.getId() + "," + user.getUsername() + "," + user.getName() + "," + user.getSurname() + "," + email + "," + hashedPassword);
             }
         } catch (IOException e) {
             throw new ConnectionException();
@@ -117,12 +119,12 @@ public class UserDAOFS implements UserDAO {
         }
     }
     private synchronized void checkUniqueUsernameAndEmail(String line, String username, String email) throws UsernameAlreadyExistsException, EmailAlreadyExistsException {
-        String[] parts = line.split(",", 5);
-        if (parts.length == 5) {
-            if (parts[0].equals(username)) {
+        String[] parts = line.split(",", 6);
+        if (parts.length == 6) {
+            if (parts[1].equals(username)) {
                 throw new UsernameAlreadyExistsException();
             }
-            if (parts[3].equals(email)) {
+            if (parts[4].equals(email)) {
                 throw new EmailAlreadyExistsException();
             }
         }

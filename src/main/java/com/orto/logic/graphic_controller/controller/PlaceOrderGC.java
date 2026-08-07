@@ -16,6 +16,7 @@ import com.orto.logic.utils.exceptions.EndOfEnumException;
 import com.orto.logic.utils.exceptions.StartOfEnumException;
 import com.orto.logic.model.dao.exceptions.ConnectionException;
 
+import java.math.BigDecimal;
 import java.util.EnumSet;
 import java.util.List;
 
@@ -59,13 +60,14 @@ public interface PlaceOrderGC {
                 goToDeliverySelection(getSeller());
                 break;
             case PAYMENT_SELECTION:
+                BigDecimal orderTotal = getController().getOrderTotal();
                 EnumSet<PaymentType> activePaymentTypes;
                 if (getController().isOrderShipped()) {
                     activePaymentTypes = EnumSet.of(PaymentType.ONLINE);
                 } else {
                     activePaymentTypes = EnumSet.allOf(PaymentType.class);
                 }
-                goToPaymentSelection(activePaymentTypes);
+                goToPaymentSelection(activePaymentTypes, orderTotal);
                 break;
             case ORDER_SUMMARY:
                 try {
@@ -84,7 +86,7 @@ public interface PlaceOrderGC {
     void setCurrentStep(PlaceOrderStep step);
     void goToProductSelection(List<Product> products);
     void goToDeliverySelection(Seller seller);
-    void goToPaymentSelection(EnumSet<PaymentType> activePaymentTypes);
+    void goToPaymentSelection(EnumSet<PaymentType> activePaymentTypes, BigDecimal totalPrice);
     void goToOrderSummary();
     void showError(Exception e);
     void collectData() throws NotPositiveQuantityException, AnnotationTooLongException, WrongFormatQuantityException, InvalidDeliveryInfoException, NoProductSelectedException;

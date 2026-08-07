@@ -7,6 +7,7 @@ import com.orto.logic.model.entity.*;
 import com.orto.logic.model.entity.exceptions.NoProductSelectedException;
 import com.orto.logic.utils.PaymentStatus;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class PlaceOrderController {
@@ -24,6 +25,11 @@ public class PlaceOrderController {
 
     public void addProductsToOrder(List<OrderLine> products) throws NoProductSelectedException {
         order.addLines(products);
+    }
+
+    public BigDecimal getOrderTotal() {
+        order.calculateTotalPrice();
+        return order.getTotalPrice();
     }
 
     public void defineDelivery(Delivery delivery) {
