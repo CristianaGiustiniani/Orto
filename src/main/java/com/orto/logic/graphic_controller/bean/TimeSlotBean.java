@@ -10,7 +10,6 @@ public class TimeSlotBean {
     private LocalTime closingTime;
 
     //GETTERS AND SETTERS
-    //todo: syntactic data validation
     public DayOfWeek getDay() {
         return day;
     }
@@ -34,4 +33,7 @@ public class TimeSlotBean {
     public void setClosingTime(LocalTime closingTime) {
         this.closingTime = closingTime;
     }
+
+    //DATA VALIDATION METHODS
+    //not needed yet
 }

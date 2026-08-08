@@ -4,6 +4,8 @@ import com.orto.logic.graphic_controller.bean.exceptions.EmptyEmailException;
 import com.orto.logic.graphic_controller.bean.exceptions.EmptyPasswordException;
 import com.orto.logic.graphic_controller.bean.exceptions.InvalidStringException;
 
+import java.util.regex.Pattern;
+
 public class LoginBean {
     private String email;
     private String password;
@@ -36,7 +38,8 @@ public class LoginBean {
 
     //DATA VALIDATION METHODS
     private void validateString(String string) throws InvalidStringException {
-        boolean ok = string.matches(".*\\S.*");
+
+        boolean ok = Pattern.compile("[a-zA-Z0-9]").matcher(string).find();
         if (!ok) {
             throw new InvalidStringException();
         }

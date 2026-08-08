@@ -4,6 +4,7 @@ import com.orto.logic.utils.ProductType;
 import com.orto.logic.graphic_controller.bean.exceptions.InvalidStringException;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class SellerBean {
     private Integer id;
@@ -13,7 +14,6 @@ public class SellerBean {
     private List<TimeSlotBean> openingHours;
 
     //GETTERS AND SETTERS
-    //todo: syntactic data validation
     public Integer getId() {
         return id;
     }
@@ -53,10 +53,10 @@ public class SellerBean {
     //DATA VALIDATION METHODS
     public void validate() throws InvalidStringException {
         validateString(this.name);
+        address.validate();
     }
     private void validateString(String string) throws InvalidStringException {
-
-        boolean ok = string.matches("[a-zA-Z0-9]+");
+        boolean ok = Pattern.compile("[a-zA-Z0-9]").matcher(string).find();
         if (!ok) {
             throw new InvalidStringException();
         }

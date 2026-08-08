@@ -14,6 +14,7 @@ public abstract class GCFactory {
             switch (Configuration.getInstance().getUIType()) {
                 case GUI_1 -> me = new GUI1GCFactory();
                 case GUI_2 -> me = new GUI2GCFactory();
+                default -> me = new GUI1GCFactory();
             }
         }
         return me;

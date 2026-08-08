@@ -7,13 +7,16 @@ import com.orto.logic.utils.exceptions.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.util.logging.Logger;
+
 public class Main extends Application {
     public static void main(String[] args) {
+        Logger logger = Logger.getLogger(Main.class.getName());
 
         try {
             Configuration.init(args);
         } catch (ConfigurationException e) {
-            System.err.println(e.getMessage());
+            logger.info(e.getMessage());
         }
         launch(args);
     }

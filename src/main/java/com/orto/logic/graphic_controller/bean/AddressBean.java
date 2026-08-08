@@ -2,6 +2,8 @@ package com.orto.logic.graphic_controller.bean;
 
 import com.orto.logic.graphic_controller.bean.exceptions.InvalidStringException;
 
+import java.util.regex.Pattern;
+
 public class AddressBean {
     private String streetName;
     private String civicNumber;
@@ -71,7 +73,7 @@ public class AddressBean {
         validateString(country);
     }
     private void validateString(String string) throws InvalidStringException {
-        boolean ok = string.matches(".*\\S.*");
+        boolean ok = Pattern.compile("[a-zA-Z0-9]").matcher(string).find();
         if (!ok) {
             throw new InvalidStringException();
         }

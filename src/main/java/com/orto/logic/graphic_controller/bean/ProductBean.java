@@ -3,6 +3,8 @@ package com.orto.logic.graphic_controller.bean;
 import com.orto.logic.utils.QuantityUnit;
 import com.orto.logic.graphic_controller.bean.exceptions.InvalidStringException;
 
+import java.util.regex.Pattern;
+
 public class ProductBean {
     private Integer id;
     private String name;
@@ -58,7 +60,8 @@ public class ProductBean {
         validateString(this.price);
     }
     private void validateString(String string) throws InvalidStringException {
-        boolean ok = string.matches(".*\\S.*");
+
+        boolean ok = Pattern.compile("[a-zA-Z0-9]").matcher(string).find();
         if (!ok) {
             throw new InvalidStringException();
         }

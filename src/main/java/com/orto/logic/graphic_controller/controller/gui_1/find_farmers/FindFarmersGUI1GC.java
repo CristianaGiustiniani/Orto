@@ -44,6 +44,7 @@ public class FindFarmersGUI1GC extends GUIGC implements FindFarmersGC {
 
     @Override
     protected void setupTexts() {
+        //no text to set up
     }
 
     @Override

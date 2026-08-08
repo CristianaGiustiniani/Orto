@@ -8,6 +8,7 @@ import com.orto.logic.utils.DBConnection;
 import com.orto.logic.utils.Session;
 
 import java.sql.*;
+import java.util.Collections;
 import java.util.List;
 
 public class OrderDAODB implements OrderDAO {
@@ -60,8 +61,9 @@ public class OrderDAODB implements OrderDAO {
                 ps3.setInt(2, line.getProduct().getId());
                 ps3.setDouble(3, line.getQuantity());
                 ps3.setString(4, line.getAnnotation());
-                ps3.executeUpdate();
+                ps3.addBatch();
             }
+            ps3.executeBatch();
         } catch (SQLException e) {
             throw new ConnectionException();
         }
@@ -70,6 +72,6 @@ public class OrderDAODB implements OrderDAO {
     @Override
     public List<Order> getAllOrders() throws ConnectionException {
         //not implementing this
-        return null;
+        return Collections.emptyList();
     }
 }
