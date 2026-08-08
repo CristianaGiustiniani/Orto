@@ -7,12 +7,13 @@ import java.util.MissingResourceException;
 public class I18n {
     private static ResourceBundle bundle;
 
+    private I18n() {}
+
     public static void init(Locale locale) {
         if (locale == null) {
             locale = Locale.ENGLISH;
         }
         bundle = ResourceBundle.getBundle("i18n", locale);
-        System.out.println("Bundle: " + bundle);
     }
 
     public static String t(String key) {

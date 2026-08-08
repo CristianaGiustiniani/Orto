@@ -58,6 +58,6 @@ public class User {
     public void checkPassword(String password) throws WrongPasswordException {
         if (!(BCrypt.checkpw(password, this.hashedPassword))) {
             throw new WrongPasswordException();
-        };
+        }
     }
 }

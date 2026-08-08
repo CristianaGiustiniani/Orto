@@ -70,11 +70,11 @@ public class Order {
     }
 
     public void calculateTotalPrice() {
-        BigDecimal totalPrice = new BigDecimal("0.00");
+        BigDecimal total = new BigDecimal("0.00");
         for (OrderLine orderLine : orderLines) {
-            totalPrice = totalPrice.add(orderLine.getSubtotal());
+            total = total.add(orderLine.getSubtotal());
         }
-        this.totalPrice = totalPrice;
+        this.totalPrice = total;
     }
 
     public Integer getId() {
