@@ -6,6 +6,7 @@ import com.orto.logic.model.entity.Seller;
 import com.orto.logic.utils.I18n;
 import com.orto.logic.utils.Session;
 
+import java.util.Collections;
 import java.util.List;
 
 public interface FindFarmersGC {
@@ -16,7 +17,7 @@ public interface FindFarmersGC {
             showError(I18n.t("ERROR_CONNECTION"));
             GCFactory.getInstance().createHome();
         }
-        return null;
+        return Collections.emptyList();
     }
 
     default void placeOrder(Seller seller) {

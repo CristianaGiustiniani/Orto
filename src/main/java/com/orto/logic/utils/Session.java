@@ -2,6 +2,7 @@ package com.orto.logic.utils;
 
 
 import com.orto.logic.model.entity.User;
+import com.orto.logic.utils.exceptions.IllegalNullUserException;
 
 public class Session {
     private static Session instance = null;
@@ -17,7 +18,10 @@ public class Session {
         return instance;
     }
 
-    public User getLoggedUser() {
+    public User getLoggedUser() throws IllegalNullUserException {
+        if( loggedUser == null) {
+            throw new IllegalNullUserException();
+        }
         return loggedUser;
     }
 

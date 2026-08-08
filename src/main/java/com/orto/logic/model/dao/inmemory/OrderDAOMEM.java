@@ -21,12 +21,16 @@ public class OrderDAOMEM implements OrderDAO {
                 order.getStatus(),
                 order.getTotalPrice(),
                 Instant.now());
-        o.setId(nextOrderId++);
+        o.setId(getNextOrderId());
         orders.add(o);
     }
 
     @Override
     public List<Order> getAllOrders() {
-        return orders;
+        return new ArrayList<>(orders);
+    }
+
+    private static synchronized int getNextOrderId() {
+        return nextOrderId++;
     }
 }
