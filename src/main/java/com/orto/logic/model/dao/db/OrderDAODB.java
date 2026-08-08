@@ -6,6 +6,7 @@ import com.orto.logic.model.entity.Order;
 import com.orto.logic.model.entity.OrderLine;
 import com.orto.logic.utils.DBConnection;
 import com.orto.logic.utils.Session;
+import com.orto.logic.utils.exceptions.IllegalNullUserException;
 
 import java.sql.*;
 import java.util.Collections;
@@ -66,6 +67,8 @@ public class OrderDAODB implements OrderDAO {
             ps3.executeBatch();
         } catch (SQLException e) {
             throw new ConnectionException();
+        } catch (IllegalNullUserException e) {
+            throw new RuntimeException(e);
         }
     }
 
