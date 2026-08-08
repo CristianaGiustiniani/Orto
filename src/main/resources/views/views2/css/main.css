@@ -1,0 +1,154 @@
+/*LIGHT*/
+
+/*background*/
+.background {
+    -fx-background-color: #FFFFFF;
+}
+
+/*UC button*/
+.bt-uc {
+    -fx-alignment: center;
+    -fx-background-color: #ecf39eff;
+    -fx-background-radius: 100%;
+
+    -fx-text-fill: #008000;
+    -fx-font-family: Calibri;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+
+    -fx-cursor: hand;
+}
+
+.bt-uc:hover {
+    -fx-background-color: #ecf39e90;
+}
+
+/*saveChanges button*/
+.bt-saveChanges {
+    -fx-background-color: #90a955ff;
+    -fx-pref-width: 297px;
+    -fx-pref-height: 37px;
+
+    -fx-text-fill: white;
+    -fx-font-family: Calibri;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+
+    -fx-cursor: hand;
+}
+
+.bt-saveChanges:hover {
+    -fx-background-color: #90a95590;
+}
+
+/*back button*/
+.bt-back {
+    -fx-background-color: #bdd7eeff;
+    -fx-pref-width: 120px;
+    -fx-pref-height: 25px;
+    -fx-graphic: url(../pics/backIcon.png);
+
+    -fx-text-fill: #4472c4;
+    -fx-font-family: Calibri;
+    -fx-font-size: 12px;
+    -fx-padding: 0 5 0 0;
+    -fx-alignment: center;
+
+    -fx-wrap-text: true;
+
+    -fx-cursor: hand;
+}
+
+.bt-back:hover {
+    -fx-background-color: #bdd7ee90;
+}
+
+
+/*stepAction button*/
+.bt-stepAction1 {
+    -fx-background-color: #bdd7eeff;
+
+    -fx-text-fill: #4472c4;
+    -fx-font-family: Calibri;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+
+    -fx-cursor: hand;
+}
+
+.bt-stepAction1:hover {
+    -fx-background-color: #bdd7ee90;
+}
+
+
+
+/*stepAction4 button*/
+.bt-stepAction4 {
+    -fx-background-color: #132a13ff;
+
+    -fx-text-fill: white;
+    -fx-font-family: Calibri;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+
+    -fx-cursor: hand;
+}
+
+.bt-stepAction4:hover {
+    -fx-background-color: #132a1390;
+}
+
+
+/*view title*/
+.view-title {
+    -fx-text-fill: #005000;
+    -fx-font-family: Calibri;
+    -fx-font-weight: bold;
+    -fx-font-size: 36px;
+}
+
+/*view subtitle*/
+.view-subtitle {
+    -fx-text-fill: #008000;
+    -fx-font-family: Calibri;
+    -fx-font-weight: bold;
+    -fx-font-size: 32px;
+}
+
+/*error label*/
+.error-label {
+    -fx-text-fill: #ff0000;
+    -fx-font-family: Calibri;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+/*standard text*/
+.std-text {
+    -fx-text-fill: #000000;
+    -fx-font-family: Calibri;
+    -fx-font-size: 18px;
+}
+
+/*standard text light*/
+.std-text-light {
+    -fx-text-fill: white;
+    -fx-font-family: Calibri;
+    -fx-font-size: 14px;
+}
+
+/*result text*/
+.r-text {
+    -fx-text-fill: #979797;
+    -fx-font-family: Calibri;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}

@@ -16,6 +16,8 @@ import com.orto.logic.utils.Configuration;
 import com.orto.logic.utils.I18n;
 import com.orto.logic.utils.PaymentType;
 import com.orto.logic.utils.PlaceOrderStep;
+import com.orto.logic.utils.exceptions.EndOfEnumException;
+import com.orto.logic.utils.exceptions.StartOfEnumException;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -166,8 +168,20 @@ public class PlaceOrderGUI2GC extends GUIGC implements PlaceOrderGC {
 
     @Override
     protected void setupTexts() {
-        buttonBack.setText(I18n.t("BACK"));
-        buttonNext.setText(I18n.t("NEXT"));
+        String backText = null;
+        try {
+            backText = I18n.t(currentStep.previous().getStep());
+        } catch (StartOfEnumException e) {
+            backText = I18n.t("BACK");
+        }
+        String nextText = null;
+        try {
+            nextText = I18n.t(currentStep.next().getStep());
+        } catch (EndOfEnumException e) {
+            nextText = I18n.t("NEXT");
+        }
+        buttonBack.setText(backText);
+        buttonNext.setText(nextText);
         textSellerName.setText(seller.getName());
         textOrderStep.setText(currentStep.getStep());
     }

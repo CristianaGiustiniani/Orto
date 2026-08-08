@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.time.DayOfWeek;
@@ -35,6 +36,7 @@ public class DeliverySelectionGUI2GC extends GUIGC {
     @FXML private TextField inputBuyerProvince;
     @FXML private TextField inputBuyerCountry;
     @FXML private TextField inputBuyerPhoneNumber;
+    @FXML private TextField inputBuyerPhoneNumberPickup;
     @FXML private Text textShipping;
     @FXML private Text textPickup;
     @FXML private Text textBuyerName;
@@ -46,6 +48,7 @@ public class DeliverySelectionGUI2GC extends GUIGC {
     @FXML private Text textBuyerProvince;
     @FXML private Text textBuyerCountry;
     @FXML private Text textBuyerPhoneNumber;
+    @FXML private Text textBuyerPhoneNumberPickup;
     @FXML private Text textSellerName;
     @FXML private Text textSellerAddress;
     @FXML private Text textOpeningHours;
@@ -84,13 +87,12 @@ public class DeliverySelectionGUI2GC extends GUIGC {
     @FXML private Text textTo4;
     @FXML private Text textTo5;
     @FXML private Text textTo6;
+    @FXML private Text textChoseDelivery;
     @FXML private RadioButton radioShippingDelivery;
     @FXML private RadioButton radioPickupDelivery;
     @FXML private Label labelError;
-    @FXML private Label labelProductSelection;
-    @FXML private Label labelDelivery;
-    @FXML private Label labelPayment;
-    @FXML private Label labelSummary;
+    @FXML private VBox vboxShipping;
+    @FXML private VBox vboxPickup;
 
 
     //CONSTRUCTOR
@@ -102,10 +104,21 @@ public class DeliverySelectionGUI2GC extends GUIGC {
         radioPickupDelivery.setToggleGroup(group);
         radioShippingDelivery.setToggleGroup(group);
         radioShippingDelivery.setSelected(true);
+        showShippingForm();
+
         setupTexts();
     }
 
     //INPUT METHODS
+    @FXML private void onClickRadioShippingDelivery() {
+        showShippingForm();
+    }
+
+    @FXML private void onClickRadioPickupDelivery() {
+        showPickupForm();
+
+    }
+
     public Delivery getDeliveryInfo() throws InvalidDeliveryInfoException {
         labelError.setVisible(false);
 
@@ -133,6 +146,7 @@ public class DeliverySelectionGUI2GC extends GUIGC {
             addressBean.setProvince(this.seller.getAddress().getProvince());
             addressBean.setCountry(this.seller.getAddress().getCountry());
             deliveryBean.setAddress(addressBean);
+            deliveryBean.setPhoneNumber(inputBuyerPhoneNumberPickup.getText());
         }
         try {
             deliveryBean.validate();
@@ -156,6 +170,7 @@ public class DeliverySelectionGUI2GC extends GUIGC {
         textBuyerProvince.setText(I18n.t("GUI_PLACEORDER_DELIVERYSELECTION_VIEW_BUYERPROVINCE"));
         textBuyerCountry.setText(I18n.t("GUI_PLACEORDER_DELIVERYSELECTION_VIEW_BUYERCOUNTRY"));
         textBuyerPhoneNumber.setText(I18n.t("GUI_PLACEORDER_DELIVERYSELECTION_VIEW_BUYERPHONE"));
+        textBuyerPhoneNumberPickup.setText(I18n.t("GUI_PLACEORDER_DELIVERYSELECTION_VIEW_BUYERPHONE"));
         textSellerName.setText(seller.getName());
         textSellerAddress.setText(toString(seller.getAddress()));
         textOpeningHours.setText(I18n.t("GUI_PLACEORDER_DELIVERYSELECTION_VIEW_OPENINGHOURS"));
@@ -196,10 +211,7 @@ public class DeliverySelectionGUI2GC extends GUIGC {
         textTo4.setText(to);
         textTo5.setText(to);
         textTo6.setText(to);
-        labelProductSelection.setText(I18n.t("STEP_PRODUCT_SELECTION"));
-        labelDelivery.setText(I18n.t("STEP_PAYMENT_SELECTION"));
-        labelPayment.setText(I18n.t("STEP_DELIVERY_SELECTION"));
-        labelSummary.setText(I18n.t("STEP_ORDER_SUMMARY"));
+        textChoseDelivery.setText(I18n.t("GUI_PLACEORDER_DELIVERYSELECTION_VIEW_CHOSEDELIVERY"));
     }
 
     public void showError(Exception e) {
@@ -209,6 +221,19 @@ public class DeliverySelectionGUI2GC extends GUIGC {
             labelError.setText(e.getMessage());
         }
         labelError.setVisible(true);
+    }
+    private void showShippingForm() {
+        vboxShipping.setVisible(true);
+        vboxShipping.setManaged(true);
+        vboxPickup.setVisible(false);
+        vboxPickup.setManaged(false);
+    }
+
+    private void showPickupForm() {
+        vboxShipping.setVisible(false);
+        vboxShipping.setManaged(false);
+        vboxPickup.setVisible(true);
+        vboxPickup.setManaged(true);
     }
 
     private String toString(Address address) {

@@ -63,8 +63,7 @@ public class DeliveryBean {
         validateString(phoneNumber);
     }
     private void validateString(String string) throws InvalidStringException {
-        boolean ok = Pattern.compile("[a-zA-Z0-9]").matcher(string).find();
-        if (!ok) {
+        if (string == null || !(Pattern.compile("[a-zA-Z0-9]").matcher(string).find())) {
             throw new InvalidStringException();
         }
     }

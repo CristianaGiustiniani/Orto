@@ -23,10 +23,6 @@ public class ProductSelectionGUI2GC extends GUIGC {
     List <ProductListItemGUI2GC> orderLinesGC = new ArrayList<>();
 
     //FXML ATTRIBUTES
-    @FXML private Label labelProductSelection;
-    @FXML private Label labelDelivery;
-    @FXML private Label labelPayment;
-    @FXML private Label labelSummary;
     @FXML private Text textProductName;
     @FXML private Text textDescription;
     @FXML private Text textPrice;
@@ -67,10 +63,6 @@ public class ProductSelectionGUI2GC extends GUIGC {
 
     @Override
     protected void setupTexts() {
-        labelProductSelection.setText(I18n.t("STEP_PRODUCT_SELECTION"));
-        labelDelivery.setText(I18n.t("STEP_PAYMENT_SELECTION"));
-        labelPayment.setText(I18n.t("STEP_DELIVERY_SELECTION"));
-        labelSummary.setText(I18n.t("STEP_ORDER_SUMMARY"));
         textProductName.setText(I18n.t("GUI_PLACEORDER_PRODUCTSELECTION_VIEW_PRODUCTNAME"));
         textDescription.setText(I18n.t("GUI_PLACEORDER_PRODUCTSELECTION_VIEW_DESCRIPTION"));
         textPrice.setText(I18n.t("GUI_PLACEORDER_PRODUCTSELECTION_VIEW_PRICE"));

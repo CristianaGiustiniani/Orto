@@ -26,10 +26,6 @@ public class PaymentSelectionGUI2GC extends GUIGC {
     @FXML private Text textTotalPrice;
     @FXML private Button buttonPayOnline;
     @FXML private Button buttonPayViaCash;
-    @FXML private Label labelProductSelection;
-    @FXML private Label labelDelivery;
-    @FXML private Label labelPayment;
-    @FXML private Label labelSummary;
 
     //CONSTRUCTOR
     public PaymentSelectionGUI2GC(PlaceOrderGC placeOrderGC, EnumSet<PaymentType> activePaymentTypes, BigDecimal totalPrice) {
@@ -70,10 +66,6 @@ public class PaymentSelectionGUI2GC extends GUIGC {
     //OUTPUT METHODS
     @Override
     protected void setupTexts() {
-        labelProductSelection.setText(I18n.t("STEP_PRODUCT_SELECTION"));
-        labelDelivery.setText(I18n.t("STEP_PAYMENT_SELECTION"));
-        labelPayment.setText(I18n.t("STEP_DELIVERY_SELECTION"));
-        labelSummary.setText(I18n.t("STEP_ORDER_SUMMARY"));
         textTotal.setText(I18n.t("GUI_PLACEORDER_PAYMENTSELECTION_VIEW_TOTAL"));
         textTotalPrice.setText("€" + (new PriceMapper()).toBean(totalPrice));
         buttonPayOnline.setText(I18n.t("GUI_PLACEORDER_PAYMENTSELECTION_VIEW_PAYONLINE"));
