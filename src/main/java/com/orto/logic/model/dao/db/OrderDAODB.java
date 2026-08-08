@@ -27,7 +27,7 @@ public class OrderDAODB implements OrderDAO {
             ps1.setString(3, order.getPaymentInfo().getPaymentType().toString().toLowerCase());
             ps1.setString(4, order.getPaymentInfo().getPaymentStatus().toString().toLowerCase());
             ps1.setBigDecimal(5, order.getTotalPrice());
-            ps1.setString(5, order.getStatus().toString().toLowerCase());
+            ps1.setString(6, order.getStatus().toString().toLowerCase());
             int rows = ps1.executeUpdate();
 
             //Get order id

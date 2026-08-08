@@ -43,7 +43,7 @@ public class PlaceOrderController {
     public void processPayment(Payment payment) {
         PaymentStatus status = payment.getPaymentStatus();
         if (status == PaymentStatus.SUCCESSFUL) {
-            order.setOrderStatusCompleted();
+            order.setOrderStatusPending();
         }
         else {
             order.setOrderStatusRejected();

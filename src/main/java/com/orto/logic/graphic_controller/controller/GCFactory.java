@@ -1,6 +1,7 @@
 package com.orto.logic.graphic_controller.controller;
 
 import com.orto.logic.graphic_controller.controller.gui_1.GUI1GCFactory;
+import com.orto.logic.graphic_controller.controller.gui_2.GUI2GCFactory;
 import com.orto.logic.model.entity.Seller;
 import com.orto.logic.utils.Configuration;
 
@@ -12,8 +13,7 @@ public abstract class GCFactory {
         if (me == null) {
             switch (Configuration.getInstance().getUIType()) {
                 case GUI_1 -> me = new GUI1GCFactory();
-                //todo: implement GUI_2
-                //case GUI_2 -> me = new GUI2ViewFactory();
+                case GUI_2 -> me = new GUI2GCFactory();
             }
         }
         return me;

@@ -133,7 +133,9 @@ public class DeliverySelectionGUI1GC extends GUIGC {
             addressBean.setProvince(this.seller.getAddress().getProvince());
             addressBean.setCountry(this.seller.getAddress().getCountry());
             deliveryBean.setAddress(addressBean);
+            deliveryBean.setPhoneNumber(inputBuyerPhoneNumber.getText());
         }
+
         try {
             deliveryBean.validate();
         } catch (InvalidStringException e) {

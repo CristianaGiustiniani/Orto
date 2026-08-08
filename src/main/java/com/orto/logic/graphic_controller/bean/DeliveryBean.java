@@ -57,8 +57,8 @@ public class DeliveryBean {
             validateString(recipientName);
             validateString(recipientSurname);
             address.validate();
-            validateString(phoneNumber);
         }
+        validateString(phoneNumber);
     }
     private void validateString(String string) throws InvalidStringException {
         boolean ok = string.matches(".*\\S.*");
