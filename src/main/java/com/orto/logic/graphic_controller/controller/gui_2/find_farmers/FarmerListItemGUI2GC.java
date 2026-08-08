@@ -54,7 +54,7 @@ public class FarmerListItemGUI2GC extends HBox {
     //OUTPUT METHODS
     private Parent load() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/views1/form/findFarmersElements/FarmerListItem.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/views2/form/findFarmersElements/FarmerListItem.fxml"));
             loader.setController(this);
             return loader.load();
         } catch (IOException e) {

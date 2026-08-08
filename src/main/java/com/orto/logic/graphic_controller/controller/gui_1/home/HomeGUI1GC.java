@@ -18,7 +18,6 @@ public class HomeGUI1GC extends GUIGC implements HomeGC {
     //FXML ATTRIBUTES
     @FXML private AnchorPane anchorPaneFindFarmers;
     @FXML private Button buttonViewPurchases;
-    @FXML private ScrollPane scrollPaneFarmersTable;
     @FXML private Text textSubtitleHome;
     @FXML private Text textTitleHome;
 

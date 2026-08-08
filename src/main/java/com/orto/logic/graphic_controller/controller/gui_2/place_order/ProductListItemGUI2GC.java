@@ -59,7 +59,7 @@ public class ProductListItemGUI2GC extends HBox {
     //OUTPUT METHODS
     private Parent load() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/views1/form/buyer/placeOrderElements/ProductListItem.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/views2/form/buyer/placeOrderElements/ProductListItem.fxml"));
             loader.setController(this);
             return loader.load();
         } catch (IOException e) {

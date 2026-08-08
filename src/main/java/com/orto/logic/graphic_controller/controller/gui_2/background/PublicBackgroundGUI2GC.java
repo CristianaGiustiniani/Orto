@@ -11,18 +11,18 @@ import javafx.scene.image.ImageView;
 public class PublicBackgroundGUI2GC extends GUIGC implements PublicBackgroundGC {
     //FXML ATTRIBUTES
     @FXML ImageView logo;
-    @FXML Button buttonLoginSignup;
+    @FXML Button buttonLogin;
 
     //CONSTRUCTOR
     public PublicBackgroundGUI2GC() {
-        super("/views/views1/form/Background.fxml");
+        super("/views/views2/form/Background.fxml");
         root = this.load();
         setupTexts();
     }
 
     //INPUT METHODS
-    @FXML private void onButtonLoginSignupClick() {
-        loginOrSignup();
+    @FXML private void onButtonLoginClick() {
+        login();
     }
 
     @FXML private void onLogoClick() {
@@ -32,7 +32,7 @@ public class PublicBackgroundGUI2GC extends GUIGC implements PublicBackgroundGC 
 
     //OUTPUT METHODS
     protected void setupTexts() {
-        buttonLoginSignup.setText(I18n.t("GUI_BACKGROUND_VIEW_LOGINORSIGNUP"));
+        buttonLogin.setText(I18n.t("GUI_BACKGROUND_VIEW_LOGIN"));
     }
 
 }

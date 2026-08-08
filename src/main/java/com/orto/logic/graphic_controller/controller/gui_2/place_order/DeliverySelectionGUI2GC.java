@@ -95,7 +95,7 @@ public class DeliverySelectionGUI2GC extends GUIGC {
 
     //CONSTRUCTOR
     public DeliverySelectionGUI2GC(Seller seller) {
-        super("/views/views1/form/buyer/placeOrderElements/DeliverySelection.fxml");
+        super("/views/views2/form/buyer/placeOrderElements/DeliverySelection.fxml");
         this.seller = seller;
         root = load();
         ToggleGroup group = new ToggleGroup();

@@ -16,23 +16,20 @@ import javafx.scene.text.Text;
 
 public class HomeGUI2GC extends GUIGC implements HomeGC {
     //FXML ATTRIBUTES
-    @FXML private AnchorPane anchorPaneFindFarmers;
     @FXML private Button buttonViewPurchases;
-    @FXML private ScrollPane scrollPaneFarmersTable;
+    @FXML private Button buttonFindFarmers;
     @FXML private Text textSubtitleHome;
     @FXML private Text textTitleHome;
+    @FXML private Text textHomeText;
 
     //CONSTRUCTOR
     public HomeGUI2GC() {
-        super("/views/views1/form/Home.fxml");
+        super("/views/views2/form/Home.fxml");
 
         Parent background = loadBackground();
         Parent home = this.load();
-        Parent findFarmers = (new FindFarmersGUI2GC()).getRoot();
 
         ((BorderPane) background).setCenter(home);
-        anchorPaneFindFarmers.getChildren().add(findFarmers);
-
         root = background;
         setupTexts();
 
@@ -44,13 +41,18 @@ public class HomeGUI2GC extends GUIGC implements HomeGC {
     @FXML private void onClickButtonViewPurchases() {
         viewPurchases();
     }
+    @FXML private void onClickButtonFindFarmers() {
+        findFarmers();
+    }
 
 
     //OUTPUT METHODS
     @Override
     protected void setupTexts() {
         buttonViewPurchases.setText(I18n.t("GUI_HOME_VIEW_VIEWPURCHASES"));
+        buttonFindFarmers.setText(I18n.t("GUI_HOME_VIEW_FINDFARMERS"));
         textSubtitleHome.setText(I18n.t("GUI_HOME_VIEW_SUBTITLE"));
         textTitleHome.setText(I18n.t("GUI_HOME_VIEW_TITLE"));
+        textHomeText.setText(I18n.t("GUI_HOME_VIEW_TEXT"));
     }
 }

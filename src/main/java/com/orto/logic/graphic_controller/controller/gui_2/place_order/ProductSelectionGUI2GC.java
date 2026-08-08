@@ -36,7 +36,7 @@ public class ProductSelectionGUI2GC extends GUIGC {
 
     //CONSTRUCTOR
     public ProductSelectionGUI2GC(List<Product> products) {
-        super("/views/views1/form/buyer/placeOrderElements/ProductSelection.fxml");
+        super("/views/views2/form/buyer/placeOrderElements/ProductSelection.fxml");
         root = load();
         createChildren(products);
         setupTexts();

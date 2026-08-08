@@ -4,9 +4,15 @@ package com.orto.logic.graphic_controller.controller.gui_2.find_farmers;
 import com.orto.logic.graphic_controller.controller.FindFarmersGC;
 import com.orto.logic.graphic_controller.controller.GUIGC;
 import com.orto.logic.model.entity.Seller;
+import com.orto.logic.utils.Configuration;
+import com.orto.logic.utils.I18n;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +20,22 @@ import java.util.List;
 public class FindFarmersGUI2GC extends GUIGC implements FindFarmersGC {
     //FXML ATTRIBUTES
     @FXML private VBox vboxFarmers;
+    @FXML private Text textTitleFindFarmers;
+    @FXML private Text textSubtitleFindFarmers;
 
     //CONSTRUCTOR
     public FindFarmersGUI2GC() {
-        super("/views/views1/form/FindFarmers.fxml");
-        root = this.load();
+        super("/views/views2/form/FindFarmers.fxml");
+
+        Parent background = loadBackground();
+        Parent findFarmers = this.load();
+        ((BorderPane) background).setCenter(findFarmers);
+        root = background;
+
         createChildren();
         setupTexts();
+
+        Configuration.getInstance().getStage().setScene(new Scene(root));
     }
 
     //INPUT METHODS
@@ -42,6 +57,8 @@ public class FindFarmersGUI2GC extends GUIGC implements FindFarmersGC {
 
     @Override
     protected void setupTexts() {
+        textTitleFindFarmers.setText(I18n.t("GUI_FINDFARMERS_VIEW_TITLE"));
+        textSubtitleFindFarmers.setText(I18n.t("GUI_FINDFARMERS_VIEW_SUBTITLE"));
     }
 
     @Override

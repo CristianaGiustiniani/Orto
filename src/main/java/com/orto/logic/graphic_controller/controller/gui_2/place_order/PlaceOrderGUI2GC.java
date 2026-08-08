@@ -48,7 +48,7 @@ public class PlaceOrderGUI2GC extends GUIGC implements PlaceOrderGC {
 
     //CONSTRUCTOR
     public PlaceOrderGUI2GC(Seller seller) {
-        super("/views/views1/form/buyer/PlaceOrder.fxml");
+        super("/views/views2/form/buyer/PlaceOrder.fxml");
         this.controller = new PlaceOrderController();
         this.seller = seller;
         this.currentStep = PlaceOrderStep.PRODUCT_SELECTION;

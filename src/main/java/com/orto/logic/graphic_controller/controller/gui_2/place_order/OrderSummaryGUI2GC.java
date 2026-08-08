@@ -16,7 +16,7 @@ public class OrderSummaryGUI2GC extends GUIGC {
 
     //CONSTRUCTOR
     public OrderSummaryGUI2GC() {
-        super("/views/views1/form/buyer/placeOrderElements/OrderSummary.fxml");
+        super("/views/views2/form/buyer/placeOrderElements/OrderSummary.fxml");
         root = load();
         setupTexts();
     }

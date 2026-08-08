@@ -8,4 +8,8 @@ public interface PublicBackgroundGC {
     default void loginOrSignup() {
         GCFactory.getInstance().createLogin();
     }
+
+    default void login() {
+        GCFactory.getInstance().createLogin();
+    }
 }

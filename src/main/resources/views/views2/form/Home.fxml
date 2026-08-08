@@ -5,26 +5,39 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="1280.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="1280.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <HBox alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane fx:id="anchorPaneFindFarmers" prefHeight="480.0" prefWidth="1076.0">
-                     <HBox.margin>
-                        <Insets left="30.0" />
-                     </HBox.margin></AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  <Pane prefHeight="332.0" prefWidth="391.0">
                      <children>
-                        <Button fx:id="buttonViewPurchases" layoutX="35.0" layoutY="36.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onClickButtonViewPurchases" prefHeight="130.0" prefWidth="130.0" styleClass="bt-uc" text="VIEWPURCHASES" />
+                        <Text fx:id="textHomeText" layoutY="-17.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="HOMETEXT" wrappingWidth="389.986328125" />
                      </children>
-                  </AnchorPane>
+                     <HBox.margin>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="40.0" />
+                     </HBox.margin>
+                  </Pane>
+                  <Button fx:id="buttonFindFarmers" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onClickButtonFindFarmers" prefHeight="261.0" prefWidth="251.0" styleClass="bt-uc" text="FINDFARMERS">
+                     <HBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="buttonViewPurchases" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onClickButtonViewPurchases" prefHeight="130.0" prefWidth="130.0" styleClass="bt-uc" text="VIEWPURCHASES">
+                     <HBox.margin>
+                        <Insets left="40.0" right="40.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
             </HBox>
          </center>
          <top>

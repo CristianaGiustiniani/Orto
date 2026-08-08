@@ -11,17 +11,17 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="720.0" maxWidth="1280.0" minHeight="680.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="720.0" maxWidth="1280.0" minHeight="680.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #4f772d;">
                      <right>
                         <HBox alignment="CENTER" BorderPane.alignment="CENTER_RIGHT">
                            <children>
-                              <Button fx:id="buttonLoginSignup" mnemonicParsing="false" onAction="#onButtonLoginSignupClick" styleClass="bt-stepAction4" text="LOGINORSIGNUP">
+                              <Button fx:id="buttonLogin" mnemonicParsing="false" onAction="#onButtonLoginClick" styleClass="bt-stepAction4" text="LOGIN">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
@@ -30,9 +30,9 @@
                         </HBox>
                      </right>
                      <center>
-                        <ImageView fx:id="logo" fitHeight="70.0" onMouseClicked="#onLogoClick" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="logo" fitHeight="35.0" fitWidth="182.0" onMouseClicked="#onLogoClick" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                            <image>
-                              <Image url="@../pics/logo.png" />
+                              <Image url="@../pics/logo_white.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />

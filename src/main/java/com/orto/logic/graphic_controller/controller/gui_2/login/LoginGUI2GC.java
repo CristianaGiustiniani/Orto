@@ -20,20 +20,18 @@ import javafx.scene.text.Text;
 public class LoginGUI2GC extends GUIGC implements LoginGC {
     //FXML ELEMENTS
     @FXML private Button buttonLogin;
-    @FXML private Button buttonSignup;
     @FXML private CheckBox checkboxRememberMe;
     @FXML private Label labelError;
     @FXML private PasswordField inputPassword;
     @FXML private TextField inputEmail;
     @FXML private Text textPassword;
     @FXML private Text textEmail;
-    @FXML private Text textOr;
     @FXML private Text textSubtitle;
     @FXML private Text textTitle;
 
     //CONSTRUCTOR
     public LoginGUI2GC() {
-        super("/views/views1/form/Login.fxml");
+        super("/views/views2/form/Login.fxml");
 
         Parent background = loadBackground();
         Parent login = this.load();
@@ -67,10 +65,8 @@ public class LoginGUI2GC extends GUIGC implements LoginGC {
     //OUTPUT METHODS
     protected void setupTexts() {
         buttonLogin.setText(I18n.t("GUI_LOGIN_VIEW_LOGIN"));
-        buttonSignup.setText(I18n.t("GUI_LOGIN_VIEW_SIGNUP"));
         checkboxRememberMe.setText(I18n.t("GUI_LOGIN_VIEW_REMEMBERME"));
         textEmail.setText(I18n.t("GUI_LOGIN_VIEW_EMAIL"));
-        textOr.setText(I18n.t("GUI_LOGIN_VIEW_OR"));
         textPassword.setText(I18n.t("GUI_LOGIN_VIEW_PASSWORD"));
         textSubtitle.setText(I18n.t("GUI_LOGIN_VIEW_SUBTITLE_LOGIN"));
         textTitle.setText(I18n.t("GUI_LOGIN_VIEW_TITLE_LOGIN"));

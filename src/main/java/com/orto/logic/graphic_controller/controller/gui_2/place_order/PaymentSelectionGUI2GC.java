@@ -33,7 +33,7 @@ public class PaymentSelectionGUI2GC extends GUIGC {
 
     //CONSTRUCTOR
     public PaymentSelectionGUI2GC(PlaceOrderGC placeOrderGC, EnumSet<PaymentType> activePaymentTypes, BigDecimal totalPrice) {
-        super("/views/views1/form/buyer/placeOrderElements/PaymentSelection.fxml");
+        super("/views/views2/form/buyer/placeOrderElements/PaymentSelection.fxml");
         this.placeOrderGC = placeOrderGC;
         this.payment = new Payment();
         this.totalPrice = totalPrice;

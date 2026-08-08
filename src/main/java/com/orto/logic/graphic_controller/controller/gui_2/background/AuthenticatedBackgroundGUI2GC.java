@@ -18,7 +18,7 @@ public class AuthenticatedBackgroundGUI2GC extends GUIGC implements Authenticate
 
     //CONSTRUCTOR
     public AuthenticatedBackgroundGUI2GC() {
-        super("/views/views1/form/buyer/Background.fxml");
+        super("/views/views2/form/buyer/Background.fxml");
         root = this.load();
         setupTexts();
     }
