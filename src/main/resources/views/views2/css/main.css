@@ -8,10 +8,10 @@
 /*UC button*/
 .bt-uc {
     -fx-alignment: center;
-    -fx-background-color: #ecf39eff;
+    -fx-background-color: #a3b18aff;
     -fx-background-radius: 100%;
 
-    -fx-text-fill: #008000;
+    -fx-text-fill: #3a5a40;
     -fx-font-family: Calibri;
     -fx-font-weight: bold;
     -fx-font-size: 18px;
@@ -22,7 +22,7 @@
 }
 
 .bt-uc:hover {
-    -fx-background-color: #ecf39e90;
+    -fx-background-color: #a3b18a90;
 }
 
 /*saveChanges button*/
@@ -47,12 +47,11 @@
 
 /*back button*/
 .bt-back {
-    -fx-background-color: #bdd7eeff;
+    -fx-background-color: #3a5a40ff;
     -fx-pref-width: 120px;
     -fx-pref-height: 25px;
-    -fx-graphic: url(../pics/backIcon.png);
 
-    -fx-text-fill: #4472c4;
+    -fx-text-fill: white;
     -fx-font-family: Calibri;
     -fx-font-size: 12px;
     -fx-padding: 0 5 0 0;
@@ -64,15 +63,15 @@
 }
 
 .bt-back:hover {
-    -fx-background-color: #bdd7ee90;
+    -fx-background-color: #3a5a4090;
 }
 
 
 /*stepAction button*/
 .bt-stepAction1 {
-    -fx-background-color: #bdd7eeff;
+    -fx-background-color: #588157ff;
 
-    -fx-text-fill: #4472c4;
+    -fx-text-fill: #344e41;
     -fx-font-family: Calibri;
     -fx-font-weight: bold;
     -fx-font-size: 18px;
@@ -83,7 +82,7 @@
 }
 
 .bt-stepAction1:hover {
-    -fx-background-color: #bdd7ee90;
+    -fx-background-color: #58815790;
 }
 
 
@@ -109,7 +108,7 @@
 
 /*view title*/
 .view-title {
-    -fx-text-fill: #005000;
+    -fx-text-fill: #344e41;
     -fx-font-family: Calibri;
     -fx-font-weight: bold;
     -fx-font-size: 36px;
@@ -117,7 +116,7 @@
 
 /*view subtitle*/
 .view-subtitle {
-    -fx-text-fill: #008000;
+    -fx-text-fill: #3a5a40;
     -fx-font-family: Calibri;
     -fx-font-weight: bold;
     -fx-font-size: 32px;
