@@ -33,6 +33,8 @@ public class ProductListItemGUI2GC extends HBox {
     @FXML Text textProductName;
     @FXML Text textProductDescription;
     @FXML Text textProductPrice;
+    @FXML Text textQuantity;
+    @FXML Text textAdditionalRequests;
 
     //CONSTRUCTOR
     public ProductListItemGUI2GC(Product product) {
@@ -68,6 +70,8 @@ public class ProductListItemGUI2GC extends HBox {
     }
 
     protected void setupTexts() {
+        textQuantity.setText(I18n.t("GUI_PLACEORDER_PRODUCTSELECTION_VIEW_QUANTITY"));
+        textAdditionalRequests.setText(I18n.t("GUI_PLACEORDER_PRODUCTSELECTION_VIEW_ADDITIONALREQUESTS"));
         ProductBean productBean = (new ProductMapper()).toBean(product);
         textProductName.setText(productBean.getName());
         textProductDescription.setText(productBean.getDescription());

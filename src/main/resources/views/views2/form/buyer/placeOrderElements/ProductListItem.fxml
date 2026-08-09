@@ -7,11 +7,28 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="1240.0" stylesheets="@../../../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<HBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="1240.0" stylesheets="@../../../css/main.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" minWidth="-Infinity" prefWidth="230.0">
+      <VBox alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="49.0" prefWidth="105.0">
          <children>
-            <Text fx:id="textProductName" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="ProductName" wrappingWidth="213.1972427368164" VBox.vgrow="ALWAYS">
+            <Text fx:id="textQuantity" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="Quantity" wrappingWidth="78.60872393846512">
+               <font>
+                  <Font name="Calibri" size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="inputQuantity">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Calibri" size="14.0" />
+               </font>
+            </TextField>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="561.0">
+         <children>
+            <Text fx:id="textProductName" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="r-text" text="ProductName" wrappingWidth="538.5306015014648" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="Calibri" size="20.0" />
                </font>
@@ -19,11 +36,7 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </Text>
-         </children>
-      </VBox>
-      <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" minWidth="-Infinity" prefWidth="420.0">
-         <children>
-            <Text fx:id="textProductDescription" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="ProductDescription" wrappingWidth="400.6087341308594" VBox.vgrow="ALWAYS">
+            <Text fx:id="textProductDescription" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="ProductDescription" wrappingWidth="538.6088256835938" VBox.vgrow="ALWAYS">
                <font>
                   <Font name="Calibri" size="14.0" />
                </font>
@@ -32,8 +45,11 @@
                </VBox.margin>
             </Text>
          </children>
+         <HBox.margin>
+            <Insets left="20.0" />
+         </HBox.margin>
       </VBox>
-      <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="140.0">
+      <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="177.0">
          <children>
             <Text fx:id="textProductPrice" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="ProductPrice" wrappingWidth="119.22686767578125" VBox.vgrow="ALWAYS">
                <font>
@@ -45,20 +61,13 @@
             </Text>
          </children>
       </VBox>
-      <VBox alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefWidth="110.0">
+      <VBox alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefWidth="340.0">
          <children>
-            <TextField fx:id="inputQuantity">
-               <VBox.margin>
-                  <Insets left="5.0" right="5.0" />
-               </VBox.margin>
+            <Text fx:id="textAdditionalRequests" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="AdditionalRequests" wrappingWidth="205.27542114257812">
                <font>
                   <Font name="Calibri" size="14.0" />
                </font>
-            </TextField>
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" maxHeight="-Infinity" minWidth="-Infinity" prefWidth="340.0">
-         <children>
+            </Text>
             <TextField fx:id="inputAdditionalRequests" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets left="5.0" right="5.0" />

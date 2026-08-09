@@ -11,9 +11,7 @@ import com.orto.logic.model.entity.exceptions.NoProductSelectedException;
 import com.orto.logic.utils.I18n;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +21,6 @@ public class ProductSelectionGUI2GC extends GUIGC {
     List <ProductListItemGUI2GC> orderLinesGC = new ArrayList<>();
 
     //FXML ATTRIBUTES
-    @FXML private Text textProductName;
-    @FXML private Text textDescription;
-    @FXML private Text textPrice;
-    @FXML private Text textQuantity;
-    @FXML private Text textAdditionalRequests;
     @FXML private VBox vboxProducts;
 
     //CONSTRUCTOR
@@ -63,11 +56,7 @@ public class ProductSelectionGUI2GC extends GUIGC {
 
     @Override
     protected void setupTexts() {
-        textProductName.setText(I18n.t("GUI_PLACEORDER_PRODUCTSELECTION_VIEW_PRODUCTNAME"));
-        textDescription.setText(I18n.t("GUI_PLACEORDER_PRODUCTSELECTION_VIEW_DESCRIPTION"));
-        textPrice.setText(I18n.t("GUI_PLACEORDER_PRODUCTSELECTION_VIEW_PRICE"));
-        textQuantity.setText(I18n.t("GUI_PLACEORDER_PRODUCTSELECTION_VIEW_QUANTITY"));
-        textAdditionalRequests.setText(I18n.t("GUI_PLACEORDER_PRODUCTSELECTION_VIEW_ADDITIONALREQUESTS"));
+        //nothing to set up
     }
 
     public void showError(Exception e) {
