@@ -32,7 +32,8 @@ public class UserDAODB implements UserDAO {
                         rs.getString("username"),
                         rs.getString("name"),
                         rs.getString("surname"),
-                        rs.getString("password"));
+                        rs.getString("password")
+                );
                 user.checkPassword(password);
                 return user;
             } else {

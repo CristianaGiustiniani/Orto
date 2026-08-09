@@ -58,5 +58,4 @@ public class PlaceOrderController {
     public void notifySeller() {
         //not implementing this
     }
-
 }

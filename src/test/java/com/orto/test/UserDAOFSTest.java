@@ -39,15 +39,15 @@ public class UserDAOFSTest {
     }
 
     @Test
-    public void testUserDAOFS() throws Exception {
+    public void testCreateUser() throws Exception {
         UserDAO userDAO = DAOFactory.getDAOFactory(FILESYSTEM).getUserDAO();
         assertNotNull(userDAO);
         //Create user
-        User user = new User("test", "test", "test");
+        User user = new User(0, "testUsername", "test", "test");
         userDAO.createUser(user, "test@test.it", "orto");
         //Get user
         User retrieved = userDAO.getUser("test@test.it", "orto");
         assertNotNull(retrieved);
-        assertEquals("test", retrieved.getUsername());
+        assertEquals("testUsername", retrieved.getUsername());
     }
 }
