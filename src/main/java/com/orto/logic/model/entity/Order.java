@@ -3,20 +3,22 @@ package com.orto.logic.model.entity;
 import com.orto.logic.model.entity.exceptions.NoProductSelectedException;
 import com.orto.logic.utils.DeliveryType;
 import com.orto.logic.utils.OrderStatus;
+import com.orto.logic.utils.PaymentStatus;
+import com.orto.logic.utils.PaymentType;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 
 public class Order {
-    private Integer id;
-    private Seller seller;
-    private List<OrderLine> orderLines;
-    private Delivery delivery;
-    private Payment payment;
-    private OrderStatus status;
-    private BigDecimal totalPrice;
-    private Instant orderDate;
+    private Integer id = null;
+    private Seller seller = null;
+    private List<OrderLine> orderLines = null;
+    private Delivery delivery = null;
+    private Payment payment = null;
+    private OrderStatus status = null;
+    private BigDecimal totalPrice = null;
+    private Instant orderDate = null;
 
     public Order() {
     }
@@ -89,8 +91,38 @@ public class Order {
     public Delivery getDeliveryInfo() {
         return delivery;
     }
+    public boolean isDeliveryShipping() {
+        return delivery.deliveryType == DeliveryType.SHIPPING;
+    }
+    public boolean isDeliveryPickup() {
+        return delivery.deliveryType == DeliveryType.PICKUP;
+    }
     public Payment getPaymentInfo() {
         return payment;
+    }
+    public boolean isPaymentSuccessful() {
+        if (payment != null) {
+            return (payment.getPaymentStatus() == PaymentStatus.SUCCESSFUL);
+        }
+        return false;
+    }
+    public boolean isPaymentFailed() {
+        if (payment != null) {
+            return (payment.getPaymentStatus() == PaymentStatus.FAILED);
+        }
+        return false;
+    }
+    public boolean isPaymentCash() {
+        if (payment != null) {
+            return (payment.getPaymentType() == PaymentType.CASH);
+        }
+        return false;
+    }
+    public boolean isPaymentOnline() {
+        if (payment != null) {
+            return (payment.getPaymentType() == PaymentType.ONLINE);
+        }
+        return false;
     }
     public OrderStatus getStatus() {
         return status;
@@ -105,9 +137,6 @@ public class Order {
         this.id = id;
     }
 
-    public boolean isDeliveryShipping() {
-        return delivery.deliveryType == DeliveryType.SHIPPING;
-    }
 
 
 

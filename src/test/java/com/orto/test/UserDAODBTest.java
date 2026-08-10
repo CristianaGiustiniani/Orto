@@ -8,10 +8,11 @@ import com.orto.logic.model.dao.exceptions.UsernameAlreadyExistsException;
 import com.orto.logic.model.dao.exceptions.WrongEmailException;
 import com.orto.logic.model.entity.User;
 import com.orto.logic.model.entity.exceptions.WrongPasswordException;
-import org.junit.Test;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 public class UserDAODBTest {
     /**

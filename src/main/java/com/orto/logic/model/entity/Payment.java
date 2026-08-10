@@ -4,8 +4,15 @@ import com.orto.logic.utils.PaymentStatus;
 import com.orto.logic.utils.PaymentType;
 
 public class Payment {
-    private PaymentType paymentType;
-    private PaymentStatus paymentStatus;
+    private PaymentType paymentType = null;
+    private PaymentStatus paymentStatus = null;
+
+    public Payment() {}
+
+    public Payment(PaymentType paymentType, PaymentStatus paymentStatus) {
+        this.paymentType = paymentType;
+        this.paymentStatus = paymentStatus;
+    }
 
     public void setPaymentStatusSuccessful(){
         this.paymentStatus = PaymentStatus.SUCCESSFUL;

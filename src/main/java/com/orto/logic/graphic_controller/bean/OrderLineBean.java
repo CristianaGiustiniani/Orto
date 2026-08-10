@@ -12,7 +12,6 @@ public class OrderLineBean {
     private String quantity;
     private QuantityUnit quantityUnit;
     private String annotation;
-    private Double subtotal;
 
     //GETTERS AND SETTERS
     public Integer getProductId() {
@@ -53,14 +52,6 @@ public class OrderLineBean {
 
     public void setAnnotation(String annotation) {
         this.annotation = annotation;
-    }
-
-    public Double getSubtotal() {
-        return subtotal;
-    }
-
-    public void setSubtotal(Double subtotal) {
-        this.subtotal = subtotal;
     }
 
     //DATA VALIDATION METHODS

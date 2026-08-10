@@ -1,12 +1,12 @@
 package com.orto.test;
 
 import com.orto.logic.utils.DBConnection;
-import org.junit.Test;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DBConnectionTest {
     @Test
