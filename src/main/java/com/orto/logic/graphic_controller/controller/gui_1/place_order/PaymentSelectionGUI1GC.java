@@ -1,9 +1,12 @@
 package com.orto.logic.graphic_controller.controller.gui_1.place_order;
 
+import com.orto.logic.controller.exceptions.FailedPaymentException;
 import com.orto.logic.graphic_controller.controller.GUIGC;
 import com.orto.logic.graphic_controller.controller.PlaceOrderGC;
+import com.orto.logic.graphic_controller.controller.exceptions.InvalidDeliveryInfoException;
 import com.orto.logic.graphic_controller.controller.mapper.PriceMapper;
 import com.orto.logic.model.entity.Payment;
+import com.orto.logic.model.entity.Seller;
 import com.orto.logic.utils.I18n;
 import com.orto.logic.utils.PaymentType;
 import javafx.fxml.FXML;
@@ -15,12 +18,13 @@ import javafx.scene.text.Text;
 
 import java.math.BigDecimal;
 import java.util.EnumSet;
+import java.util.function.Consumer;
 
 public class PaymentSelectionGUI1GC extends GUIGC {
     //ATTRIBUTES
-    private final PlaceOrderGC placeOrderGC;
     private final Payment payment;
     private final BigDecimal totalPrice;
+    private final Runnable onPaymentSelected;
 
     //FXML ELEMENTS
     @FXML private Text textTotal;
@@ -33,11 +37,11 @@ public class PaymentSelectionGUI1GC extends GUIGC {
     @FXML private Label labelSummary;
 
     //CONSTRUCTOR
-    public PaymentSelectionGUI1GC(PlaceOrderGC placeOrderGC, EnumSet<PaymentType> activePaymentTypes, BigDecimal totalPrice) {
+    public PaymentSelectionGUI1GC(EnumSet<PaymentType> activePaymentTypes, BigDecimal totalPrice, Runnable onPaymentSelected) {
         super("/views/views1/form/buyer/placeOrderElements/PaymentSelection.fxml");
-        this.placeOrderGC = placeOrderGC;
         this.payment = new Payment();
         this.totalPrice = totalPrice;
+        this.onPaymentSelected = onPaymentSelected;
         root = load();
         setupButtons(activePaymentTypes);
         setupTexts();
@@ -46,22 +50,24 @@ public class PaymentSelectionGUI1GC extends GUIGC {
     //INPUT METHODS
     @FXML private void clickButtonPayOnline() {
         payOnline();
-        placeOrderGC.goToNextStep();
     }
 
     @FXML private void clickButtonPayViaCash() {
         payByCash();
-        placeOrderGC.goToNextStep();
     }
 
     public void payByCash(){
         payment.setPaymentTypeCash();
-        payment.setPaymentStatusSuccessful();
+        if (onPaymentSelected != null) {
+            onPaymentSelected.run();
+        }
     }
 
     public void payOnline(){
         payment.setPaymentTypeOnline();
-        payment.setPaymentStatusSuccessful();
+        if (onPaymentSelected != null) {
+            onPaymentSelected.run();
+        }
     }
 
     public Payment getPaymentInfo() {
@@ -94,11 +100,15 @@ public class PaymentSelectionGUI1GC extends GUIGC {
 
     public void showError(Exception e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setContentText(e.getMessage());
+
+        if (e instanceof FailedPaymentException) {
+            alert.setContentText(I18n.t("ERROR_PLACEORDER_PAYMENTSELECTION_FAILEDPAYMENT"));
+        } else {
+            alert.setContentText(I18n.t(e.getMessage()));
+        }
+
         alert.showAndWait();
     }
-
-
 }
 
 

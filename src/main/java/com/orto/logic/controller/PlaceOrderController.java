@@ -1,11 +1,13 @@
 package com.orto.logic.controller;
 
+import com.orto.logic.controller.exceptions.FailedPaymentException;
 import com.orto.logic.model.dao.ProductDAO;
 import com.orto.logic.model.dao.exceptions.ConnectionException;
 import com.orto.logic.model.dao.factory.DAOFactory;
 import com.orto.logic.model.entity.*;
 import com.orto.logic.model.entity.exceptions.NoProductSelectedException;
 import com.orto.logic.utils.PaymentStatus;
+import com.orto.logic.utils.PaymentType;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -40,9 +42,20 @@ public class PlaceOrderController {
         return this.order.isDeliveryShipping();
     }
 
-    public void processPayment(Payment payment) {
-        PaymentStatus status = payment.getPaymentStatus();
-        if (status == PaymentStatus.SUCCESSFUL) {
+    public void pay(Payment payment) throws FailedPaymentException {
+        PaymentType type = payment.getPaymentType();
+        BigDecimal amount = order.getTotalPrice();
+
+        if (type == PaymentType.ONLINE) {
+            //dummy assignation: should redirect to payment gateway;
+            //in this dummy assignation, if i pay online, i get a failed payment
+            payment.setPaymentStatusFailed();
+            throw new FailedPaymentException();
+        } else if (type == PaymentType.CASH) {
+            payment.setPaymentStatusSuccessful();
+        }
+
+        if (payment.getPaymentStatus() == PaymentStatus.SUCCESSFUL) {
             order.setOrderStatusPending();
         }
         else {

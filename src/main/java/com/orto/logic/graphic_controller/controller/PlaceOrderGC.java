@@ -1,6 +1,8 @@
 package com.orto.logic.graphic_controller.controller;
 
 import com.orto.logic.controller.PlaceOrderController;
+import com.orto.logic.controller.exceptions.FailedPaymentException;
+import com.orto.logic.controller.exceptions.PaymentException;
 import com.orto.logic.graphic_controller.bean.exceptions.AnnotationTooLongException;
 import com.orto.logic.graphic_controller.bean.exceptions.NotPositiveQuantityException;
 import com.orto.logic.graphic_controller.bean.exceptions.WrongFormatQuantityException;
@@ -29,7 +31,7 @@ public interface PlaceOrderGC {
             goToStep(nextStep);
         } catch (EndOfEnumException e) {
             GCFactory.getInstance().createHome();
-        } catch (ProductException | DeliveryException e) {
+        } catch (ProductException | DeliveryException | PaymentException e) {
             showError(e);
         }
     }
@@ -89,6 +91,6 @@ public interface PlaceOrderGC {
     void goToPaymentSelection(EnumSet<PaymentType> activePaymentTypes, BigDecimal totalPrice);
     void goToOrderSummary();
     void showError(Exception e);
-    void collectData() throws NotPositiveQuantityException, AnnotationTooLongException, WrongFormatQuantityException, InvalidDeliveryInfoException, NoProductSelectedException;
+    void collectData() throws NotPositiveQuantityException, AnnotationTooLongException, WrongFormatQuantityException, InvalidDeliveryInfoException, NoProductSelectedException, FailedPaymentException;
 
 }

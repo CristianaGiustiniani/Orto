@@ -3,6 +3,8 @@ package com.orto.logic.model.entity;
 import com.orto.logic.utils.PaymentStatus;
 import com.orto.logic.utils.PaymentType;
 
+import java.math.BigDecimal;
+
 public class Payment {
     private PaymentType paymentType = null;
     private PaymentStatus paymentStatus = null;
@@ -26,7 +28,6 @@ public class Payment {
     public void setPaymentTypeOnline(){
         this.paymentType = PaymentType.ONLINE;
     }
-
     public PaymentStatus getPaymentStatus() {
         return paymentStatus;
     }

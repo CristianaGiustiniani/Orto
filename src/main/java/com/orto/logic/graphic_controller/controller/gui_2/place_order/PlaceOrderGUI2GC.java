@@ -1,6 +1,7 @@
 package com.orto.logic.graphic_controller.controller.gui_2.place_order;
 
 import com.orto.logic.controller.PlaceOrderController;
+import com.orto.logic.controller.exceptions.FailedPaymentException;
 import com.orto.logic.graphic_controller.bean.exceptions.AnnotationTooLongException;
 import com.orto.logic.graphic_controller.bean.exceptions.NotPositiveQuantityException;
 import com.orto.logic.graphic_controller.bean.exceptions.WrongFormatQuantityException;
@@ -8,7 +9,7 @@ import com.orto.logic.graphic_controller.controller.GUIGC;
 import com.orto.logic.graphic_controller.controller.PlaceOrderGC;
 import com.orto.logic.graphic_controller.controller.exceptions.DeliveryException;
 import com.orto.logic.graphic_controller.controller.exceptions.InvalidDeliveryInfoException;
-import com.orto.logic.graphic_controller.controller.exceptions.PaymentException;
+import com.orto.logic.controller.exceptions.PaymentException;
 import com.orto.logic.graphic_controller.controller.exceptions.ProductException;
 import com.orto.logic.model.entity.*;
 import com.orto.logic.model.entity.exceptions.NoProductSelectedException;
@@ -94,7 +95,7 @@ public class PlaceOrderGUI2GC extends GUIGC implements PlaceOrderGC {
     }
 
     @Override
-    public void collectData() throws NotPositiveQuantityException, AnnotationTooLongException, WrongFormatQuantityException, InvalidDeliveryInfoException, NoProductSelectedException {
+    public void collectData() throws NotPositiveQuantityException, AnnotationTooLongException, WrongFormatQuantityException, InvalidDeliveryInfoException, NoProductSelectedException, FailedPaymentException {
         switch (currentStep) {
             case PRODUCT_SELECTION:
                 List<OrderLine> lines = this.productSelectionGUI2GC.getLines();
@@ -106,7 +107,7 @@ public class PlaceOrderGUI2GC extends GUIGC implements PlaceOrderGC {
                 break;
             case PAYMENT_SELECTION:
                 Payment payment = this.paymentSelectionGUI2GC.getPaymentInfo();
-                controller.processPayment(payment);
+                controller.pay(payment);
                 break;
             case ORDER_SUMMARY:
         }
@@ -141,7 +142,7 @@ public class PlaceOrderGUI2GC extends GUIGC implements PlaceOrderGC {
     public void goToPaymentSelection(EnumSet<PaymentType> activePaymentTypes, BigDecimal totalPrice) {
         buttonNext.setVisible(false);
         buttonBack.setVisible(true);
-        this.paymentSelectionGUI2GC = new PaymentSelectionGUI2GC(this, activePaymentTypes, totalPrice);
+        this.paymentSelectionGUI2GC = new PaymentSelectionGUI2GC(activePaymentTypes, totalPrice, this::goToNextStep);
         paneContent.getChildren().clear();
         paneContent.getChildren().add(paymentSelectionGUI2GC.getRoot());
     }
@@ -168,13 +169,13 @@ public class PlaceOrderGUI2GC extends GUIGC implements PlaceOrderGC {
 
     @Override
     protected void setupTexts() {
-        String backText = null;
+        String backText;
         try {
             backText = I18n.t(currentStep.previous().getStep());
         } catch (StartOfEnumException e) {
             backText = I18n.t("BACK");
         }
-        String nextText = null;
+        String nextText;
         try {
             nextText = I18n.t(currentStep.next().getStep());
         } catch (EndOfEnumException e) {

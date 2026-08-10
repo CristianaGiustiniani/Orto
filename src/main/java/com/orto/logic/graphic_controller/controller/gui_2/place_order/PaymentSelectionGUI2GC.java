@@ -1,7 +1,7 @@
 package com.orto.logic.graphic_controller.controller.gui_2.place_order;
 
+import com.orto.logic.controller.exceptions.FailedPaymentException;
 import com.orto.logic.graphic_controller.controller.GUIGC;
-import com.orto.logic.graphic_controller.controller.PlaceOrderGC;
 import com.orto.logic.graphic_controller.controller.mapper.PriceMapper;
 import com.orto.logic.model.entity.Payment;
 import com.orto.logic.utils.I18n;
@@ -9,7 +9,6 @@ import com.orto.logic.utils.PaymentType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
 import java.math.BigDecimal;
@@ -17,9 +16,9 @@ import java.util.EnumSet;
 
 public class PaymentSelectionGUI2GC extends GUIGC {
     //ATTRIBUTES
-    private final PlaceOrderGC placeOrderGC;
     private final Payment payment;
     private final BigDecimal totalPrice;
+    private final Runnable onPaymentSelected;
 
     //FXML ELEMENTS
     @FXML private Text textTotal;
@@ -28,11 +27,11 @@ public class PaymentSelectionGUI2GC extends GUIGC {
     @FXML private Button buttonPayViaCash;
 
     //CONSTRUCTOR
-    public PaymentSelectionGUI2GC(PlaceOrderGC placeOrderGC, EnumSet<PaymentType> activePaymentTypes, BigDecimal totalPrice) {
+    public PaymentSelectionGUI2GC(EnumSet<PaymentType> activePaymentTypes, BigDecimal totalPrice, Runnable onPaymentSelected) {
         super("/views/views2/form/buyer/placeOrderElements/PaymentSelection.fxml");
-        this.placeOrderGC = placeOrderGC;
         this.payment = new Payment();
         this.totalPrice = totalPrice;
+        this.onPaymentSelected = onPaymentSelected;
         root = load();
         setupButtons(activePaymentTypes);
         setupTexts();
@@ -41,22 +40,24 @@ public class PaymentSelectionGUI2GC extends GUIGC {
     //INPUT METHODS
     @FXML private void clickButtonPayOnline() {
         payOnline();
-        placeOrderGC.goToNextStep();
     }
 
     @FXML private void clickButtonPayViaCash() {
         payByCash();
-        placeOrderGC.goToNextStep();
     }
 
     public void payByCash(){
         payment.setPaymentTypeCash();
-        payment.setPaymentStatusSuccessful();
+        if (onPaymentSelected != null) {
+            onPaymentSelected.run();
+        }
     }
 
     public void payOnline(){
         payment.setPaymentTypeOnline();
-        payment.setPaymentStatusSuccessful();
+        if (onPaymentSelected != null) {
+            onPaymentSelected.run();
+        }
     }
 
     public Payment getPaymentInfo() {
@@ -85,7 +86,13 @@ public class PaymentSelectionGUI2GC extends GUIGC {
 
     public void showError(Exception e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setContentText(e.getMessage());
+
+        if (e instanceof FailedPaymentException) {
+            alert.setContentText(I18n.t("ERROR_PLACEORDER_PAYMENTSELECTION_FAILEDPAYMENT"));
+        } else {
+            alert.setContentText(I18n.t(e.getMessage()));
+        }
+
         alert.showAndWait();
     }
 
