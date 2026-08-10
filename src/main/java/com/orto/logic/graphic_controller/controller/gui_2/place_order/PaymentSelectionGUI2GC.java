@@ -9,6 +9,7 @@ import com.orto.logic.utils.PaymentType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
 import java.math.BigDecimal;
@@ -25,6 +26,7 @@ public class PaymentSelectionGUI2GC extends GUIGC {
     @FXML private Text textTotalPrice;
     @FXML private Button buttonPayOnline;
     @FXML private Button buttonPayViaCash;
+    @FXML private Label labelError;
 
     //CONSTRUCTOR
     public PaymentSelectionGUI2GC(EnumSet<PaymentType> activePaymentTypes, BigDecimal totalPrice, Runnable onPaymentSelected) {
@@ -34,15 +36,18 @@ public class PaymentSelectionGUI2GC extends GUIGC {
         this.onPaymentSelected = onPaymentSelected;
         root = load();
         setupButtons(activePaymentTypes);
+        labelError.setVisible(false);
         setupTexts();
     }
 
     //INPUT METHODS
     @FXML private void clickButtonPayOnline() {
+        labelError.setVisible(false);
         payOnline();
     }
 
     @FXML private void clickButtonPayViaCash() {
+        labelError.setVisible(false);
         payByCash();
     }
 
@@ -71,8 +76,6 @@ public class PaymentSelectionGUI2GC extends GUIGC {
         textTotalPrice.setText("€" + (new PriceMapper()).toBean(totalPrice));
         buttonPayOnline.setText(I18n.t("GUI_PLACEORDER_PAYMENTSELECTION_VIEW_PAYONLINE"));
         buttonPayViaCash.setText(I18n.t("GUI_PLACEORDER_PAYMENTSELECTION_VIEW_PAYBYCASH"));
-
-
     }
 
     private void setupButtons(EnumSet<PaymentType> activePaymentTypes) {
@@ -85,15 +88,9 @@ public class PaymentSelectionGUI2GC extends GUIGC {
     }
 
     public void showError(Exception e) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-
-        if (e instanceof FailedPaymentException) {
-            alert.setContentText(I18n.t("ERROR_PLACEORDER_PAYMENTSELECTION_FAILEDPAYMENT"));
-        } else {
-            alert.setContentText(I18n.t(e.getMessage()));
-        }
-
-        alert.showAndWait();
+        labelError.setVisible(true);
+        String errorMessage = (e instanceof FailedPaymentException) ? I18n.t("ERROR_PLACEORDER_PAYMENTSELECTION_FAILEDPAYMENT") : e.getMessage();
+        labelError.setText(errorMessage);
     }
 
 
