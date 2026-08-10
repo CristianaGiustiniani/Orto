@@ -5,6 +5,7 @@ import com.orto.logic.utils.ProductType;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Map;
 
@@ -42,8 +43,8 @@ public class Seller {
     }
 
     public boolean isOpen() {
-        DayOfWeek today = LocalDateTime.now().getDayOfWeek();
-        LocalTime now = LocalTime.now();
+        DayOfWeek today = LocalDateTime.now(ZoneId.systemDefault()).getDayOfWeek();
+        LocalTime now = LocalTime.now(ZoneId.systemDefault());
 
         //negated expression to include the boundaries of the opening and closing times
         return !(now.isBefore(openingTimes.get(today).openingTime())) && (!now.isAfter(openingTimes.get(today).closingTime()));

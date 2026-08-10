@@ -44,11 +44,13 @@ public class PlaceOrderController {
 
     public void pay(Payment payment) throws FailedPaymentException {
         PaymentType type = payment.getPaymentType();
-        BigDecimal amount = order.getTotalPrice();
 
         if (type == PaymentType.ONLINE) {
+            //BigDecimal amount = order.getTotalPrice();
+
             //dummy assignation: should redirect to payment gateway;
             //in this dummy assignation, if i pay online, i get a failed payment
+
             payment.setPaymentStatusFailed();
             throw new FailedPaymentException();
         } else if (type == PaymentType.CASH) {
