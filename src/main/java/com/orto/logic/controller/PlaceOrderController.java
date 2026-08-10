@@ -46,8 +46,6 @@ public class PlaceOrderController {
         PaymentType type = payment.getPaymentType();
 
         if (type == PaymentType.ONLINE) {
-            //BigDecimal amount = order.getTotalPrice();
-
             //dummy assignation: should redirect to payment gateway;
             //in this dummy assignation, if i pay online, i get a failed payment
 
