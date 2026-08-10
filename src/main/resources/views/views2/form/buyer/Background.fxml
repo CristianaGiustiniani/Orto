@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 
 <BorderPane fx:id="borderPane" maxHeight="720.0" maxWidth="1280.0" minHeight="680.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../css/main.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
    <top>
@@ -22,11 +21,6 @@
                      <right>
                         <HBox alignment="CENTER" BorderPane.alignment="CENTER_RIGHT">
                            <children>
-                              <Text fx:id="textUsername" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text-light" text="HELLO, USERNAME">
-                                 <HBox.margin>
-                                    <Insets right="20.0" />
-                                 </HBox.margin>
-                              </Text>
                               <Button fx:id="buttonLogout" mnemonicParsing="false" onAction="#onButtonLogoutClick" styleClass="bt-stepAction4" text="LOGOUT">
                                  <HBox.margin>
                                     <Insets right="10.0" />

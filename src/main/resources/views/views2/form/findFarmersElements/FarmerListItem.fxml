@@ -13,7 +13,7 @@
          <children>
             <Text fx:id="textFarmerName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="FarmerName" wrappingWidth="272.39385986328125">
                <font>
-                  <Font name="Calibri" size="20.0" />
+                  <Font name="Calibri Bold" size="20.0" />
                </font>
                <VBox.margin>
                   <Insets left="10.0" />
@@ -29,7 +29,14 @@
             </Text>
          </children>
       </VBox>
-      <VBox alignment="CENTER_LEFT" prefWidth="260.0" />
+      <VBox alignment="CENTER_LEFT" prefWidth="260.0">
+         <children>
+            <Text fx:id="textOpeningStatus" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="OpeningStatus" wrappingWidth="235.7724609375">
+               <font>
+                  <Font name="Calibri Bold" size="14.0" />
+               </font>
+            </Text>
+         </children></VBox>
       <VBox alignment="CENTER_LEFT" prefWidth="260.0">
          <children>
             <Text fx:id="textProductTypes" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ProductTypes" wrappingWidth="235.7724609375">

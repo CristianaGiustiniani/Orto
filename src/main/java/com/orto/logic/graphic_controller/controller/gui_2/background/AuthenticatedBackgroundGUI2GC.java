@@ -6,12 +6,10 @@ import com.orto.logic.utils.I18n;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.text.Text;
 
 public class AuthenticatedBackgroundGUI2GC extends GUIGC implements AuthenticatedBackgroundGC {
     //FXML ATTRIBUTES
     @FXML Button buttonLogout;
-    @FXML Text textUsername;
 
     //CONSTRUCTOR
     public AuthenticatedBackgroundGUI2GC() {
@@ -31,7 +29,6 @@ public class AuthenticatedBackgroundGUI2GC extends GUIGC implements Authenticate
 
     //OUTPUT METHODS
     protected void setupTexts() {
-        textUsername.setText(I18n.t("GUI_BACKGROUND_VIEW_HELLO") + ", " + getLoggedUser().getUsername());
         buttonLogout.setText(I18n.t("GUI_BACKGROUND_VIEW_LOGOUT"));
     }
 

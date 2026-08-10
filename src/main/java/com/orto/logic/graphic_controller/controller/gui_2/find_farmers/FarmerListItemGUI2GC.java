@@ -29,6 +29,7 @@ public class FarmerListItemGUI2GC extends HBox {
     @FXML Text textFarmerLocation;
     @FXML Text textFarmerName;
     @FXML Text textProductTypes;
+    @FXML Text textOpeningStatus;
 
     //CONSTRUCTOR
     public FarmerListItemGUI2GC(Seller seller) {
@@ -68,6 +69,8 @@ public class FarmerListItemGUI2GC extends HBox {
         textFarmerName.setText(sellerBean.getName());
         textFarmerLocation.setText(toString(sellerBean.getAddress(), "half"));
         textProductTypes.setText(toString(sellerBean.getProductTypes()));
+        String openingStatus = seller.isOpen() ? I18n.t("GUI_FINDFARMERS_VIEW_OPEN") : I18n.t("GUI_FINDFARMERS_VIEW_CLOSED");
+        textOpeningStatus.setText(openingStatus);
     }
 
     private String toString(List<ProductType> types) {

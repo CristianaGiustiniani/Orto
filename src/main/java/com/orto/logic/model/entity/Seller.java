@@ -3,6 +3,8 @@ package com.orto.logic.model.entity;
 import com.orto.logic.utils.ProductType;
 
 import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
 
@@ -37,5 +39,13 @@ public class Seller {
 
     public Map<DayOfWeek, TimeSlot> getOpeningTimes() {
         return openingTimes;
+    }
+
+    public boolean isOpen() {
+        DayOfWeek today = LocalDateTime.now().getDayOfWeek();
+        LocalTime now = LocalTime.now();
+
+        //negated expression to include the boundaries of the opening and closing times
+        return !(now.isBefore(openingTimes.get(today).openingTime())) && (!now.isAfter(openingTimes.get(today).closingTime()));
     }
 }
