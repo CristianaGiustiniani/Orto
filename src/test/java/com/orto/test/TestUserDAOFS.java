@@ -16,7 +16,7 @@ import java.nio.file.StandardCopyOption;
 
 import static com.orto.logic.utils.PersistenceType.FILESYSTEM;
 
-public class UserDAOFSTest {
+public class TestUserDAOFS {
     private static final String USERS_FILE = "users.txt";
     private static final String BACKUP_FILE = "users_backup.txt";
 

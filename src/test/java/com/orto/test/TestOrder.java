@@ -13,7 +13,7 @@ import java.time.LocalTime;
 import java.util.*;
 
 
-public class OrderTest {
+public class TestOrder {
     /**
      * Tests for the Order class
      *

@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
-public class UserDAODBTest {
+public class TestUserDAODB {
     /**
      * Tests for the UserDAODB class
      *

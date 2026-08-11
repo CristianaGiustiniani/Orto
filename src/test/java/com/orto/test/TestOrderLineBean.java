@@ -8,7 +8,7 @@ import com.orto.logic.utils.QuantityUnit;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class OrderLineBeanTest {
+public class TestOrderLineBean {
     /**
      * Tests for the OrderLineBean class
      *
