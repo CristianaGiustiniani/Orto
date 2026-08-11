@@ -24,7 +24,7 @@ import java.time.LocalTime;
 
 public class DeliverySelectionGUI2GC extends GUIGC {
     //ATTRIBUTES
-    Seller seller;
+    private final Seller seller;
 
     //FXML ATTRIBUTES
     @FXML private TextField inputBuyerName;

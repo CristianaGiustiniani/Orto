@@ -92,10 +92,10 @@ public class Order {
         return delivery;
     }
     public boolean isDeliveryShipping() {
-        return delivery.deliveryType == DeliveryType.SHIPPING;
+        return delivery.getDeliveryType() == DeliveryType.SHIPPING;
     }
     public boolean isDeliveryPickup() {
-        return delivery.deliveryType == DeliveryType.PICKUP;
+        return delivery.getDeliveryType() == DeliveryType.PICKUP;
     }
     public Payment getPaymentInfo() {
         return payment;

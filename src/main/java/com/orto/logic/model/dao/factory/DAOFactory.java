@@ -8,7 +8,7 @@ import com.orto.logic.utils.Configuration;
 import com.orto.logic.utils.PersistenceType;
 
 public interface DAOFactory {
-    public static DAOFactory getDAOFactory() {
+    static DAOFactory getDAOFactory() {
         switch (Configuration.getInstance().getMode()) {
             case DEMO:
                 return new MEMDAOFactory();
@@ -16,7 +16,7 @@ public interface DAOFactory {
                 return new DBDAOFactory();
         }
     }
-    public static DAOFactory getDAOFactory(PersistenceType type) {
+    static DAOFactory getDAOFactory(PersistenceType type) {
         switch (type) {
             case INMEMORY:
                 return new MEMDAOFactory();
@@ -28,10 +28,10 @@ public interface DAOFactory {
     }
 
 
-    public abstract UserDAO getUserDAO();
-    public abstract SellerDAO getSellerDAO();
-    public abstract OrderDAO getOrderDAO();
-    public abstract ProductDAO getProductDAO();
+    UserDAO getUserDAO();
+    SellerDAO getSellerDAO();
+    OrderDAO getOrderDAO();
+    ProductDAO getProductDAO();
 
 
 }

@@ -4,17 +4,10 @@ import com.orto.logic.utils.Configuration;
 import com.orto.logic.utils.Session;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 
 import java.io.IOException;
 
 public abstract class GUIGC {
-    /*I controller grafici fanno quattro cose:
-        - metodi per gestire azioni dell'utente
-        - metodi per leggere input
-        - metodi per mostrare output ----> showError, composizione della view o delego a GCFactory
-        - metodi per convertire bean in model e viceversa ---> lo delego a Mapper
-     */
     protected Parent root;
     protected final String fxmlPath;
 

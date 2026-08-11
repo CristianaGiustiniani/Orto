@@ -20,7 +20,7 @@ import java.util.List;
 
 public class ProductSelectionGUI1GC extends GUIGC {
     //ATTRIBUTES
-    List <ProductListItemGUI1GC> orderLinesGC = new ArrayList<>();
+    private final List <ProductListItemGUI1GC> orderLinesGC = new ArrayList<>();
 
     //FXML ATTRIBUTES
     @FXML private Label labelProductSelection;
