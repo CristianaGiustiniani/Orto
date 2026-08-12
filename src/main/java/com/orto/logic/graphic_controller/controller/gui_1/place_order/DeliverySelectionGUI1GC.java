@@ -199,8 +199,8 @@ public class DeliverySelectionGUI1GC extends GUIGC {
         textTo5.setText(to);
         textTo6.setText(to);
         labelProductSelection.setText(I18n.t("STEP_PRODUCT_SELECTION"));
-        labelDelivery.setText(I18n.t("STEP_PAYMENT_SELECTION"));
-        labelPayment.setText(I18n.t("STEP_DELIVERY_SELECTION"));
+        labelDelivery.setText(I18n.t("STEP_DELIVERY_SELECTION"));
+        labelPayment.setText(I18n.t("STEP_PAYMENT_SELECTION"));
         labelSummary.setText(I18n.t("STEP_ORDER_SUMMARY"));
     }
 
