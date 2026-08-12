@@ -255,19 +255,6 @@ INSERT INTO `orto`.`Product` (`id`, `name`, `seller`, `description`, `price`, `u
 
 COMMIT;
 
-
--- -----------------------------------------------------
--- Data for table `orto`.`Buyer`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `orto`;
-INSERT INTO `orto`.`Buyer` (`id`, `username`, `name`, `surname`, `email`, `password`) VALUES (1, 'cristiana', 'cristiana', 'giustiniani', 'crisgius@gmail.com', '$2a$10$T4E2mmeHfmmTkicnoQcCTebRptWMpX/EsSzZ53yD89uaYkWGDWgn6');
-INSERT INTO `orto`.`Buyer` (`id`, `username`, `name`, `surname`, `email`, `password`) VALUES (2, 'maria61', 'marianna', 'sabatini', 'maria6116@libero.it', '$2a$10$T4E2mmeHfmmTkicnoQcCTebRptWMpX/EsSzZ53yD89uaYkWGDWgn6');
-INSERT INTO `orto`.`Buyer` (`id`, `username`, `name`, `surname`, `email`, `password`) VALUES (3, 'robiforzaroma', 'roberta', 'lupi', 'dajeromadaje@gmail.com', '$2a$10$T4E2mmeHfmmTkicnoQcCTebRptWMpX/EsSzZ53yD89uaYkWGDWgn6');
-
-COMMIT;
-
-
 -- -----------------------------------------------------
 -- Data for table `orto`.`OpeningHours`
 -- -----------------------------------------------------
