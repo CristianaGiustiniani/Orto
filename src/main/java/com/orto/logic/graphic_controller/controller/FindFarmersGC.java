@@ -15,16 +15,16 @@ public interface FindFarmersGC {
             return (new FindFarmersController()).getFarmers();
         } catch (ConnectionException e) {
             showError(I18n.t("ERROR_CONNECTION"));
-            GCFactory.getInstance().createHome();
+            GCFactoryProvider.getInstance().createHome();
         }
         return Collections.emptyList();
     }
 
     default void placeOrder(Seller seller) {
         if (Session.getInstance().isLogged()) {
-            GCFactory.getInstance().createPlaceOrder(seller);
+            GCFactoryProvider.getInstance().createPlaceOrder(seller);
         } else {
-            GCFactory.getInstance().createLogin();
+            GCFactoryProvider.getInstance().createLogin();
         }
     }
 

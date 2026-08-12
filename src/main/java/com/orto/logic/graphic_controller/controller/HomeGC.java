@@ -5,13 +5,13 @@ import com.orto.logic.utils.Session;
 public interface HomeGC {
     default void viewPurchases() {
         if (Session.getInstance().isLogged()) {
-            GCFactory.getInstance().createPurchaseHistory();
+            GCFactoryProvider.getInstance().createPurchaseHistory();
         } else {
-            GCFactory.getInstance().createLogin();
+            GCFactoryProvider.getInstance().createLogin();
         }
     }
 
     default void findFarmers() {
-        GCFactory.getInstance().createFindFarmers();
+        GCFactoryProvider.getInstance().createFindFarmers();
     }
 }

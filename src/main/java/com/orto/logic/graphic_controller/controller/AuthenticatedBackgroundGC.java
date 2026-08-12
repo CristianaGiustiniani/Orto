@@ -9,7 +9,7 @@ import com.orto.logic.utils.exceptions.IllegalNullUserException;
 
 public interface AuthenticatedBackgroundGC {
     default void home() {
-        GCFactory.getInstance().createHome();
+        GCFactoryProvider.getInstance().createHome();
     }
 
     default void logout() {
@@ -18,7 +18,7 @@ public interface AuthenticatedBackgroundGC {
         } catch (ForgetUserException e) {
             showError(I18n.t("ERROR_LOGOUT"));
         } finally {
-            GCFactory.getInstance().createHome();
+            GCFactoryProvider.getInstance().createHome();
         }
     }
 
@@ -28,7 +28,7 @@ public interface AuthenticatedBackgroundGC {
             user = Session.getInstance().getLoggedUser();
         } catch (IllegalNullUserException e) {
             showError(I18n.t("ERROR_BACKGROUND_ILLEGALNULLUSER"));
-            GCFactory.getInstance().createHome();
+            GCFactoryProvider.getInstance().createHome();
         }
         return user;
     }

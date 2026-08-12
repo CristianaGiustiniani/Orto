@@ -30,7 +30,7 @@ public interface PlaceOrderGC {
             setCurrentStep(nextStep);
             goToStep(nextStep);
         } catch (EndOfEnumException e) {
-            GCFactory.getInstance().createHome();
+            GCFactoryProvider.getInstance().createHome();
         } catch (ProductException | DeliveryException | PaymentException e) {
             showError(e);
         }
@@ -42,7 +42,7 @@ public interface PlaceOrderGC {
             setCurrentStep(previousStep);
             goToStep(previousStep);
         } catch (StartOfEnumException e) {
-            GCFactory.getInstance().createHome();
+            GCFactoryProvider.getInstance().createHome();
         }
     }
 

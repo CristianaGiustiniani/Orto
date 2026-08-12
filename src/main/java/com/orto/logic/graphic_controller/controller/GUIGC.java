@@ -31,9 +31,9 @@ public abstract class GUIGC {
 
     protected Parent loadBackground() {
         if (Session.getInstance().isLogged()) {
-            return ((GUIGC)(GCFactory.getInstance().createAuthenticatedBackground())).getRoot();
+            return ((GUIGC)(GCFactoryProvider.getInstance().createAuthenticatedBackground())).getRoot();
         } else {
-            return ((GUIGC)(GCFactory.getInstance().createPublicBackground())).getRoot();
+            return ((GUIGC)(GCFactoryProvider.getInstance().createPublicBackground())).getRoot();
         }
     }
 
