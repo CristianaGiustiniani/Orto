@@ -68,8 +68,8 @@ public class ProductSelectionGUI1GC extends GUIGC {
     @Override
     protected void setupTexts() {
         labelProductSelection.setText(I18n.t("STEP_PRODUCT_SELECTION"));
-        labelDelivery.setText(I18n.t("STEP_PAYMENT_SELECTION"));
-        labelPayment.setText(I18n.t("STEP_DELIVERY_SELECTION"));
+        labelDelivery.setText(I18n.t("STEP_DELIVERY_SELECTION"));
+        labelPayment.setText(I18n.t("STEP_PAYMENT_SELECTION"));
         labelSummary.setText(I18n.t("STEP_ORDER_SUMMARY"));
         textProductName.setText(I18n.t("GUI_PLACEORDER_PRODUCTSELECTION_VIEW_PRODUCTNAME"));
         textDescription.setText(I18n.t("GUI_PLACEORDER_PRODUCTSELECTION_VIEW_DESCRIPTION"));
