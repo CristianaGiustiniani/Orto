@@ -35,7 +35,7 @@ public class ProductListItemGUI1GC extends HBox {
     @FXML Text textProductPrice;
 
     //CONSTRUCTOR
-    public  ProductListItemGUI1GC(Product product) {
+    public ProductListItemGUI1GC(Product product) {
         this.product = product;
         root = load();
         setupTexts();

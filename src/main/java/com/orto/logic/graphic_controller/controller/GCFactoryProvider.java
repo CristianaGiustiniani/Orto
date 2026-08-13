@@ -22,7 +22,6 @@ public final class GCFactoryProvider {
         return switch (uiType) {
             case GUI_1 -> new GUI1GCFactory();
             case GUI_2 -> new GUI2GCFactory();
-            default -> new GUI1GCFactory();
         };
     }
 }
