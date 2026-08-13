@@ -8,7 +8,6 @@ import com.orto.logic.model.entity.exceptions.WrongPasswordException;
 import com.orto.logic.utils.Configuration;
 import com.orto.logic.utils.I18n;
 import com.orto.logic.graphic_controller.bean.LoginBean;
-import com.orto.logic.graphic_controller.bean.exceptions.InvalidStringException;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;

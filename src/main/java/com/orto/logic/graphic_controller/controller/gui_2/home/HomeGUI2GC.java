@@ -2,15 +2,12 @@ package com.orto.logic.graphic_controller.controller.gui_2.home;
 
 import com.orto.logic.graphic_controller.controller.GUIGC;
 import com.orto.logic.graphic_controller.controller.HomeGC;
-import com.orto.logic.graphic_controller.controller.gui_2.find_farmers.FindFarmersGUI2GC;
 import com.orto.logic.utils.Configuration;
 import com.orto.logic.utils.I18n;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 

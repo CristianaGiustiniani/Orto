@@ -2,23 +2,18 @@ package com.orto.logic.graphic_controller.controller.gui_1.place_order;
 
 import com.orto.logic.controller.exceptions.FailedPaymentException;
 import com.orto.logic.graphic_controller.controller.GUIGC;
-import com.orto.logic.graphic_controller.controller.PlaceOrderGC;
-import com.orto.logic.graphic_controller.controller.exceptions.InvalidDeliveryInfoException;
 import com.orto.logic.graphic_controller.controller.mapper.PriceMapper;
 import com.orto.logic.model.entity.Payment;
-import com.orto.logic.model.entity.Seller;
 import com.orto.logic.utils.I18n;
 import com.orto.logic.utils.PaymentType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 import java.math.BigDecimal;
 import java.util.EnumSet;
-import java.util.function.Consumer;
 
 public class PaymentSelectionGUI1GC extends GUIGC {
     //ATTRIBUTES

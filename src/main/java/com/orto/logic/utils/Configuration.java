@@ -1,7 +1,6 @@
 package com.orto.logic.utils;
 
 import com.orto.logic.utils.exceptions.*;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.util.Locale;

@@ -3,7 +3,6 @@ package com.orto.logic.graphic_controller.controller.gui_2.place_order;
 import com.orto.logic.graphic_controller.controller.GUIGC;
 import com.orto.logic.utils.I18n;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
 public class OrderSummaryGUI2GC extends GUIGC {

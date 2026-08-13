@@ -1,10 +1,7 @@
 package com.orto.logic.graphic_controller.controller.gui_1.find_farmers;
 
-
-import com.orto.logic.graphic_controller.bean.SellerBean;
 import com.orto.logic.graphic_controller.controller.FindFarmersGC;
 import com.orto.logic.graphic_controller.controller.GUIGC;
-import com.orto.logic.graphic_controller.controller.mapper.SellerMapper;
 import com.orto.logic.model.entity.Seller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

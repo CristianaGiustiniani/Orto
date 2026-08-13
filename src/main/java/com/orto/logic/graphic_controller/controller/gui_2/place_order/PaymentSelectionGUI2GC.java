@@ -7,7 +7,6 @@ import com.orto.logic.model.entity.Payment;
 import com.orto.logic.utils.I18n;
 import com.orto.logic.utils.PaymentType;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
