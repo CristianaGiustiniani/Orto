@@ -48,7 +48,8 @@ public class UserDAOFS implements UserDAO {
         }
     }
 
-    public static User getUser() throws NoRememberedUserException, ConnectionException {
+    @Override
+    public User getUser() throws NoRememberedUserException, ConnectionException {
         File file = new File(PATHNAME);
         try {
             if (file.exists()) {
@@ -98,7 +99,8 @@ public class UserDAOFS implements UserDAO {
         }
     }
 
-    public static synchronized void forgetUser() throws ForgetUserException {
+    @Override
+    public synchronized void forgetUser() throws ForgetUserException {
         try {
             Files.deleteIfExists(Paths.get(PATHNAME));
         } catch (IOException e) {
