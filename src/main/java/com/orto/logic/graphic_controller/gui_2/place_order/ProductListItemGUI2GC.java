@@ -2,13 +2,14 @@ package com.orto.logic.graphic_controller.gui_2.place_order;
 
 import com.orto.logic.controller.bean.ProductBean;
 import com.orto.logic.graphic_controller.graphic_elements.ProductListItemGC;
+import com.orto.logic.utils.I18n;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
 public class ProductListItemGUI2GC extends ProductListItemGC {
     //FXML ATTRIBUTES
-    @FXML Text textProductDescription;
-    @FXML Text textProductPrice;
+    @FXML Text textQuantity;
+    @FXML Text textAdditionalRequests;
 
     //CONSTRUCTOR
     public ProductListItemGUI2GC(ProductBean product) {
@@ -19,7 +20,7 @@ public class ProductListItemGUI2GC extends ProductListItemGC {
     @Override
     protected void setupTexts() {
         super.setupTexts();
-        textProductDescription.setText(product.getDescription());
-        textProductPrice.setText("€" + product.getPrice() + "/" + toString(product.getQuantityUnit()));
+        textQuantity.setText(I18n.t("GUI_PLACEORDER_PRODUCTSELECTION_VIEW_QUANTITY"));
+        textAdditionalRequests.setText(I18n.t("GUI_PLACEORDER_PRODUCTSELECTION_VIEW_ADDITIONALREQUESTS"));
     }
 }

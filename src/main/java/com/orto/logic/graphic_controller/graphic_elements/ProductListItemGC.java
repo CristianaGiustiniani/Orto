@@ -31,7 +31,7 @@ public abstract class ProductListItemGC extends HBox {
     @FXML Text textProductPrice;
 
     //CONSTRUCTOR
-    public ProductListItemGC(ProductBean product) {
+    protected ProductListItemGC(ProductBean product) {
         this.product = product;
         root = load();
         setupTexts();
