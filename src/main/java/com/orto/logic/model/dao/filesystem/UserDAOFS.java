@@ -154,7 +154,7 @@ public class UserDAOFS implements UserDAO {
     //parses line into parts
     private String[] parseLine(String line) {
         if (line == null || line.trim().isEmpty()) {
-            return null;
+            return new String[0];
         }
         String[] parts = line.split(",", 6);
         return parts.length == 6 ? parts : null;

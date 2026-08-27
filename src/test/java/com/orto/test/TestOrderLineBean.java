@@ -8,7 +8,7 @@ import com.orto.logic.utils.QuantityUnit;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestOrderLineBean {
+class TestOrderLineBean {
     /**
      * Tests for the OrderLineBean class
      *
@@ -16,7 +16,7 @@ public class TestOrderLineBean {
      */
 
     @Test
-    public void testValidateRightBean() {
+    void testValidateRightBean() {
         //creating a properly formatted bean
         OrderLineBean bean = new OrderLineBean();
         bean.setProductId(1);
@@ -30,7 +30,7 @@ public class TestOrderLineBean {
     }
 
     @Test
-    public void testValidateRightBeanPoorlyFormattedQuantity() {
+    void testValidateRightBeanPoorlyFormattedQuantity() {
         //creating a bean with a poorly formatted quantity that can still be parsed
         OrderLineBean bean = new OrderLineBean();
         bean.setProductId(1);
@@ -44,7 +44,7 @@ public class TestOrderLineBean {
     }
 
     @Test
-    public void testValidateIncompatibleQuantity() {
+    void testValidateIncompatibleQuantity() {
         //creating a bean with quantity not compatible with quantity unit
         OrderLineBean bean = new OrderLineBean();
         bean.setProductId(1);
@@ -58,7 +58,7 @@ public class TestOrderLineBean {
     }
 
     @Test
-    public void testValidateWrongFormatQuantity() {
+    void testValidateWrongFormatQuantity() {
         //creating a bean with a wrong format quantity
         OrderLineBean bean = new OrderLineBean();
         bean.setProductId(1);
@@ -72,7 +72,7 @@ public class TestOrderLineBean {
     }
 
     @Test
-    public void testValidateNullQuantity() {
+    void testValidateNullQuantity() {
         //creating a bean but not defining a quantity
         OrderLineBean bean = new OrderLineBean();
         bean.setProductId(1);
@@ -85,7 +85,7 @@ public class TestOrderLineBean {
     }
 
     @Test
-    public void testValidateAnnotationTooLong() {
+    void testValidateAnnotationTooLong() {
         //creating an annotation that is longer than 200 characters
         String annotation = "";
         for (int i = 0; i < 201; i++) {

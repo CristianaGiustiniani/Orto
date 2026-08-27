@@ -6,14 +6,14 @@ import com.orto.logic.controller.bean.TimeSlotBean;
 import com.orto.logic.model.entity.TimeSlot;
 
 import java.time.DayOfWeek;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 public class SellerMapper implements Mapper <Seller, SellerBean>{
 
     public SellerBean toBean(Seller seller) {
         SellerBean sellerBean = new SellerBean();
-        Map<DayOfWeek, TimeSlotBean> openingHoursBean = new HashMap<>();
+        Map<DayOfWeek, TimeSlotBean> openingHoursBean = new EnumMap<>(DayOfWeek.class);
         TimeSlotBean timeSlotBean = new TimeSlotBean();
 
         //converting seller fields into sellerBean fields
@@ -35,7 +35,7 @@ public class SellerMapper implements Mapper <Seller, SellerBean>{
 
     @Override
     public Seller toEntity(SellerBean bean) {
-        Map<DayOfWeek, TimeSlot> openingTimes = new HashMap<>();
+        Map<DayOfWeek, TimeSlot> openingTimes = new EnumMap<>(DayOfWeek.class);
         for (DayOfWeek day : DayOfWeek.values()) {
             TimeSlotBean timeSlotBean = bean.getOpeningHours().get(day);
             openingTimes.put(day, new TimeSlot(

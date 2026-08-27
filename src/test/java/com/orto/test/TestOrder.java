@@ -13,7 +13,7 @@ import java.time.LocalTime;
 import java.util.*;
 
 
-public class TestOrder {
+class TestOrder {
     /**
      * Tests for the Order class
      *
@@ -21,7 +21,7 @@ public class TestOrder {
      */
 
     @Test
-    public void testAddSeller() {
+    void testAddSeller() {
         Order order = new Order();
 
         //creating a seller
@@ -52,7 +52,7 @@ public class TestOrder {
     }
 
     @Test
-    public void testAddLines() throws NoProductSelectedException {
+    void testAddLines() throws NoProductSelectedException {
         Order order = new Order();
 
         //creating an OrderLine
@@ -79,7 +79,7 @@ public class TestOrder {
     }
 
     @Test
-    public void testAddLinesEmptyLines() {
+    void testAddLinesEmptyLines() {
         Order order = new Order();
 
         //creating an empty OrderLine
@@ -94,7 +94,7 @@ public class TestOrder {
     }
 
     @Test
-    public void testAddDeliveryInfo() {
+    void testAddDeliveryInfo() {
         Order order = new Order();
 
         //creating a delivery
@@ -119,7 +119,7 @@ public class TestOrder {
     }
 
     @Test
-    public void testIsDeliveryShipping() {
+    void testIsDeliveryShipping() {
         Order order = new Order();
 
         //creating a delivery
@@ -144,7 +144,7 @@ public class TestOrder {
     }
 
     @Test
-    public void testIsDeliveryPickup() {
+    void testIsDeliveryPickup() {
         Order order = new Order();
 
         //creating a delivery
@@ -169,7 +169,7 @@ public class TestOrder {
     }
 
     @Test
-    public void testAddPaymentInfo() {
+    void testAddPaymentInfo() {
         Order order = new Order();
 
         //creating a payment
@@ -185,7 +185,7 @@ public class TestOrder {
     }
 
     @Test
-    public void testIsPaymentCash() {
+    void testIsPaymentCash() {
         Order order = new Order();
 
         //creating a payment
@@ -201,7 +201,7 @@ public class TestOrder {
     }
 
     @Test
-    public void testIsPaymentOnline() {
+    void testIsPaymentOnline() {
         Order order = new Order();
 
         //creating a payment

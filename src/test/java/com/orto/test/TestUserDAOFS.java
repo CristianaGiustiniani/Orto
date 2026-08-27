@@ -11,9 +11,9 @@ import java.nio.file.Path;
 
 import com.orto.logic.model.dao.filesystem.UserDAOFS;
 
-public class TestUserDAOFS {
+class TestUserDAOFS {
     @Test
-    public void testCreateUser() throws Exception {
+    void testCreateUser() throws Exception {
         Path usersFile = Files.createTempFile("test-users-", ".txt");
         try {
             UserDAO userDAO = new UserDAOFS(usersFile);

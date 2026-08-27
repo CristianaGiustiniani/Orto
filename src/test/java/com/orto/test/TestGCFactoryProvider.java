@@ -9,15 +9,15 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestGCFactoryProvider {
+class TestGCFactoryProvider {
     @Test
-    public void testCreateFactoryUsesGui1Implementation() {
+    void testCreateFactoryUsesGui1Implementation() {
         GCFactory factory = GCFactoryProvider.createFactory(UIType.GUI_1);
         assertInstanceOf(GUI1GCFactory.class, factory);
     }
 
     @Test
-    public void testCreateFactoryUsesGui2Implementation() {
+    void testCreateFactoryUsesGui2Implementation() {
         GCFactory factory = GCFactoryProvider.createFactory(UIType.GUI_2);
         assertInstanceOf(GUI2GCFactory.class, factory);
     }

@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
-public class TestUserDAODB {
+class TestUserDAODB {
     /**
      * Tests for the UserDAODB class
      *
@@ -22,7 +22,7 @@ public class TestUserDAODB {
      */
 
     @Test
-    public void testGetUserRightId() throws WrongEmailException, ConnectionException, WrongPasswordException {
+    void testGetUserRightId() throws WrongEmailException, ConnectionException, WrongPasswordException {
         UserDAO userDAO = new UserDAODB();
         User existingUser = new User(
                 1,
@@ -34,7 +34,7 @@ public class TestUserDAODB {
     }
 
     @Test
-    public void testGetUserRightUsername() throws WrongEmailException, ConnectionException, WrongPasswordException {
+    void testGetUserRightUsername() throws WrongEmailException, ConnectionException, WrongPasswordException {
         UserDAO userDAO = new UserDAODB();
         User existingUser = new User(
                 1,
@@ -46,7 +46,7 @@ public class TestUserDAODB {
     }
 
     @Test
-    public void testGetUserWrongPassword() throws WrongEmailException, ConnectionException {
+    void testGetUserWrongPassword() throws WrongEmailException, ConnectionException {
         UserDAO userDAO = new UserDAODB();
         try {
             userDAO.getUser("crisgius@gmail.com", "wrongpassword");
@@ -56,7 +56,7 @@ public class TestUserDAODB {
     }
 
     @Test
-    public void testGetUserWrongEmail() throws ConnectionException, WrongPasswordException {
+    void testGetUserWrongEmail() throws ConnectionException, WrongPasswordException {
         UserDAO userDAO = new UserDAODB();
         try {
             userDAO.getUser("nonexistent@orto.it", "orto");
@@ -66,7 +66,7 @@ public class TestUserDAODB {
     }
 
     @Test
-    public void testCreateUserUsernameAlreadyExists() throws EmailAlreadyExistsException, ConnectionException {
+    void testCreateUserUsernameAlreadyExists() throws EmailAlreadyExistsException, ConnectionException {
         UserDAO userDAO = new UserDAODB();
         try {
             userDAO.createUser(
@@ -82,7 +82,7 @@ public class TestUserDAODB {
     }
 
     @Test
-    public void testCreateUserEmailAlreadyExists() throws UsernameAlreadyExistsException, ConnectionException {
+    void testCreateUserEmailAlreadyExists() throws UsernameAlreadyExistsException, ConnectionException {
         UserDAO userDAO = new UserDAODB();
         try {
             userDAO.createUser(
@@ -96,6 +96,4 @@ public class TestUserDAODB {
             assertNotNull(e);
         }
     }
-
-
 }
