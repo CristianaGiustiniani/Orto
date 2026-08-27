@@ -1,9 +1,9 @@
 package com.orto.test;
 
-import com.orto.logic.graphic_controller.bean.OrderLineBean;
-import com.orto.logic.graphic_controller.bean.exceptions.AnnotationTooLongException;
-import com.orto.logic.graphic_controller.bean.exceptions.NullQuantityException;
-import com.orto.logic.graphic_controller.bean.exceptions.WrongFormatQuantityException;
+import com.orto.logic.controller.bean.OrderLineBean;
+import com.orto.logic.controller.bean.exceptions.AnnotationTooLongException;
+import com.orto.logic.controller.bean.exceptions.NullQuantityException;
+import com.orto.logic.controller.bean.exceptions.WrongFormatQuantityException;
 import com.orto.logic.utils.QuantityUnit;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

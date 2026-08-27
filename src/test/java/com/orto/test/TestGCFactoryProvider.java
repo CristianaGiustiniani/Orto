@@ -1,9 +1,9 @@
 package com.orto.test;
 
-import com.orto.logic.graphic_controller.controller.GCFactory;
-import com.orto.logic.graphic_controller.controller.GCFactoryProvider;
-import com.orto.logic.graphic_controller.controller.gui_1.GUI1GCFactory;
-import com.orto.logic.graphic_controller.controller.gui_2.GUI2GCFactory;
+import com.orto.logic.graphic_controller.GCFactory;
+import com.orto.logic.graphic_controller.GCFactoryProvider;
+import com.orto.logic.graphic_controller.gui_1.GUI1GCFactory;
+import com.orto.logic.graphic_controller.gui_2.GUI2GCFactory;
 import com.orto.logic.utils.UIType;
 import org.junit.jupiter.api.Test;
 

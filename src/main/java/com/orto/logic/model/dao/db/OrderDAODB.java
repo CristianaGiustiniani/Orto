@@ -5,7 +5,7 @@ import com.orto.logic.model.dao.exceptions.ConnectionException;
 import com.orto.logic.model.entity.Order;
 import com.orto.logic.model.entity.OrderLine;
 import com.orto.logic.utils.DBConnection;
-import com.orto.logic.utils.Session;
+import com.orto.logic.utils.SessionManager;
 import com.orto.logic.utils.exceptions.IllegalNullUserException;
 
 import java.sql.*;
@@ -24,7 +24,7 @@ public class OrderDAODB implements OrderDAO {
              PreparedStatement ps3 = conn.prepareStatement(query3)) {
 
             //Insert order
-            ps1.setInt(1, Session.getInstance().getLoggedUser().getId());
+            ps1.setInt(1, SessionManager.getInstance().getLoggedUser().getId());
             ps1.setInt(2, order.getSeller().getId());
             ps1.setString(3, order.getPaymentInfo().getPaymentType().toString().toLowerCase());
             ps1.setString(4, order.getPaymentInfo().getPaymentStatus().toString().toLowerCase());

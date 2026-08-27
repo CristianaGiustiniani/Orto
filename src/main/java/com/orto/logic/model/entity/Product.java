@@ -5,11 +5,11 @@ import com.orto.logic.utils.QuantityUnit;
 import java.math.BigDecimal;
 
 public class Product {
-    private Integer id;
-    private String name;
-    private String description;
-    private BigDecimal price;
-    private QuantityUnit quantityUnit;
+    private final Integer id;
+    private final String name;
+    private String description = null;
+    private BigDecimal price = null;
+    private QuantityUnit quantityUnit = null;
 
     public Product(Integer id, String name, String description, BigDecimal price, QuantityUnit quantityUnit) {
         this.id = id;
@@ -18,6 +18,12 @@ public class Product {
         this.price = price;
         this.quantityUnit = quantityUnit;
     }
+
+    public Product(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
 
     public Integer getId() {
         return id;

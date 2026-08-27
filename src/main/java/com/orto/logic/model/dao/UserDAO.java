@@ -18,7 +18,7 @@ public interface UserDAO {
         throw new NoRememberedUserException();
     }
 
-    default void forgetUser() throws ForgetUserException {
+    default void forgetUser(User user) throws ForgetUserException {
         // no op by default
     }
 }

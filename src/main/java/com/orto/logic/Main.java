@@ -1,7 +1,7 @@
 package com.orto.logic;
 
 import com.orto.logic.controller.LoginController;
-import com.orto.logic.graphic_controller.controller.GCFactoryProvider;
+import com.orto.logic.graphic_controller.GCFactoryProvider;
 import com.orto.logic.utils.Configuration;
 import com.orto.logic.utils.exceptions.*;
 import javafx.application.Application;

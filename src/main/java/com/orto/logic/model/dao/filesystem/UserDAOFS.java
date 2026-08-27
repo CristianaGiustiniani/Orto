@@ -12,34 +12,36 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.util.List;
+import java.util.ArrayList;
 
 public class UserDAOFS implements UserDAO {
-    private static final String PATHNAME = "users.txt";
+    private static final Path DEFAULT_PATH = Paths.get("users.txt");
+    private final Path path;
+
+
+    public UserDAOFS() {
+        this(DEFAULT_PATH);
+    }
+    //for testing purposes
+    public UserDAOFS(Path path) {
+        this.path = path;
+    }
 
     @Override
-    public User getUser(String email, String password) throws ConnectionException, WrongPasswordException, WrongEmailException {
+    public synchronized User getUser(String email, String password) throws ConnectionException, WrongPasswordException, WrongEmailException {
         initializeFile();
         try {
-            List<String> lines = Files.readAllLines(Paths.get(PATHNAME));
+            List<String> lines = Files.readAllLines(path);
             for (String line : lines) {
-                if (line.trim().isEmpty()) continue;
-
-                String[] parts = line.split(",", 6);
-
-                if (parts.length == 6) {
-                    String id = parts[0];
-                    String username = parts[1];
-                    String name = parts[2];
-                    String surname = parts[3];
-                    String storedEmail = parts[4];
-                    String hashedPassword = parts[5];
-
-                    if (storedEmail.equals(email)) {
-                        User user = new User(Integer.parseInt(id), username, name, surname, hashedPassword);
-                        user.checkPassword(password);
-                        return user;
-                    }
+                String[] parts = parseLine(line);
+                if (parts != null && parts[4].equals(email)) {
+                    User user = toUser(parts);
+                    user.checkPassword(password);
+                    return user;
                 }
             }
             throw new WrongEmailException();
@@ -49,24 +51,16 @@ public class UserDAOFS implements UserDAO {
     }
 
     @Override
-    public User getUser() throws NoRememberedUserException, ConnectionException {
-        File file = new File(PATHNAME);
+    public synchronized User getUser() throws NoRememberedUserException, ConnectionException {
+        File file = path.toFile();
         try {
             if (file.exists()) {
-                List<String> lines = Files.readAllLines(Paths.get(PATHNAME));
+                List<String> lines = Files.readAllLines(path);
 
-                for (String line : lines) {
-                    if (line.trim().isEmpty()) continue;
-
-                    String[] parts = line.split(",", 6);
-
-                    if (parts.length == 6) {
-                        String id = parts[0];
-                        String username = parts[1];
-                        String name = parts[2];
-                        String surname = parts[3];
-                        String hashedPassword = parts[4];
-                        return new User(Integer.parseInt(id), username, name, surname, hashedPassword);
+                for (int i = lines.size() - 1; i >= 0; i--) {
+                    String[] parts = parseLine(lines.get(i));
+                    if (parts != null) {
+                        return toUser(parts);
                     }
                 }
             }
@@ -77,12 +71,12 @@ public class UserDAOFS implements UserDAO {
     }
 
     @Override
-    public void createUser(User user, String email, String password) throws ConnectionException, UsernameAlreadyExistsException, EmailAlreadyExistsException {
+    public synchronized void createUser(User user, String email, String password) throws ConnectionException, UsernameAlreadyExistsException, EmailAlreadyExistsException {
         initializeFile();
         try {
-            File file = new File(PATHNAME);
+            File file = path.toFile();
             if (file.exists()) {
-                List<String> lines = Files.readAllLines(Paths.get(PATHNAME));
+                List<String> lines = Files.readAllLines(path);
                 for (String line : lines) {
                     if (line.trim().isEmpty()) continue;
                     checkUniqueUsernameAndEmail(line, user.getUsername(), email);
@@ -90,7 +84,7 @@ public class UserDAOFS implements UserDAO {
             }
 
             String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
-            try (FileWriter fw = new FileWriter(PATHNAME, true);
+            try (FileWriter fw = new FileWriter(path.toFile(), true);
                  PrintWriter pw = new PrintWriter(fw)) {
                 pw.println(user.getId() + "," + user.getUsername() + "," + user.getName() + "," + user.getSurname() + "," + email + "," + hashedPassword);
             }
@@ -100,16 +94,39 @@ public class UserDAOFS implements UserDAO {
     }
 
     @Override
-    public synchronized void forgetUser() throws ForgetUserException {
+    public synchronized void forgetUser(User user) throws ForgetUserException {
+        if (user == null) {
+            return;
+        }
         try {
-            Files.deleteIfExists(Paths.get(PATHNAME));
+            if (!Files.exists(path)) {
+                return;
+            }
+
+            //check if user in file (and not adding it to remaining lines)
+            List<String> remainingLines = new ArrayList<>();
+            for (String line : Files.readAllLines(path)) {
+                String[] parts = parseLine(line);
+                if (parts == null || !matchesUser(parts, user)) {
+                    remainingLines.add(line);
+                }
+            }
+
+            //overwrite user file with remaining lines
+            Files.write(
+                    path,
+                    remainingLines,
+                    StandardCharsets.UTF_8,
+                    StandardOpenOption.CREATE,
+                    StandardOpenOption.TRUNCATE_EXISTING
+            );
         } catch (IOException e) {
             throw new ForgetUserException(e);
         }
     }
 
     private synchronized void initializeFile() throws ConnectionException {
-        File file = new File(PATHNAME);
+        File file = path.toFile();
         if (!file.exists()) {
             try {
                 if (!file.createNewFile()) {
@@ -120,9 +137,10 @@ public class UserDAOFS implements UserDAO {
             }
         }
     }
+
     private synchronized void checkUniqueUsernameAndEmail(String line, String username, String email) throws UsernameAlreadyExistsException, EmailAlreadyExistsException {
-        String[] parts = line.split(",", 6);
-        if (parts.length == 6) {
+        String[] parts = parseLine(line);
+        if (parts != null) {
             if (parts[1].equals(username)) {
                 throw new UsernameAlreadyExistsException();
             }
@@ -130,5 +148,33 @@ public class UserDAOFS implements UserDAO {
                 throw new EmailAlreadyExistsException();
             }
         }
+    }
+
+    //UTILITY METHODS
+    //parses line into parts
+    private String[] parseLine(String line) {
+        if (line == null || line.trim().isEmpty()) {
+            return null;
+        }
+        String[] parts = line.split(",", 6);
+        return parts.length == 6 ? parts : null;
+    }
+
+    //converts parts to User
+    private User toUser(String[] parts) {
+        return new User(
+                Integer.parseInt(parts[0]),
+                parts[1],
+                parts[2],
+                parts[3],
+                parts[5]
+        );
+    }
+
+    //checks if parts correspond to user
+    private boolean matchesUser(String[] parts, User user) {
+        return parts[1].equals(user.getUsername())
+                && parts[2].equals(user.getName())
+                && parts[3].equals(user.getSurname());
     }
 }

@@ -1,11 +1,13 @@
 package com.orto.logic.model.entity;
 
+import com.orto.logic.utils.QuantityUnit;
+
 import java.math.BigDecimal;
 
 public class OrderLine {
-    private Product product;
-    private Double quantity;
-    private String annotation;
+    private final Product product;
+    private final Double quantity;
+    private final String annotation;
 
     public OrderLine(Product product, Double quantity, String annotation) {
         this.product = product;
@@ -13,13 +15,22 @@ public class OrderLine {
         this.annotation = annotation;
     }
 
+
     public Product getProduct() {
         return product;
     }
 
+    public Integer getProductId() { return product.getId(); }
+
+    public String getProductName() { return product.getName(); }
+
+    public BigDecimal getProductPrice() { return product.getPrice(); }
+
     public Double getQuantity() {
         return quantity;
     }
+
+    public QuantityUnit getQuantityUnit() { return product.getQuantityUnit(); }
 
     public String getAnnotation() {
         return annotation;
