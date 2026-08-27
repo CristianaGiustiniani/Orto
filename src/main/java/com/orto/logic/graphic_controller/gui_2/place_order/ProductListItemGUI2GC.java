@@ -13,7 +13,7 @@ public class ProductListItemGUI2GC extends ProductListItemGC {
 
     //CONSTRUCTOR
     public ProductListItemGUI2GC(ProductBean product) {
-        super(product);
+        super(product, "/views/views2/form/buyer/placeOrderElements/ProductListItem.fxml");
     }
 
     //OUTPUT METHODS

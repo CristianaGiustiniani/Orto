@@ -31,9 +31,9 @@ public abstract class ProductListItemGC extends HBox {
     @FXML Text textProductPrice;
 
     //CONSTRUCTOR
-    protected ProductListItemGC(ProductBean product) {
+    protected ProductListItemGC(ProductBean product, String fxmlPath) {
         this.product = product;
-        root = load();
+        root = load(fxmlPath);
         setupTexts();
     }
 
@@ -51,9 +51,9 @@ public abstract class ProductListItemGC extends HBox {
     }
 
     //OUTPUT METHODS
-    private Parent load() {
+    private Parent load(String fxmlPath) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/views1/form/buyer/placeOrderElements/ProductListItem.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             loader.setController(this);
             return loader.load();
         } catch (IOException e) {
