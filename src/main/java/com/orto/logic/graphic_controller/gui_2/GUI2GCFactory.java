@@ -3,6 +3,8 @@ package com.orto.logic.graphic_controller.gui_2;
 
 import com.orto.logic.controller.bean.SellerBean;
 import com.orto.logic.graphic_controller.*;
+import com.orto.logic.graphic_controller.graphic_elements.AuthenticatedBackgroundGC;
+import com.orto.logic.graphic_controller.graphic_elements.PublicBackgroundGC;
 import com.orto.logic.graphic_controller.gui_2.background.AuthenticatedBackgroundGUI2GC;
 import com.orto.logic.graphic_controller.gui_2.background.PublicBackgroundGUI2GC;
 import com.orto.logic.graphic_controller.gui_2.find_farmers.FindFarmersGUI2GC;

@@ -2,7 +2,7 @@ package com.orto.logic.graphic_controller.gui_1.background;
 
 import com.orto.logic.utils.I18n;
 import com.orto.logic.graphic_controller.GUIGC;
-import com.orto.logic.graphic_controller.PublicBackgroundGC;
+import com.orto.logic.graphic_controller.graphic_elements.PublicBackgroundGC;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 

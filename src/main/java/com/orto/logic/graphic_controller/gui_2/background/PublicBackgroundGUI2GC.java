@@ -1,11 +1,10 @@
 package com.orto.logic.graphic_controller.gui_2.background;
 
 import com.orto.logic.graphic_controller.GUIGC;
-import com.orto.logic.graphic_controller.PublicBackgroundGC;
+import com.orto.logic.graphic_controller.graphic_elements.PublicBackgroundGC;
 import com.orto.logic.utils.I18n;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 
 
 public class PublicBackgroundGUI2GC extends GUIGC implements PublicBackgroundGC {

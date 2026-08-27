@@ -1,6 +1,7 @@
-package com.orto.logic.graphic_controller;
+package com.orto.logic.graphic_controller.graphic_elements;
 
 import com.orto.logic.controller.LoginController;
+import com.orto.logic.graphic_controller.GCFactoryProvider;
 import com.orto.logic.model.dao.exceptions.ForgetUserException;
 import com.orto.logic.utils.I18n;
 

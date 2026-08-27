@@ -1,6 +1,6 @@
 package com.orto.logic.graphic_controller.gui_2.background;
 
-import com.orto.logic.graphic_controller.AuthenticatedBackgroundGC;
+import com.orto.logic.graphic_controller.graphic_elements.AuthenticatedBackgroundGC;
 import com.orto.logic.graphic_controller.GUIGC;
 import com.orto.logic.utils.I18n;
 import javafx.fxml.FXML;

@@ -1,4 +1,6 @@
-package com.orto.logic.graphic_controller;
+package com.orto.logic.graphic_controller.graphic_elements;
+
+import com.orto.logic.graphic_controller.GCFactoryProvider;
 
 public interface PublicBackgroundGC {
     default void home() {

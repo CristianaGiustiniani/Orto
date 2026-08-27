@@ -3,7 +3,7 @@ package com.orto.logic.graphic_controller.gui_1.background;
 import com.orto.logic.controller.LoginController;
 import com.orto.logic.graphic_controller.GCFactoryProvider;
 import com.orto.logic.utils.I18n;
-import com.orto.logic.graphic_controller.AuthenticatedBackgroundGC;
+import com.orto.logic.graphic_controller.graphic_elements.AuthenticatedBackgroundGC;
 import com.orto.logic.graphic_controller.GUIGC;
 import com.orto.logic.utils.exceptions.IllegalNullUserException;
 import javafx.fxml.FXML;

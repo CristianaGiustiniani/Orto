@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 
 import java.io.IOException;
 
-public abstract class GUIGC extends GC {
+public abstract class GUIGC {
     protected Parent root;
     protected final String fxmlPath;
 
