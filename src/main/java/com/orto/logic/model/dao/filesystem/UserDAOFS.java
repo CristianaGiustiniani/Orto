@@ -38,7 +38,7 @@ public class UserDAOFS implements UserDAO {
             List<String> lines = Files.readAllLines(path);
             for (String line : lines) {
                 String[] parts = parseLine(line);
-                if (parts != null && parts[4].equals(email)) {
+                if (parts.length != 0 && parts[4].equals(email)) {
                     User user = toUser(parts);
                     user.checkPassword(password);
                     return user;
@@ -59,7 +59,7 @@ public class UserDAOFS implements UserDAO {
 
                 for (int i = lines.size() - 1; i >= 0; i--) {
                     String[] parts = parseLine(lines.get(i));
-                    if (parts != null) {
+                    if (parts.length != 0) {
                         return toUser(parts);
                     }
                 }
@@ -107,7 +107,7 @@ public class UserDAOFS implements UserDAO {
             List<String> remainingLines = new ArrayList<>();
             for (String line : Files.readAllLines(path)) {
                 String[] parts = parseLine(line);
-                if (parts == null || !matchesUser(parts, user)) {
+                if (parts.length == 0 || !matchesUser(parts, user)) {
                     remainingLines.add(line);
                 }
             }
@@ -140,7 +140,7 @@ public class UserDAOFS implements UserDAO {
 
     private synchronized void checkUniqueUsernameAndEmail(String line, String username, String email) throws UsernameAlreadyExistsException, EmailAlreadyExistsException {
         String[] parts = parseLine(line);
-        if (parts != null) {
+        if (parts.length != 0) {
             if (parts[1].equals(username)) {
                 throw new UsernameAlreadyExistsException();
             }
@@ -157,7 +157,7 @@ public class UserDAOFS implements UserDAO {
             return new String[0];
         }
         String[] parts = line.split(",", 6);
-        return parts.length == 6 ? parts : null;
+        return parts.length == 6 ? parts : new String[0];
     }
 
     //converts parts to User
