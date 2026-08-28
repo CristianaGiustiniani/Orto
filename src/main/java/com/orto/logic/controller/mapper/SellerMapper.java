@@ -14,7 +14,6 @@ public class SellerMapper implements Mapper <Seller, SellerBean>{
     public SellerBean toBean(Seller seller) {
         SellerBean sellerBean = new SellerBean();
         Map<DayOfWeek, TimeSlotBean> openingHoursBean = new EnumMap<>(DayOfWeek.class);
-        TimeSlotBean timeSlotBean = new TimeSlotBean();
 
         //converting seller fields into sellerBean fields
         sellerBean.setId(seller.getId());
@@ -23,6 +22,7 @@ public class SellerMapper implements Mapper <Seller, SellerBean>{
         sellerBean.setProductTypes(seller.getProductTypes());
 
         for(DayOfWeek day: DayOfWeek.values()) {
+            TimeSlotBean timeSlotBean = new TimeSlotBean();
             timeSlotBean.setOpeningTime(seller.getOpeningTimes().get(day).openingTime());
             timeSlotBean.setClosingTime(seller.getOpeningTimes().get(day).closingTime());
             openingHoursBean.put(day, timeSlotBean);

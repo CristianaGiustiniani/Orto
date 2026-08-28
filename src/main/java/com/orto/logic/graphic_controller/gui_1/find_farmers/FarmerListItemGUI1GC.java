@@ -7,5 +7,6 @@ public class FarmerListItemGUI1GC extends FarmerListItemGC {
     //CONSTRUCTOR
     public FarmerListItemGUI1GC(SellerBean seller) {
         super(seller, "/views/views1/form/findFarmersElements/FarmerListItem.fxml");
+        setupTexts();
     }
 }

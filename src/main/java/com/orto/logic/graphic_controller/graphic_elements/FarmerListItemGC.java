@@ -23,16 +23,19 @@ public class FarmerListItemGC extends HBox {
 
     //FXML ATTRIBUTES
     private final Parent root;
-    @FXML Button buttonPlaceOrder;
-    @FXML Text textFarmerLocation;
-    @FXML Text textFarmerName;
-    @FXML Text textProductTypes;
+    @FXML
+    protected Button buttonPlaceOrder;
+    @FXML
+    protected Text textFarmerLocation;
+    @FXML
+    protected Text textFarmerName;
+    @FXML
+    protected Text textProductTypes;
 
     //CONSTRUCTOR
     public FarmerListItemGC(SellerBean seller, String fxmlPath) {
         this.seller = seller;
         root = load(fxmlPath);
-        setupTexts();
     }
 
     //INPUT METHODS
@@ -60,14 +63,14 @@ public class FarmerListItemGC extends HBox {
         }
     }
 
-    private void setupTexts() {
+    protected void setupTexts() {
         buttonPlaceOrder.setText(I18n.t("GUI_FINDFARMERS_VIEW_PLACEORDER"));
         textFarmerName.setText(seller.getName());
         textFarmerLocation.setText(toString(seller.getAddress(), "half"));
         textProductTypes.setText(toString(seller.getProductTypes()));
     }
 
-    private String toString(List<ProductType> types) {
+    protected String toString(List<ProductType> types) {
         StringBuilder string = new StringBuilder();
 
         for(ProductType type: types) {
@@ -82,7 +85,7 @@ public class FarmerListItemGC extends HBox {
         return string.toString();
     }
 
-    private String toString(AddressBean addressBean) {
+    protected String toString(AddressBean addressBean) {
         return (addressBean.getStreetName() + ", " +
                 addressBean.getCivicNumber() + ", " +
                 addressBean.getPostalCode() + ", " +
@@ -91,7 +94,7 @@ public class FarmerListItemGC extends HBox {
                 addressBean.getCountry());
     }
 
-    private String toString(AddressBean addressBean, String mode) {
+    protected String toString(AddressBean addressBean, String mode) {
         if (mode.equals("half")) {
             return (addressBean.getCity() +
                     " (" + addressBean.getProvince() + ")");

@@ -12,17 +12,22 @@ public class FarmerListItemGUI2GC extends FarmerListItemGC {
     private final FindFarmersController controller;
 
     //FXML ATTRIBUTES
-    @FXML Text textOpeningStatus;
+    @FXML private Text textOpeningStatus;
 
     //CONSTRUCTOR
     public FarmerListItemGUI2GC(SellerBean seller) {
         super(seller, "/views/views2/form/findFarmersElements/FarmerListItem.fxml");
         this.controller = new FindFarmersController();
-        this.setupTexts();
+        setupTexts();
     }
 
     //OUTPUT METHODS
-    private void setupTexts() {
+    @Override
+    protected void setupTexts() {
+        buttonPlaceOrder.setText(I18n.t("GUI_FINDFARMERS_VIEW_PLACEORDER"));
+        textFarmerName.setText(seller.getName());
+        textFarmerLocation.setText(toString(seller.getAddress(), "half"));
+        textProductTypes.setText(toString(seller.getProductTypes()));
         String openingStatus = controller.isSellerOpen(seller) ? I18n.t("GUI_FINDFARMERS_VIEW_OPEN") : I18n.t("GUI_FINDFARMERS_VIEW_CLOSED");
         textOpeningStatus.setText(openingStatus);
     }

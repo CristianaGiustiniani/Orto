@@ -20,6 +20,6 @@ public class FindFarmersController {
     }
 
     public boolean isSellerOpen(SellerBean seller) {
-        return mapper.toEntity(seller).isOpen();
+        return (mapper.toEntity(seller)).isOpen();
     }
 }
