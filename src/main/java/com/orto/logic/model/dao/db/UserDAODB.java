@@ -64,12 +64,12 @@ public class UserDAODB implements UserDAO {
                 String message = e.getMessage();
 
                 if (message.contains("username")) {
-                    throw new UsernameAlreadyExistsException();
+                    throw new UsernameAlreadyExistsException(e);
                 } else if (message.contains("email")) {
-                    throw new EmailAlreadyExistsException();
+                    throw new EmailAlreadyExistsException(e);
                 }
             }
-            throw new ConnectionException();
+            throw new ConnectionException(e);
         }
     }
 }

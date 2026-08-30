@@ -134,8 +134,8 @@ public class UserDAOFS implements UserDAO {
                 if (!file.createNewFile()) {
                     throw new FailedFileCreationException();
                 }
-            } catch (IOException | FailedFileCreationException e) {
-                throw new ConnectionException();
+            } catch (IOException e) {
+                throw new ConnectionException(e);
             }
         }
     }

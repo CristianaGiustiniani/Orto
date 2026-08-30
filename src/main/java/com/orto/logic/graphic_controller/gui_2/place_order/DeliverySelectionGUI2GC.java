@@ -136,7 +136,7 @@ public class DeliverySelectionGUI2GC extends GUIGC {
         try {
             deliveryBean.validate();
         } catch (InvalidStringException e) {
-            throw new InvalidDeliveryInfoException();
+            throw new InvalidDeliveryInfoException(e);
         }
         return deliveryBean;
     }

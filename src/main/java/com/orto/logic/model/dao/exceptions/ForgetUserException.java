@@ -1,11 +1,10 @@
 package com.orto.logic.model.dao.exceptions;
 
-public class ForgetUserException extends Exception {
-    public ForgetUserException(Throwable cause) {
-        super("Can't delete the file containing the remembered user", cause);
-    }
-
+public class ForgetUserException extends ValidationException {
     public ForgetUserException() {
-        super("Can't delete the file containing the remembered user");
+        super("Error in deleting the file containing the remembered user");
+    }
+    public ForgetUserException(Throwable cause) {
+        super(cause);
     }
 }

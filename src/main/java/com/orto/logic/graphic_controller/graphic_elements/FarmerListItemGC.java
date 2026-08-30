@@ -59,7 +59,7 @@ public class FarmerListItemGC extends HBox {
             loader.setController(this);
             return loader.load();
         } catch (IOException e) {
-            throw new FailedFXMLLoadException();
+            throw new FailedFXMLLoadException(e);
         }
     }
 
