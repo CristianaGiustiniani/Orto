@@ -4,10 +4,13 @@ import com.orto.logic.utils.PaymentStatus;
 import com.orto.logic.utils.PaymentType;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class Payment {
     private PaymentType paymentType = null;
     private PaymentStatus paymentStatus = null;
+    private Integer id;
+    private LocalDateTime date;
     private BigDecimal amount;
 
 
@@ -36,6 +39,12 @@ public class Payment {
     public void setPaymentTypeOnline(){
         this.paymentType = PaymentType.ONLINE;
     }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
     public void setPaymentAmount(BigDecimal amount){
         this.amount = amount;
     }
@@ -57,7 +66,14 @@ public class Payment {
     public boolean isPaymentCash() {
         return paymentType == PaymentType.CASH;
     }
+    public Integer getId() {
+        return id;
+    }
+    public LocalDateTime getDate() {
+        return date;
+    }
     public BigDecimal getAmount() {
         return amount;
     }
+
 }

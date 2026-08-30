@@ -1,5 +1,6 @@
 package com.orto.logic.controller;
 
+import com.orto.logic.controller.api.DummyPaymentGateway;
 import com.orto.logic.controller.api.PaymentGateway;
 import com.orto.logic.controller.bean.PaymentBean;
 import com.orto.logic.controller.exceptions.FailedPaymentException;
@@ -11,7 +12,7 @@ public class ProcessPaymentController {
         if (payment.isPaymentCash()) {
             payment.setPaymentStatusSuccessful();
         } else {
-            PaymentGateway paymentGateway = new PaymentGateway();
+            PaymentGateway paymentGateway = new DummyPaymentGateway();
             PaymentMapper mapper = new PaymentMapper();
 
             PaymentBean result = paymentGateway.submitPayment(mapper.toBean(payment));
