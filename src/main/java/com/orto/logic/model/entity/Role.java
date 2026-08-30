@@ -1,5 +1,5 @@
 package com.orto.logic.model.entity;
 
-public abstract class Role {
+public interface Role {
     //so long, not needed
 }

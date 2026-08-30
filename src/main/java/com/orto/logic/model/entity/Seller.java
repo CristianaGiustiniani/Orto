@@ -9,7 +9,7 @@ import java.time.ZoneId;
 import java.util.List;
 import java.util.Map;
 
-public class Seller extends Role {
+public class Seller implements Role {
     private final Integer id;
     private final String name;
     private final Address address;
