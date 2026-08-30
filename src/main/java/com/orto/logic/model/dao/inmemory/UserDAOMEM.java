@@ -4,6 +4,8 @@ import com.orto.logic.model.dao.UserDAO;
 import com.orto.logic.model.dao.exceptions.EmailAlreadyExistsException;
 import com.orto.logic.model.dao.exceptions.UsernameAlreadyExistsException;
 import com.orto.logic.model.dao.exceptions.WrongEmailException;
+import com.orto.logic.model.entity.Buyer;
+import com.orto.logic.model.entity.Role;
 import com.orto.logic.model.entity.User;
 import com.orto.logic.model.entity.exceptions.WrongPasswordException;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -25,7 +27,8 @@ public class UserDAOMEM implements UserDAO {
                         "cristiana",
                         "cristiana",
                         "giustiniani",
-                        orto));
+                        orto,
+                        new Buyer()));
 
         // User 2
         users.put(
@@ -34,7 +37,8 @@ public class UserDAOMEM implements UserDAO {
                         "robiforzaroma",
                         "roberta",
                         "lupi",
-                        orto));
+                        orto,
+                        new Buyer()));
 
         // User 3
         users.put(
@@ -43,7 +47,8 @@ public class UserDAOMEM implements UserDAO {
                         "maria61",
                         "marianna",
                         "sabatini",
-                        orto));
+                        orto,
+                        new Buyer()));
     }
 
     @Override
@@ -59,7 +64,7 @@ public class UserDAOMEM implements UserDAO {
     }
 
     @Override
-    public void createUser(User user, String email, String password) throws EmailAlreadyExistsException, UsernameAlreadyExistsException {
+    public void createUser(User user, String email, String password, Role role) throws EmailAlreadyExistsException, UsernameAlreadyExistsException {
         if (users.get(email) != null) {
             throw new EmailAlreadyExistsException();
         }

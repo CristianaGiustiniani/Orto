@@ -2,6 +2,8 @@ package com.orto.logic.model.dao.filesystem;
 
 import com.orto.logic.model.dao.UserDAO;
 import com.orto.logic.model.dao.exceptions.*;
+import com.orto.logic.model.entity.Buyer;
+import com.orto.logic.model.entity.Role;
 import com.orto.logic.model.entity.User;
 import com.orto.logic.model.entity.exceptions.WrongPasswordException;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -71,7 +73,7 @@ public class UserDAOFS implements UserDAO {
     }
 
     @Override
-    public synchronized void createUser(User user, String email, String password) throws ConnectionException, UsernameAlreadyExistsException, EmailAlreadyExistsException {
+    public synchronized void createUser(User user, String email, String password, Role role) throws ConnectionException, UsernameAlreadyExistsException, EmailAlreadyExistsException {
         initializeFile();
         try {
             File file = path.toFile();
@@ -167,7 +169,8 @@ public class UserDAOFS implements UserDAO {
                 parts[1],
                 parts[2],
                 parts[3],
-                parts[5]
+                parts[5],
+                new Buyer()
         );
     }
 

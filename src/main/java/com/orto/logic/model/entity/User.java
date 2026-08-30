@@ -9,6 +9,7 @@ public class User {
     private final String name;
     private final String surname;
     private String hashedPassword;
+    private Role role;
 
     public User(String username, String name, String surname) {
         this.username = username;
@@ -23,11 +24,28 @@ public class User {
         this.surname = surname;
     }
 
+    public User(Integer id, String username, String name, String surname, Role role) {
+        this.id = id;
+        this.username = username;
+        this.name = name;
+        this.surname = surname;
+        this.role = role;
+    }
+
+
     public User(String username, String name, String surname, String hashedPassword) {
         this.username = username;
         this.name = name;
         this.surname = surname;
         this.hashedPassword = hashedPassword;
+    }
+
+    public User(String username, String name, String surname, String hashedPassword, Role role) {
+        this.username = username;
+        this.name = name;
+        this.surname = surname;
+        this.hashedPassword = hashedPassword;
+        this.role = role;
     }
 
     public User(Integer id, String username, String name, String surname, String hashedPassword) {
@@ -36,6 +54,15 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.hashedPassword = hashedPassword;
+    }
+
+    public User(Integer id, String username, String name, String surname, String hashedPassword, Role role) {
+        this.id = id;
+        this.username = username;
+        this.name = name;
+        this.surname = surname;
+        this.hashedPassword = hashedPassword;
+        this.role = role;
     }
 
 
@@ -59,5 +86,9 @@ public class User {
         if (!(BCrypt.checkpw(password, this.hashedPassword))) {
             throw new WrongPasswordException();
         }
+    }
+
+    public Role getRole() {
+        return role;
     }
 }
