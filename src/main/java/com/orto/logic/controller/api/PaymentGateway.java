@@ -1,0 +1,12 @@
+package com.orto.logic.controller.api;
+
+import com.orto.logic.controller.bean.PaymentBean;
+import com.orto.logic.utils.PaymentStatus;
+
+public class PaymentGateway {
+    public PaymentBean submitPayment(PaymentBean payment) {
+        //dummy assignation: if payment is online, it automatically fails
+        payment.setPaymentStatus(PaymentStatus.FAILED);
+        return payment;
+    }
+}
