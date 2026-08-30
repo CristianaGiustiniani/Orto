@@ -232,8 +232,6 @@
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -243,179 +241,120 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Text fx:id="textMonday" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="MON">
+                              <Text fx:id="textMonday" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="MON" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textTuesday" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="TUE" GridPane.rowIndex="1">
+                              <Text fx:id="textTuesday" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="TUE" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textWednesday" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="WED" GridPane.rowIndex="2">
+                              <Text fx:id="textWednesday" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="WED" GridPane.rowIndex="3">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textThursday" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="THU" GridPane.rowIndex="3">
+                              <Text fx:id="textThursday" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="THU" GridPane.rowIndex="4">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textFriday" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="FRI" GridPane.rowIndex="4">
+                              <Text fx:id="textFriday" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="FRI" GridPane.rowIndex="5">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textSaturday" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="SAT" GridPane.rowIndex="5">
+                              <Text fx:id="textSaturday" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="SAT" GridPane.rowIndex="6">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textSunday" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="SUN" GridPane.rowIndex="6">
+                              <Text fx:id="textSunday" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="SUN" GridPane.rowIndex="7">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textFrom0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="FROM" GridPane.columnIndex="1">
+                              <Text fx:id="textMondayOpeningTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OTIME" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textFrom1" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="FROM" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <Text fx:id="textTuesdayOpeningTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OTIME" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textFrom2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="FROM" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <Text fx:id="textWednesdayOpeningTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OTIME" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textFrom3" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="FROM" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <Text fx:id="textThursdayOpeningTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OTIME" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textFrom4" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="FROM" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                              <Text fx:id="textFridayOpeningTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OTIME" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textFrom5" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="FROM" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                              <Text fx:id="textSaturdayOpeningTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OTIME" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textFrom6" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="FROM" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                              <Text fx:id="textSundayOpeningTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OTIME" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textTo0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="TO" GridPane.columnIndex="3">
+                              <Text fx:id="textMondayClosingTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="CTIME" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textTo1" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="TO" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                              <Text fx:id="textTuesdayClosingTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="CTIME" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textTo2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="TO" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                              <Text fx:id="textWednesdayClosingTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="CTIME" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textTo3" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="TO" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                              <Text fx:id="textThursdayClosingTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="CTIME" GridPane.columnIndex="2" GridPane.rowIndex="4">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textTo4" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="TO" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                              <Text fx:id="textFridayClosingTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="CTIME" GridPane.columnIndex="2" GridPane.rowIndex="5">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textTo5" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="TO" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                              <Text fx:id="textSaturdayClosingTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="CTIME" GridPane.columnIndex="2" GridPane.rowIndex="6">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textTo6" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="TO" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                              <Text fx:id="textSundayClosingTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="CTIME" GridPane.columnIndex="2" GridPane.rowIndex="7">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textMondayOpeningTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OTIME" GridPane.columnIndex="2">
+                              <Text fx:id="textOpeningTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OPENINGTIME" GridPane.columnIndex="1">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="textTuesdayOpeningTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OTIME" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="textWednesdayOpeningTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OTIME" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="textThursdayOpeningTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OTIME" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="textFridayOpeningTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OTIME" GridPane.columnIndex="2" GridPane.rowIndex="4">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="textSaturdayOpeningTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OTIME" GridPane.columnIndex="2" GridPane.rowIndex="5">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="textSundayOpeningTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="OTIME" GridPane.columnIndex="2" GridPane.rowIndex="6">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="textMondayClosingTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="CTIME" GridPane.columnIndex="4">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="textTuesdayClosingTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="CTIME" GridPane.columnIndex="4" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="textWednesdayClosingTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="CTIME" GridPane.columnIndex="4" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="textThursdayClosingTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="CTIME" GridPane.columnIndex="4" GridPane.rowIndex="3">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="textFridayClosingTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="CTIME" GridPane.columnIndex="4" GridPane.rowIndex="4">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="textSaturdayClosingTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="CTIME" GridPane.columnIndex="4" GridPane.rowIndex="5">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Text>
-                              <Text fx:id="textSundayClosingTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="CTIME" GridPane.columnIndex="4" GridPane.rowIndex="6">
+                              <Text fx:id="textClosingTime" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="std-text" text="CLOSINGTIME" GridPane.columnIndex="2">
                                  <font>
                                     <Font size="16.0" />
                                  </font>

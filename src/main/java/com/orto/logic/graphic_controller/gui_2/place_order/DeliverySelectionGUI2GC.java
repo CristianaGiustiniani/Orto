@@ -70,20 +70,8 @@ public class DeliverySelectionGUI2GC extends GUIGC {
     @FXML private Text textFridayClosingTime;
     @FXML private Text textSaturdayClosingTime;
     @FXML private Text textSundayClosingTime;
-    @FXML private Text textFrom0;
-    @FXML private Text textFrom1;
-    @FXML private Text textFrom2;
-    @FXML private Text textFrom3;
-    @FXML private Text textFrom4;
-    @FXML private Text textFrom5;
-    @FXML private Text textFrom6;
-    @FXML private Text textTo0;
-    @FXML private Text textTo1;
-    @FXML private Text textTo2;
-    @FXML private Text textTo3;
-    @FXML private Text textTo4;
-    @FXML private Text textTo5;
-    @FXML private Text textTo6;
+    @FXML private Text textOpeningTime;
+    @FXML private Text textClosingTime;
     @FXML private Text textChoseDelivery;
     @FXML private RadioButton radioShippingDelivery;
     @FXML private RadioButton radioPickupDelivery;
@@ -192,22 +180,8 @@ public class DeliverySelectionGUI2GC extends GUIGC {
         textFridayClosingTime.setText(toString(seller.getOpeningHours().get(DayOfWeek.FRIDAY).getClosingTime()));
         textSaturdayClosingTime.setText(toString(seller.getOpeningHours().get(DayOfWeek.SATURDAY).getClosingTime()));
         textSundayClosingTime.setText(toString(seller.getOpeningHours().get(DayOfWeek.SUNDAY).getClosingTime()));
-        final String from = I18n.t("GUI_PLACEORDER_DELIVERYSELECTION_VIEW_FROM");
-        textFrom0.setText(from);
-        textFrom1.setText(from);
-        textFrom2.setText(from);
-        textFrom3.setText(from);
-        textFrom4.setText(from);
-        textFrom5.setText(from);
-        textFrom6.setText(from);
-        final String to = I18n.t("GUI_PLACEORDER_DELIVERYSELECTION_VIEW_TO");
-        textTo0.setText(to);
-        textTo1.setText(to);
-        textTo2.setText(to);
-        textTo3.setText(to);
-        textTo4.setText(to);
-        textTo5.setText(to);
-        textTo6.setText(to);
+        textOpeningTime.setText(I18n.t("GUI_PLACEORDER_DELIVERYSELECTION_VIEW_OPENINGTIME"));
+        textClosingTime.setText(I18n.t("GUI_PLACEORDER_DELIVERYSELECTION_VIEW_CLOSINGTIME"));
         textChoseDelivery.setText(I18n.t("GUI_PLACEORDER_DELIVERYSELECTION_VIEW_CHOSEDELIVERY"));
     }
 
