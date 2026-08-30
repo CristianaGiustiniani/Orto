@@ -2,6 +2,7 @@ package com.orto.logic.controller;
 
 import com.orto.logic.model.dao.exceptions.*;
 import com.orto.logic.model.dao.factory.DAOFactory;
+import com.orto.logic.model.entity.Buyer;
 import com.orto.logic.model.entity.User;
 import com.orto.logic.model.entity.exceptions.WrongPasswordException;
 import com.orto.logic.utils.*;
@@ -28,7 +29,7 @@ public class LoginController {
 
         if (rememberUser && !Configuration.getInstance().getMode().equals(Mode.DEMO)) {
             try {
-                DAOFactory.getDAOFactory(PersistenceType.FILESYSTEM).getUserDAO().createUser(user, email, password);
+                DAOFactory.getDAOFactory(PersistenceType.FILESYSTEM).getUserDAO().createUser(user, email, password, new Buyer());
             } catch (UsernameAlreadyExistsException | EmailAlreadyExistsException e) {
                 //do nothing, as users.txt shall keep track of multiple sessions
             }

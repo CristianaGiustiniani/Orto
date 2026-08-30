@@ -6,6 +6,7 @@ import com.orto.logic.model.dao.exceptions.ConnectionException;
 import com.orto.logic.model.dao.exceptions.EmailAlreadyExistsException;
 import com.orto.logic.model.dao.exceptions.UsernameAlreadyExistsException;
 import com.orto.logic.model.dao.exceptions.WrongEmailException;
+import com.orto.logic.model.entity.Buyer;
 import com.orto.logic.model.entity.User;
 import com.orto.logic.model.entity.exceptions.WrongPasswordException;
 
@@ -75,7 +76,8 @@ class TestUserDAODB {
                             "nome",
                             "cognome"),
                     "newemail",
-                    BCrypt.hashpw("orto", BCrypt.gensalt()));
+                    BCrypt.hashpw("orto", BCrypt.gensalt()),
+                    new Buyer());
         } catch (UsernameAlreadyExistsException e) {
             assertNotNull(e);
         }
@@ -91,7 +93,8 @@ class TestUserDAODB {
                             "nome",
                             "cognome"),
                     "crisgius@gmail.com",
-                    BCrypt.hashpw("orto", BCrypt.gensalt()));
+                    BCrypt.hashpw("orto", BCrypt.gensalt()),
+                    new Buyer());
         } catch (EmailAlreadyExistsException e) {
             assertNotNull(e);
         }

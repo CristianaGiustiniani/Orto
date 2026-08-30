@@ -9,12 +9,12 @@ import java.time.ZoneId;
 import java.util.List;
 import java.util.Map;
 
-public class Seller {
-    private Integer id;
-    private String name;
-    private Address address;
-    private List<ProductType> productTypes;
-    private Map<DayOfWeek, TimeSlot> openingTimes;
+public class Seller extends Role {
+    private final Integer id;
+    private final String name;
+    private final Address address;
+    private final List<ProductType> productTypes;
+    private final Map<DayOfWeek, TimeSlot> openingTimes;
 
     public Seller(Integer id, String name, Address address, List<ProductType> productTypes, Map<DayOfWeek, TimeSlot> openingTimes) {
         this.id = id;

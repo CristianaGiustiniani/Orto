@@ -1,6 +1,7 @@
 package com.orto.test;
 
 import com.orto.logic.model.dao.UserDAO;
+import com.orto.logic.model.entity.Buyer;
 import com.orto.logic.model.entity.User;
 
 import org.junit.jupiter.api.Test;
@@ -18,8 +19,8 @@ class TestUserDAOFS {
         try {
             UserDAO userDAO = new UserDAOFS(usersFile);
             assertNotNull(userDAO);
-            User user = new User(0, "testUsername", "test", "test");
-            userDAO.createUser(user, "test@test.it", "orto");
+            User user = new User(0, "testUsername", "test", "test", new Buyer());
+            userDAO.createUser(user, "test@test.it", "orto", user.getRole());
             User retrieved = userDAO.getUser("test@test.it", "orto");
             assertNotNull(retrieved);
             assertEquals("testUsername", retrieved.getUsername());

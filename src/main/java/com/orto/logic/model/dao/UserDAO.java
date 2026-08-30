@@ -6,13 +6,14 @@ import com.orto.logic.model.dao.exceptions.ForgetUserException;
 import com.orto.logic.model.dao.exceptions.NoRememberedUserException;
 import com.orto.logic.model.dao.exceptions.UsernameAlreadyExistsException;
 import com.orto.logic.model.dao.exceptions.WrongEmailException;
+import com.orto.logic.model.entity.Role;
 import com.orto.logic.model.entity.User;
 import com.orto.logic.model.entity.exceptions.WrongPasswordException;
 
 public interface UserDAO {
     User getUser(String email, String password) throws ConnectionException, WrongPasswordException, WrongEmailException;
 
-    void createUser(User user, String email, String password) throws ConnectionException, UsernameAlreadyExistsException, EmailAlreadyExistsException;
+    void createUser(User user, String email, String password, Role role) throws ConnectionException, UsernameAlreadyExistsException, EmailAlreadyExistsException;
 
     default User getUser() throws NoRememberedUserException, ConnectionException {
         throw new NoRememberedUserException();

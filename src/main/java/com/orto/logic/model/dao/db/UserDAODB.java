@@ -5,6 +5,8 @@ import com.orto.logic.model.dao.exceptions.ConnectionException;
 import com.orto.logic.model.dao.exceptions.EmailAlreadyExistsException;
 import com.orto.logic.model.dao.exceptions.UsernameAlreadyExistsException;
 import com.orto.logic.model.dao.exceptions.WrongEmailException;
+import com.orto.logic.model.entity.Buyer;
+import com.orto.logic.model.entity.Role;
 import com.orto.logic.model.entity.User;
 import com.orto.logic.model.entity.exceptions.WrongPasswordException;
 import com.orto.logic.utils.DBConnection;
@@ -32,8 +34,8 @@ public class UserDAODB implements UserDAO {
                         rs.getString("username"),
                         rs.getString("name"),
                         rs.getString("surname"),
-                        rs.getString("password")
-                );
+                        rs.getString("password"),
+                        new Buyer());
                 user.checkPassword(password);
                 return user;
             } else {
@@ -45,7 +47,7 @@ public class UserDAODB implements UserDAO {
     }
 
     @Override
-    public void createUser(User user, String email, String password) throws ConnectionException, UsernameAlreadyExistsException, EmailAlreadyExistsException {
+    public void createUser(User user, String email, String password, Role role) throws ConnectionException, UsernameAlreadyExistsException, EmailAlreadyExistsException {
         String query = "INSERT INTO buyer (username, name, surname, email, password) VALUES (?, ?, ?, ?, ?)";
 
         try (   Connection conn = DBConnection.getConnection();
