@@ -16,7 +16,6 @@ import java.util.EnumSet;
 public class PaymentSelectionGUI1GC extends GUIGC {
     //ATTRIBUTES
     private final PaymentBean payment;
-    private final String totalPrice;
     private final Runnable onPaymentSelected;
 
     //FXML ELEMENTS
@@ -33,7 +32,7 @@ public class PaymentSelectionGUI1GC extends GUIGC {
     public PaymentSelectionGUI1GC(EnumSet<PaymentType> activePaymentTypes, String totalPrice, Runnable onPaymentSelected) {
         super("/views/views1/form/buyer/placeOrderElements/PaymentSelection.fxml");
         this.payment = new PaymentBean();
-        this.totalPrice = totalPrice;
+        payment.setAmount(totalPrice);
         this.onPaymentSelected = onPaymentSelected;
         root = load();
         setupButtons(activePaymentTypes);
@@ -75,7 +74,7 @@ public class PaymentSelectionGUI1GC extends GUIGC {
         labelPayment.setText(I18n.t("STEP_PAYMENT_SELECTION"));
         labelSummary.setText(I18n.t("STEP_ORDER_SUMMARY"));
         textTotal.setText(I18n.t("GUI_PLACEORDER_PAYMENTSELECTION_VIEW_TOTAL"));
-        textTotalPrice.setText("€" + totalPrice);
+        textTotalPrice.setText("€" + payment.getAmount());
         buttonPayOnline.setText(I18n.t("GUI_PLACEORDER_PAYMENTSELECTION_VIEW_PAYONLINE"));
         buttonPayViaCash.setText(I18n.t("GUI_PLACEORDER_PAYMENTSELECTION_VIEW_PAYBYCASH"));
 

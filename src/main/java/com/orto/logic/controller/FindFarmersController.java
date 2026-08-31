@@ -9,7 +9,7 @@ import com.orto.logic.model.entity.Seller;
 import java.util.List;
 
 public class FindFarmersController {
-    SellerMapper mapper = new SellerMapper();
+    private final SellerMapper mapper = new SellerMapper();
 
     //METHODS
     public List<SellerBean> getFarmers() throws ConnectionException {
