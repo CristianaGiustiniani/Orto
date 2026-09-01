@@ -29,7 +29,8 @@ class TestUserDAODB {
                 1,
                 "cristiana",
                 "cristiana",
-                "giustiniani");
+                "giustiniani",
+                new Buyer());
         User retrievedUser = userDAO.getUser("crisgius@gmail.com", "orto");
         assertEquals(existingUser.getId(), retrievedUser.getId());
     }
@@ -41,7 +42,8 @@ class TestUserDAODB {
                 1,
                 "cristiana",
                 "cristiana",
-                "giustiniani");
+                "giustiniani",
+                new Buyer());
         User retrievedUser = userDAO.getUser("crisgius@gmail.com", "orto");
         assertEquals(existingUser.getUsername(), retrievedUser.getUsername());
     }
